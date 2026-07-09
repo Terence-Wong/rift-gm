@@ -10,7 +10,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 import { computeOvr, round1 } from "./attributes";
-import { DATA_META, freshLeague } from "./data";
+import { DATA_META, freshLeague, listPlayers } from "./data";
 import { aiTactics, buildTeamContext, resolveBid, salaryDemand } from "./engine/ai";
 import {
   applyMatchFatigue,
@@ -20,6 +20,9 @@ import {
   applyWeeklyRecovery,
   updateFormAfterMatch,
 } from "./engine/development";
+import { generateHandle, generateLeague, generatePlayer } from "./engine/generate";
+import { matchFatigueCost } from "./engine/personality";
+import { computePowerRankings, type PowerRankEntry } from "./engine/rankings";
 import { createRng, hashSeed } from "./engine/rng";
 import {
   computeStandings,
@@ -29,12 +32,20 @@ import {
   type StandingsRow,
 } from "./engine/schedule";
 import { simulateMatch } from "./engine/simulateMatch";
+import { simulateSpatialMatch, type SpatialInputs } from "./engine/spatial";
+import {
+  advanceTutorial,
+  TUTORIAL_STEP_INFO,
+  type TutorialEvent,
+  type TutorialStep,
+} from "./tutorial";
 import type {
   AttributeKey,
   Attributes,
   BoardState,
   Fixture,
   InboxMessage,
+  MatchOptions,
   MatchResult,
   Player,
   PlayoffSeries,
@@ -46,12 +57,17 @@ import type {
 } from "./types";
 import { ROLES } from "./types";
 
+/** Save schema version — bump alongside migrateSave. */
+export const SAVE_VERSION = 2;
+
 export interface LastMatch {
   result: MatchResult;
   label: string;
   isUserMatch: boolean;
   weekFinished: boolean;
   elimination: boolean;
+  /** Inputs to regenerate the spatial log deterministically (watched games only). */
+  spatial?: SpatialInputs | null;
 }
 
 export interface OffseasonFlags {
@@ -59,9 +75,92 @@ export interface OffseasonFlags {
   newsSent: boolean;
 }
 
+export type DataMode = "real" | "fictional";
+
+export type Difficulty = "relaxed" | "standard" | "brutal";
+
+export const DIFFICULTY_INFO: Record<
+  Difficulty,
+  { label: string; blurb: string; budgetMult: number; strikeLimit: number; confidenceFloor: number }
+> = {
+  relaxed: {
+    label: "Relaxed",
+    blurb: "Patient board, deeper pockets. Three bad seasons before the axe.",
+    budgetMult: 1.15,
+    strikeLimit: 3,
+    confidenceFloor: 2,
+  },
+  standard: {
+    label: "Standard",
+    blurb: "The intended experience. Two strikes and you're out.",
+    budgetMult: 1,
+    strikeLimit: 2,
+    confidenceFloor: 5,
+  },
+  brutal: {
+    label: "Brutal",
+    blurb: "Tight budget, itchy trigger finger. Miss the mandate once at low confidence and you're gone.",
+    budgetMult: 0.88,
+    strikeLimit: 2,
+    confidenceFloor: 15,
+  },
+};
+
+export type RosterMode = "draft" | "academy";
+
+export interface CreateTeamConfig {
+  name: string;
+  /** 2–5 characters. */
+  tag: string;
+  region: string;
+  primaryColor: string;
+  secondaryColor: string;
+  rosterMode: RosterMode;
+}
+
+export interface ExpansionDraftState {
+  /** Free agents eligible to be drafted. */
+  poolIds: string[];
+  /** Salary cap across all drafted contracts. */
+  cap: number;
+  pickedIds: string[];
+}
+
+/** Created teams take this id; it never collides with data/generated ids. */
+export const CUSTOM_TEAM_ID = "usr";
+
+export interface NewGameOptions {
+  saveName: string;
+  /** Real rosters (derived data) or a fully generated fictional world. Never mixed. */
+  dataMode: DataMode;
+  /** Fictional mode only: the shareable world seed. */
+  worldSeed?: number;
+  /** Take over an existing team by id… */
+  teamId?: string;
+  /** …or found a brand-new franchise (replaces the weakest team). */
+  createTeam?: CreateTeamConfig;
+  difficulty?: Difficulty;
+  /** Run the "first week as head coach" onboarding for this save. */
+  tutorial?: boolean;
+}
+
 interface GameData {
+  /** Save schema version — bump alongside migrateSave. */
+  saveVersion: number;
   initialized: boolean;
   saveName: string;
+  dataMode: DataMode;
+  /** Set (and shareable) in fictional mode; null for real-data saves. */
+  worldSeed: number | null;
+  difficulty: Difficulty;
+  /** Pending expansion draft for a created team; null once complete. */
+  expansionDraft: ExpansionDraftState | null;
+  /** "First week as head coach" onboarding state (machine lives in lib/tutorial.ts). */
+  tutorial: { active: boolean; step: string };
+  /** This week's power rankings board (with movement vs. last week). */
+  powerRankings: PowerRankEntry[];
+  /** Playoff-meeting counts per team pair ("idA|idB", ids sorted). */
+  rivalries: Record<string, number>;
   playerTeamId: string;
   season: number;
   week: number;
@@ -90,13 +189,19 @@ interface GameData {
 }
 
 interface GameActions {
-  newGame(teamId: string, saveName: string): void;
+  newGame(opts: NewGameOptions): void;
+  draftPick(playerId: string): void;
+  undraftPick(playerId: string): void;
+  finishDraft(): boolean;
+  tutorialEvent(event: TutorialEvent): void;
+  skipTutorial(): void;
+  startTutorial(): void;
   resetGame(): void;
   setStarter(role: Role, playerId: string): void;
   setTrainingFocus(playerId: string, attr: AttributeKey): void;
   setScoutTarget(teamId: string | null): void;
   setPendingTactics(tactics: TeamTactics): void;
-  playUserMatch(tactics: TeamTactics): void;
+  playUserMatch(tactics: TeamTactics, watch?: boolean): void;
   finishWeek(): void;
   quickSimWeek(): void;
   markInboxRead(): void;
@@ -138,8 +243,16 @@ const ZERO_STATS = {
 };
 
 export const DATA_KEYS: (keyof GameData)[] = [
+  "saveVersion",
   "initialized",
   "saveName",
+  "dataMode",
+  "worldSeed",
+  "difficulty",
+  "expansionDraft",
+  "tutorial",
+  "powerRankings",
+  "rivalries",
   "playerTeamId",
   "season",
   "week",
@@ -168,8 +281,16 @@ export const DATA_KEYS: (keyof GameData)[] = [
 ];
 
 const initialData: GameData = {
+  saveVersion: SAVE_VERSION,
   initialized: false,
   saveName: "",
+  dataMode: "real",
+  worldSeed: null,
+  difficulty: "standard",
+  expansionDraft: null,
+  tutorial: { active: false, step: "SQUAD" },
+  powerRankings: [],
+  rivalries: {},
   playerTeamId: "",
   season: 1,
   week: 1,
@@ -197,6 +318,28 @@ const initialData: GameData = {
   msgCounter: 0,
 };
 
+/* ── Save-schema migration ─────────────────────────────────────── */
+
+/**
+ * Migrate a loaded save to the current schema. v1 saves (no saveVersion)
+ * become Real-mode, standard-difficulty saves with no created team and the
+ * tutorial marked complete. Idempotent; unknown newer versions pass through.
+ */
+export function migrateSave(data: Partial<GameData>): Partial<GameData> {
+  const d = { ...data };
+  if ((d.saveVersion ?? 1) < 2) {
+    d.saveVersion = SAVE_VERSION;
+    d.dataMode = d.dataMode ?? "real";
+    d.worldSeed = d.worldSeed ?? null;
+    d.difficulty = d.difficulty ?? "standard";
+    d.expansionDraft = d.expansionDraft ?? null;
+    d.tutorial = d.tutorial ?? { active: false, step: "DONE" };
+    d.powerRankings = d.powerRankings ?? [];
+    d.rivalries = d.rivalries ?? {};
+  }
+  return d;
+}
+
 /* ── Pure helpers over draft state ─────────────────────────────── */
 
 function nextSeed(s: GameData): number {
@@ -218,6 +361,28 @@ function post(s: GameData, title: string, body: string, tone: InboxMessage["tone
   if (s.inbox.length > 80) s.inbox.length = 80;
 }
 
+/** Sorted pair key for the rivalry map. */
+function rivalKey(a: string, b: string): string {
+  return [a, b].sort().join("|");
+}
+
+/** Extra match variance from rivalry intensity (playoff-history driven). */
+function rivalryBoost(s: GameData, a: string, b: string): number {
+  const level = s.rivalries[rivalKey(a, b)] ?? 0;
+  return 1 + 0.05 * Math.min(4, level);
+}
+
+/** Advance the tutorial machine inside a draft; posts the next coach memo. */
+function tutorialAdvanceIn(s: GameData, event: TutorialEvent) {
+  const before = s.tutorial.step;
+  const next = advanceTutorial(s.tutorial, event);
+  if (next.step !== before) {
+    s.tutorial = next;
+    const info = TUTORIAL_STEP_INFO[next.step as TutorialStep];
+    if (info) post(s, info.memoTitle, info.memoBody, "info");
+  }
+}
+
 function teamAvgOvr(team: Team, players: Record<string, Player>): number {
   let sum = 0;
   for (const role of ROLES) sum += players[team.starters[role]]?.ovr ?? 0;
@@ -231,10 +396,16 @@ function preseasonRank(s: GameData, teamId: string): number {
   return ranked.findIndex((r) => r.id === teamId) + 1;
 }
 
+/**
+ * Board mandate scales to roster strength (preseason rank), not league
+ * average — a bottom-of-the-table project (e.g. an academy start) is judged
+ * as one, so a created team isn't an instant firing.
+ */
 function expectationFor(rank: number, teamCount: number): number {
   if (rank <= 2) return 2;
   if (rank <= 4) return 4;
-  return Math.min(teamCount, 6);
+  if (rank <= 6) return Math.min(teamCount, 6);
+  return Math.min(teamCount, 8);
 }
 
 export function standingsOf(s: Pick<GameData, "teams" | "fixtures">): StandingsRow[] {
@@ -263,12 +434,50 @@ function applyResultToState(s: GameData, result: MatchResult, isPlayoff: boolean
     p.seasonStats.ratingSum += line.rating;
     if (result.mvpPlayerId === pid) p.seasonStats.mvps += 1;
     updateFormAfterMatch(p, line.rating);
-    applyMatchFatigue(p);
+    applyMatchFatigue(p, matchFatigueCost(p.id));
     applyResultMorale(p, won);
   }
 }
 
-function simFixture(s: GameData, fixture: Fixture, userTactics?: TeamTactics): MatchResult {
+interface SimOut {
+  result: MatchResult;
+  spatial: SpatialInputs | null;
+}
+
+/**
+ * Sim one game. `watch` runs the full spatial engine (KDA from the map) and
+ * captures the inputs so the viewer can regenerate the position log; quick
+ * sims skip spatial generation entirely and use fast sampled attribution.
+ */
+function simGame(
+  blueCtx: ReturnType<typeof buildTeamContext>,
+  redCtx: ReturnType<typeof buildTeamContext>,
+  seed: number,
+  options: MatchOptions,
+  watch: boolean,
+): SimOut {
+  if (watch) {
+    const { result } = simulateSpatialMatch(blueCtx, redCtx, seed, options);
+    return {
+      result,
+      spatial: {
+        blue: blueCtx,
+        red: redCtx,
+        seed,
+        elimination: options.elimination ?? false,
+        varianceBoost: options.varianceBoost,
+      },
+    };
+  }
+  return { result: simulateMatch(blueCtx, redCtx, seed, options), spatial: null };
+}
+
+function simFixture(
+  s: GameData,
+  fixture: Fixture,
+  userTactics?: TeamTactics,
+  watch = false,
+): SimOut {
   const blue = s.teams[fixture.blueId];
   const red = s.teams[fixture.redId];
   const seedKey = `${s.season}-${fixture.id}`;
@@ -280,17 +489,24 @@ function simFixture(s: GameData, fixture: Fixture, userTactics?: TeamTactics): M
     fixture.redId === s.playerTeamId && userTactics
       ? userTactics
       : aiTactics(red, blue, s.players, seedKey);
-  const result = simulateMatch(
-    buildTeamContext(blue, s.players, blueTactics),
-    buildTeamContext(red, s.players, redTactics),
+  const out = simGame(
+    buildTeamContext(blue, s.players, blueTactics, s.week),
+    buildTeamContext(red, s.players, redTactics, s.week),
     nextSeed(s),
+    { varianceBoost: rivalryBoost(s, blue.id, red.id) },
+    watch,
   );
-  fixture.result = result;
-  applyResultToState(s, result, false);
-  return result;
+  fixture.result = out.result;
+  applyResultToState(s, out.result, false);
+  return out;
 }
 
-function simSeriesGame(s: GameData, series: PlayoffSeries, userTactics?: TeamTactics): MatchResult {
+function simSeriesGame(
+  s: GameData,
+  series: PlayoffSeries,
+  userTactics?: TeamTactics,
+  watch = false,
+): SimOut {
   const gameNo = series.games.length + 1;
   const blue = s.teams[series.blueId];
   const red = s.teams[series.redId];
@@ -303,19 +519,25 @@ function simSeriesGame(s: GameData, series: PlayoffSeries, userTactics?: TeamTac
     series.redId === s.playerTeamId && userTactics
       ? userTactics
       : aiTactics(red, blue, s.players, seedKey);
-  const result = simulateMatch(
+  const { result, spatial } = simGame(
     buildTeamContext(blue, s.players, blueTactics),
     buildTeamContext(red, s.players, redTactics),
     nextSeed(s),
-    { elimination: true },
+    { elimination: true, varianceBoost: rivalryBoost(s, blue.id, red.id) },
+    watch,
   );
   series.games.push(result);
   if (result.winner === "blue") series.blueWins += 1;
   else series.redWins += 1;
   if (series.blueWins === 3) series.winnerId = series.blueId;
   if (series.redWins === 3) series.winnerId = series.redId;
+  if (series.winnerId) {
+    // A finished playoff series deepens (or founds) the rivalry.
+    const key = rivalKey(series.blueId, series.redId);
+    s.rivalries[key] = (s.rivalries[key] ?? 0) + 1;
+  }
   applyResultToState(s, result, true);
-  return result;
+  return { result, spatial };
 }
 
 export function userSeries(s: Pick<GameData, "playoffs" | "playerTeamId">): PlayoffSeries | null {
@@ -353,6 +575,7 @@ function maybeStartPlayoffs(s: GameData) {
     { id: "semi-1", round: "SEMI", blueId: s1, redId: s4, blueWins: 0, redWins: 0, games: [] },
     { id: "semi-2", round: "SEMI", blueId: s2, redId: s3, blueWins: 0, redWins: 0, games: [] },
   ];
+  for (const series of s.playoffs) announceRivalry(s, series);
   const inPlayoffs = [s1, s2, s3, s4].includes(s.playerTeamId);
   post(
     s,
@@ -378,6 +601,7 @@ function maybeAdvancePlayoffs(s: GameData) {
       redWins: 0,
       games: [],
     });
+    announceRivalry(s, s.playoffs[s.playoffs.length - 1]);
     post(
       s,
       "Grand final set",
@@ -387,6 +611,20 @@ function maybeAdvancePlayoffs(s: GameData) {
   }
   const finalNow = s.playoffs.find((p) => p.round === "FINAL");
   if (finalNow?.winnerId) concludeSeason(s, finalNow);
+}
+
+/** Repeat playoff meetings are news — and play swingier (see rivalryBoost). */
+function announceRivalry(s: GameData, series: PlayoffSeries) {
+  const level = s.rivalries[rivalKey(series.blueId, series.redId)] ?? 0;
+  if (level < 1) return;
+  const blue = s.teams[series.blueId];
+  const red = s.teams[series.redId];
+  post(
+    s,
+    "Rivalry renewed",
+    `${blue.name} vs ${red.name} — playoff meeting #${level + 1}. History like that raises the stakes: expect a swingier, nastier series.`,
+    "info",
+  );
 }
 
 function finishLabel(s: GameData): string {
@@ -424,12 +662,40 @@ function seasonMvp(s: GameData): Player | null {
   return best;
 }
 
+/** Season awards: MVP, All-Pro five, Rookie of the Split. */
+function computeAwards(s: GameData, mvp: Player | null) {
+  const MIN_GAMES = 6;
+  const avgOf = (p: Player) => p.seasonStats.ratingSum / Math.max(1, p.seasonStats.games);
+  const teamNameOf = (p: Player) =>
+    Object.values(s.teams).find((t) => t.roster.includes(p.id))?.name ?? "Free agent";
+
+  const allPro: { role: Role; handle: string; teamName: string }[] = [];
+  for (const role of ROLES) {
+    let best: Player | null = null;
+    for (const p of Object.values(s.players)) {
+      if (p.role !== role || p.seasonStats.games < MIN_GAMES) continue;
+      if (!best || avgOf(p) > avgOf(best)) best = p;
+    }
+    if (best) allPro.push({ role, handle: best.handle, teamName: teamNameOf(best) });
+  }
+
+  // Rookie of the Split: first pro season, young, enough games.
+  let rookie: Player | null = null;
+  for (const p of Object.values(s.players)) {
+    if (p.careerHistory.length > 0 || p.age > 20 || p.seasonStats.games < MIN_GAMES) continue;
+    if (!rookie || avgOf(p) > avgOf(rookie)) rookie = p;
+  }
+
+  return { mvpHandle: mvp?.handle ?? "—", allPro, rookieHandle: rookie?.handle ?? null };
+}
+
 function concludeSeason(s: GameData, finalSeries: PlayoffSeries) {
   const championId = finalSeries.winnerId!;
   const runnerUpId =
     finalSeries.blueId === championId ? finalSeries.redId : finalSeries.blueId;
   const mvp = seasonMvp(s);
   const userTeam = s.teams[s.playerTeamId];
+  const awards = computeAwards(s, mvp);
 
   s.history.push({
     season: s.season,
@@ -438,7 +704,17 @@ function concludeSeason(s: GameData, finalSeries: PlayoffSeries) {
     playerTeamFinish: finishLabel(s),
     playerTeamRecord: `${userTeam.record.wins}–${userTeam.record.losses}`,
     mvpHandle: mvp?.handle ?? "—",
+    awards,
   });
+
+  post(
+    s,
+    `Season ${s.season} awards ceremony`,
+    `MVP: ${awards.mvpHandle}. All-Pro team — ${awards.allPro
+      .map((a) => `${a.role} ${a.handle}`)
+      .join(", ")}.${awards.rookieHandle ? ` Rookie of the Split: ${awards.rookieHandle}.` : ""} The full hall of fame lives on the League screen.`,
+    "info",
+  );
 
   post(
     s,
@@ -469,7 +745,8 @@ function concludeSeason(s: GameData, finalSeries: PlayoffSeries) {
       "bad",
     );
   }
-  if (s.board.strikes >= 2 || s.board.confidence <= 5) {
+  const firing = DIFFICULTY_INFO[s.difficulty] ?? DIFFICULTY_INFO.standard;
+  if (s.board.strikes >= firing.strikeLimit || s.board.confidence <= firing.confidenceFloor) {
     s.board.fired = true;
     const offers = Object.values(s.teams)
       .filter((t) => t.id !== s.playerTeamId)
@@ -548,18 +825,18 @@ function applyOffseason(s: GameData) {
   );
 }
 
-const PROSPECT_POOL = [
-  "Haru", "Bitmap", "Cricket", "Dawnfall", "Ember", "Fjord", "Glacier", "Halcyon",
-  "Ion", "Juniper", "Kestrel", "Lumen", "Mistral", "Nadir", "Onyx", "Pylon",
-  "Quartz", "Riptide", "Sable", "Tundra", "Umbra", "Vantage", "Wisp", "Zephyr",
-];
-
 function generateProspects(s: GameData, count: number): Player[] {
   const rng = createRng(nextSeed(s));
   const created: Player[] = [];
+  // Reserve every handle in the save AND every real pro handle, so trainee
+  // prospects can't collide with either world.
+  const reserved = new Set<string>([
+    ...Object.values(s.players).map((p) => p.handle.toLowerCase()),
+    ...listPlayers().map((p) => p.handle.toLowerCase()),
+  ]);
   for (let i = 0; i < count; i++) {
     s.prospectCounter += 1;
-    const handle = `${PROSPECT_POOL[rng.int(0, PROSPECT_POOL.length - 1)]}${s.prospectCounter}`;
+    const handle = generateHandle(rng, reserved);
     const role = ROLES[rng.int(0, 4)];
     const base = () => round1(7 + rng.next() * 6);
     const attributes: Attributes = {
@@ -577,7 +854,7 @@ function generateProspects(s: GameData, count: number): Player[] {
       handle,
       role,
       age: 17 + rng.int(0, 2),
-      nationality: "KR",
+      nationality: s.dataMode === "fictional" ? "AVL" : "KR",
       attributes,
       provenance: {
         laning: "modeled",
@@ -601,6 +878,98 @@ function generateProspects(s: GameData, count: number): Player[] {
     created.push(player);
   }
   return created;
+}
+
+/**
+ * Found a created franchise: it replaces the weakest (preseason last-place)
+ * team so the schedule generator is untouched; that team's players hit free
+ * agency. Roster comes from an expansion draft or an academy intake.
+ */
+function foundCustomTeam(s: GameData, config: CreateTeamConfig) {
+  const ranked = Object.values(s.teams)
+    .map((t) => ({ team: t, ovr: teamAvgOvr(t, s.players) }))
+    .sort((a, b) => a.ovr - b.ovr);
+  const folded = ranked[0].team;
+  delete s.teams[folded.id];
+  for (const pid of folded.roster) {
+    const p = s.players[pid];
+    if (p) p.contract.years = 0;
+    s.freeAgents.push(pid);
+  }
+
+  const team: Team = {
+    id: CUSTOM_TEAM_ID,
+    name: config.name,
+    shortName: config.tag.toUpperCase(),
+    region: config.region,
+    color: config.primaryColor,
+    secondaryColor: config.secondaryColor,
+    custom: true,
+    roster: [],
+    starters: { TOP: "", JGL: "", MID: "", ADC: "", SUP: "" },
+    budget: 6200,
+    record: { wins: 0, losses: 0 },
+  };
+  s.teams[team.id] = team;
+
+  const rng = createRng(hashSeed(`${s.baseSeed}:create-team`));
+  const reserved = new Set<string>([
+    ...Object.values(s.players).map((p) => p.handle.toLowerCase()),
+    ...listPlayers().map((p) => p.handle.toLowerCase()),
+  ]);
+
+  if (config.rosterMode === "academy") {
+    // Young, raw, high-ceiling roster: a development project.
+    const roles: Role[] = [...ROLES, ROLES[rng.int(0, 4)]];
+    roles.forEach((role, i) => {
+      const p = generatePlayer(rng, {
+        id: `usrp-a${i}`,
+        role,
+        quality: 9.2 + rng.normal(0, 0.7),
+        reservedHandles: reserved,
+        age: 17 + rng.int(0, 2),
+        minPotential: 14.5 + rng.next() * 3.5,
+      });
+      p.nationality = s.dataMode === "fictional" ? p.nationality : "KR";
+      p.contract = { years: 3, salary: salaryDemand(p) };
+      s.players[p.id] = p;
+      team.roster.push(p.id);
+      if (!team.starters[role]) team.starters[role] = p.id;
+    });
+  } else {
+    // Expansion draft: pool = free agents (incl. the folded team's players)
+    // topped up with generated prospects until every role has ≥5 options.
+    let counter = 0;
+    for (const role of ROLES) {
+      const inPool = s.freeAgents.filter(
+        (id) => s.players[id] && !s.players[id].retired && s.players[id].role === role,
+      ).length;
+      for (let i = inPool; i < 5; i++) {
+        const p = generatePlayer(rng, {
+          id: `usrp-d${counter++}`,
+          role,
+          quality: 10.4 + rng.normal(0, 1.1),
+          reservedHandles: reserved,
+        });
+        p.nationality = s.dataMode === "fictional" ? p.nationality : "KR";
+        p.contract.years = 0;
+        s.players[p.id] = p;
+        s.freeAgents.push(p.id);
+      }
+    }
+    s.expansionDraft = {
+      poolIds: s.freeAgents.filter((id) => !s.players[id]?.retired),
+      cap: team.budget,
+      pickedIds: [],
+    };
+  }
+
+  post(
+    s,
+    "League expansion",
+    `${config.name} join the league as an expansion franchise, replacing ${folded.name}. ${folded.name}'s players enter free agency.`,
+    "info",
+  );
 }
 
 function aiFillRosters(s: GameData) {
@@ -648,24 +1017,46 @@ export const useGameStore = create<GameStore>()(
       ...initialData,
       _hasHydrated: false,
 
-      newGame(teamId, saveName) {
-        const league = freshLeague();
+      newGame(opts) {
+        const { saveName } = opts;
+        const worldSeed =
+          opts.dataMode === "fictional"
+            ? (opts.worldSeed ?? hashSeed(`${saveName}-${Date.now()}`))
+            : null;
+        const league =
+          opts.dataMode === "fictional"
+            ? generateLeague(worldSeed!, listPlayers().map((p) => p.handle))
+            : freshLeague();
+        const teamId = opts.createTeam ? CUSTOM_TEAM_ID : opts.teamId!;
         const rostered = new Set(Object.values(league.teams).flatMap((t) => t.roster));
         const freeAgents = Object.keys(league.players).filter((id) => !rostered.has(id));
         set((s) => {
           Object.assign(s, structuredClone(initialData));
           s.initialized = true;
           s.saveName = saveName || "Head Coach";
+          s.dataMode = opts.dataMode;
+          s.worldSeed = worldSeed;
+          s.difficulty = opts.difficulty ?? "standard";
+          s.tutorial = { active: opts.tutorial ?? false, step: "SQUAD" };
+          s.usingSampleData = opts.dataMode === "real" && DATA_META.usingSampleData;
           s.playerTeamId = teamId;
           s.teams = league.teams;
           s.players = league.players;
           s.freeAgents = freeAgents;
           s.baseSeed = hashSeed(`${saveName}-${teamId}-${Date.now()}`);
-          s.fixtures = generateDoubleRoundRobin(Object.keys(league.teams));
+
+          if (opts.createTeam) {
+            foundCustomTeam(s, opts.createTeam);
+          }
+
+          const diff = DIFFICULTY_INFO[s.difficulty];
+          s.teams[teamId].budget = Math.round(s.teams[teamId].budget * diff.budgetMult);
+
+          s.fixtures = generateDoubleRoundRobin(Object.keys(s.teams));
           s.scouting = { [teamId]: 5 };
           const rank = preseasonRank(s, teamId);
           s.board = {
-            expectedFinish: expectationFor(rank, Object.keys(league.teams).length),
+            expectedFinish: expectationFor(rank, Object.keys(s.teams).length),
             confidence: 50,
             strikes: 0,
             fired: false,
@@ -677,11 +1068,97 @@ export const useGameStore = create<GameStore>()(
           post(
             s,
             `Welcome to ${s.teams[teamId].name}`,
-            `Preseason rank #${rank}. The board expects a top-${s.board.expectedFinish} finish.${
-              opp ? ` Your first game is week 1 against ${opp.name}.` : ""
-            }`,
+            s.expansionDraft
+              ? `The franchise is founded — now build it. Draft five starters (and up to three subs) from the expansion pool before week 1.`
+              : `Preseason rank #${rank}. The board expects a top-${s.board.expectedFinish} finish.${
+                  opp ? ` Your first game is week 1 against ${opp.name}.` : ""
+                }`,
             "info",
           );
+          if (s.tutorial.active) {
+            const info = TUTORIAL_STEP_INFO.SQUAD;
+            post(s, info.memoTitle, info.memoBody, "info");
+          }
+        });
+      },
+
+      draftPick(playerId) {
+        set((s) => {
+          const draft = s.expansionDraft;
+          const p = s.players[playerId];
+          if (!draft || !p || !draft.poolIds.includes(playerId)) return;
+          if (draft.pickedIds.includes(playerId) || draft.pickedIds.length >= 8) return;
+          const spent = draft.pickedIds.reduce(
+            (sum, id) => sum + salaryDemand(s.players[id]),
+            0,
+          );
+          if (spent + salaryDemand(p) > draft.cap) return;
+          draft.pickedIds.push(playerId);
+        });
+      },
+
+      undraftPick(playerId) {
+        set((s) => {
+          if (!s.expansionDraft) return;
+          s.expansionDraft.pickedIds = s.expansionDraft.pickedIds.filter(
+            (id) => id !== playerId,
+          );
+        });
+      },
+
+      finishDraft() {
+        let ok = false;
+        set((s) => {
+          const draft = s.expansionDraft;
+          const team = s.teams[s.playerTeamId];
+          if (!draft || !team) return;
+          const picked = draft.pickedIds.map((id) => s.players[id]).filter(Boolean);
+          const coveredRoles = new Set(picked.map((p) => p.role));
+          if (coveredRoles.size < 5 || picked.length > 8) return;
+          for (const p of picked) {
+            p.contract = { years: 2, salary: salaryDemand(p) };
+            team.roster.push(p.id);
+            s.freeAgents = s.freeAgents.filter((id) => id !== p.id);
+          }
+          for (const role of ROLES) {
+            const best = picked
+              .filter((p) => p.role === role)
+              .sort((a, b) => b.ovr - a.ovr)[0];
+            if (best) team.starters[role] = best.id;
+          }
+          s.expansionDraft = null;
+          const rank = preseasonRank(s, s.playerTeamId);
+          s.board.expectedFinish = expectationFor(rank, Object.keys(s.teams).length);
+          post(
+            s,
+            "Expansion draft complete",
+            `${picked.length} players signed. Preseason rank #${rank} — the board expects a top-${s.board.expectedFinish} finish. Week 1 awaits.`,
+            "good",
+          );
+          ok = true;
+        });
+        return ok;
+      },
+
+      tutorialEvent(event) {
+        set((s) => {
+          tutorialAdvanceIn(s, event);
+        });
+      },
+
+      skipTutorial() {
+        set((s) => {
+          if (!s.tutorial.active) return;
+          s.tutorial = { active: false, step: "DONE" };
+          post(s, "Coach — no problem", "Skipping the guided week. Everything I'd have shown you lives in the ? glossary marks around the app. You can re-run the tutorial from Settings.", "info");
+        });
+      },
+
+      startTutorial() {
+        set((s) => {
+          s.tutorial = { active: true, step: "SQUAD" };
+          const info = TUTORIAL_STEP_INFO.SQUAD;
+          post(s, info.memoTitle, info.memoBody, "info");
         });
       },
 
@@ -697,12 +1174,14 @@ export const useGameStore = create<GameStore>()(
           const player = s.players[playerId];
           if (!team || !player || player.role !== role || !team.roster.includes(playerId)) return;
           team.starters[role] = playerId;
+          tutorialAdvanceIn(s, "starter-set");
         });
       },
 
       setTrainingFocus(playerId, attr) {
         set((s) => {
           s.trainingFocus[playerId] = attr;
+          tutorialAdvanceIn(s, "training-focus-set");
         });
       },
 
@@ -718,13 +1197,14 @@ export const useGameStore = create<GameStore>()(
         });
       },
 
-      playUserMatch(tactics) {
+      playUserMatch(tactics, watch = false) {
         set((s) => {
+          if (s.expansionDraft) return;
           s.pendingTactics = tactics;
           if (s.phase === "REGULAR") {
             const fixture = userFixtureThisWeek(s);
             if (!fixture) return;
-            const result = simFixture(s, fixture, tactics);
+            const { result, spatial } = simFixture(s, fixture, tactics, watch);
             const opp =
               fixture.blueId === s.playerTeamId ? s.teams[fixture.redId] : s.teams[fixture.blueId];
             s.lastMatch = {
@@ -733,6 +1213,7 @@ export const useGameStore = create<GameStore>()(
               isUserMatch: true,
               weekFinished: false,
               elimination: false,
+              spatial,
             };
             const oppId = fixture.blueId === s.playerTeamId ? fixture.redId : fixture.blueId;
             s.scouting[oppId] = Math.min(5, (s.scouting[oppId] ?? 0) + 1);
@@ -740,7 +1221,7 @@ export const useGameStore = create<GameStore>()(
           } else if (s.phase === "PLAYOFFS") {
             const series = userSeries(s);
             if (!series) return;
-            const result = simSeriesGame(s, series, tactics);
+            const { result, spatial } = simSeriesGame(s, series, tactics, watch);
             const oppId = series.blueId === s.playerTeamId ? series.redId : series.blueId;
             s.lastMatch = {
               result,
@@ -748,6 +1229,7 @@ export const useGameStore = create<GameStore>()(
               isUserMatch: true,
               weekFinished: false,
               elimination: true,
+              spatial,
             };
             s.scouting[oppId] = Math.min(5, (s.scouting[oppId] ?? 0) + 1);
             s.userPlayedThisWeek = true;
@@ -757,6 +1239,7 @@ export const useGameStore = create<GameStore>()(
 
       finishWeek() {
         set((s) => {
+          if (s.expansionDraft) return;
           if (s.phase === "REGULAR") {
             // User match must be done (or absent). Sim the rest of the week.
             const pending = userFixtureThisWeek(s);
@@ -789,6 +1272,7 @@ export const useGameStore = create<GameStore>()(
 
       quickSimWeek() {
         const state = get();
+        if (state.expansionDraft) return;
         if (state.phase === "REGULAR") {
           const fx = userFixtureThisWeek(state);
           if (fx) get().playUserMatch(state.pendingTactics);
@@ -934,6 +1418,7 @@ export const useGameStore = create<GameStore>()(
           s.week = 1;
           s.phase = "REGULAR";
           s.playoffs = [];
+          s.powerRankings = [];
           s.fixtures = generateDoubleRoundRobin(Object.keys(s.teams));
           s.lastMatch = null;
           for (const t of Object.values(s.teams)) t.record = { wins: 0, losses: 0 };
@@ -977,7 +1462,7 @@ export const useGameStore = create<GameStore>()(
 
       loadSnapshot(data) {
         set((s) => {
-          Object.assign(s, structuredClone(initialData), structuredClone(data));
+          Object.assign(s, structuredClone(initialData), migrateSave(structuredClone(data)));
         });
       },
 
@@ -989,6 +1474,8 @@ export const useGameStore = create<GameStore>()(
     })),
     {
       name: "riftgm-active",
+      version: SAVE_VERSION,
+      migrate: (persisted) => migrateSave(persisted as Partial<GameData>) as GameStore,
       storage: createJSONStorage(() =>
         typeof window !== "undefined"
           ? window.localStorage
@@ -1035,9 +1522,28 @@ function weeklyUpkeep(s: GameData) {
     s.scouting[s.scoutTargetId] = Math.min(5, (s.scouting[s.scoutTargetId] ?? 0) + 1);
   }
 
+  // Weekly power rankings (analyst desk). Movement drives the blurbs; big
+  // moves for the user's team make the inbox.
+  const standings = standingsOf(s);
+  if (s.phase === "REGULAR") {
+    const prev = s.powerRankings.length > 0 ? s.powerRankings : null;
+    s.powerRankings = computePowerRankings(
+      s.teams,
+      s.players,
+      standings,
+      prev,
+      `${s.season}-${s.week}`,
+    );
+    const mine = s.powerRankings.find((e) => e.teamId === s.playerTeamId);
+    if (mine?.prevRank && mine.prevRank - mine.rank >= 2) {
+      post(s, `Power rankings: up to #${mine.rank}`, mine.blurb, "good");
+    } else if (mine?.prevRank && mine.rank - mine.prevRank >= 2) {
+      post(s, `Power rankings: down to #${mine.rank}`, mine.blurb, "bad");
+    }
+  }
+
   // Board confidence drifts toward a target set by position vs expectation.
   // Slow drift: one rough season stings but doesn't fire you on its own.
-  const standings = standingsOf(s);
   const rank = standings.findIndex((r) => r.teamId === s.playerTeamId) + 1;
   if (rank > 0) {
     const gap = rank - s.board.expectedFinish;

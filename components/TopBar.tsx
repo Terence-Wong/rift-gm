@@ -19,7 +19,7 @@ export function TopBar() {
 
   return (
     <header className="flex items-center gap-3 border-b border-hairline bg-fog-900 px-3 py-2 md:px-5">
-      <TeamCrest shortName={team.shortName} color={team.color} size={34} />
+      <TeamCrest team={team} size={34} />
       <div className="min-w-0">
         <div className="display truncate text-sm font-bold text-ink">{team.name}</div>
         <div className="eyebrow">

@@ -58,7 +58,7 @@ export default function SchedulePage() {
                       key={f.id}
                       className={`flex items-center gap-2 px-2 py-1.5 text-sm ${mine ? "bg-fog-800" : ""}`}
                     >
-                      <TeamCrest shortName={blue.shortName} color={blue.color} size={20} />
+                      <TeamCrest team={blue} size={20} />
                       <span className={`w-10 ${result ? (blueWon ? "font-semibold text-ink" : "text-ink-muted") : ""}`}>
                         {blue.shortName}
                       </span>
@@ -73,7 +73,7 @@ export default function SchedulePage() {
                       <span className={`w-10 text-right ${result ? (!blueWon ? "font-semibold text-ink" : "text-ink-muted") : ""}`}>
                         {red.shortName}
                       </span>
-                      <TeamCrest shortName={red.shortName} color={red.color} size={20} />
+                      <TeamCrest team={red} size={20} />
                     </li>
                   );
                 })}

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { AttributeBar } from "@/components/AttributeBar";
+import { Term } from "@/components/Term";
 import { hiddenVisibleAt, scoutedRange } from "@/lib/engine/scouting";
 import type { Player, Team } from "@/lib/types";
 import { ROLES } from "@/lib/types";
@@ -20,7 +21,7 @@ export function ScoutingCard({
     <section className="panel p-4" aria-labelledby="scout-head">
       <div className="mb-3 flex items-baseline justify-between">
         <h2 id="scout-head" className="eyebrow">
-          Scouting report · {team.name}
+          <Term k="scouting">Scouting report</Term> · {team.name}
         </h2>
         <span className="eyebrow" aria-label={`Scout level ${scoutLevel} of 5`}>
           {Array.from({ length: 5 }, (_, i) => (

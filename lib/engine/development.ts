@@ -47,8 +47,8 @@ export function updateFormAfterMatch(player: Player, rating: number): void {
   player.form = Math.max(-3, Math.min(3, player.form * 0.65 + (rating - 5) * 0.55));
 }
 
-export function applyMatchFatigue(player: Player): void {
-  player.fatigue = Math.min(100, player.fatigue + 9);
+export function applyMatchFatigue(player: Player, cost = 9): void {
+  player.fatigue = Math.min(100, player.fatigue + cost);
 }
 
 export function applyWeeklyRecovery(player: Player, rested: boolean): void {

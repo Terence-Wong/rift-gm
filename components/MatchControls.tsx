@@ -9,7 +9,7 @@ export function MatchControls({
   onSkip,
 }: {
   playing: boolean;
-  speed: number;
+  speed: number | "instant";
   finished: boolean;
   onTogglePlay: () => void;
   onCycleSpeed: () => void;
@@ -28,10 +28,14 @@ export function MatchControls({
       <button
         onClick={onCycleSpeed}
         disabled={finished}
-        aria-label={`Playback speed, currently ${speed} times`}
+        aria-label={
+          speed === "instant"
+            ? "Playback speed, currently instant"
+            : `Playback speed, currently ${speed} times`
+        }
         className="hex-clip num border border-hairline bg-fog-800 px-4 py-2 text-sm text-ink enabled:hover:bg-fog-700 disabled:opacity-40"
       >
-        ×{speed}
+        {speed === "instant" ? "»»" : `×${speed}`}
       </button>
       <button
         onClick={onSkip}

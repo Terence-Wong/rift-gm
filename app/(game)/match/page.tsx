@@ -7,9 +7,12 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { DraftBoard } from "@/components/DraftBoard";
 import { GoldDiffGraph } from "@/components/GoldDiffGraph";
 import { MatchControls } from "@/components/MatchControls";
+import { MatchMap } from "@/components/MatchMap";
 import { ScoutingCard } from "@/components/ScoutingCard";
 import { TeamCrest } from "@/components/TeamCrest";
+import { Term } from "@/components/Term";
 import { aiTactics } from "@/lib/engine/ai";
+import { spatialFromInputs, TICKS_PER_MINUTE, type SpatialInputs, type SpatialLog } from "@/lib/engine/spatial";
 import { fmtGoldDiff } from "@/lib/format";
 import { useGameStore, userFixtureThisWeek, userSeries } from "@/lib/store";
 import { useReducedMotionPref } from "@/lib/useReducedMotionPref";
@@ -18,7 +21,12 @@ import { ROLES } from "@/lib/types";
 
 type Stage = "prep" | "live" | "post";
 
-const BASE_SECONDS = 8; // full game draws over ~8s at ×1
+/** ×1 pacing: ~8 real seconds per game minute → a 35-min game plays in ~4½ min. */
+const X1_SECONDS_PER_GAME_MINUTE = 8;
+/** "Instant sim": the v1 pace — the whole game draws in ~8 seconds. */
+const INSTANT_TOTAL_SECONDS = 8;
+
+type Speed = 1 | 2 | 4 | "instant";
 
 export default function MatchPage() {
   const s = useGameStore();
@@ -33,6 +41,7 @@ export default function MatchPage() {
   const [stage, setStage] = useState<Stage>(() =>
     s.lastMatch && !s.lastMatch.weekFinished && s.userPlayedThisWeek ? "post" : "prep",
   );
+  const [instant, setInstant] = useState(false);
   const [tactics, setTactics] = useState<TeamTactics>(s.pendingTactics);
 
   const oppId =
@@ -61,10 +70,19 @@ export default function MatchPage() {
     return aiTactics(opponent, myTeam, s.players, seedKey).archetype;
   }, [opponent, seedKey, s.scouting, s.teams, s.playerTeamId, s.players]);
 
-  const lockIn = () => {
-    s.playUserMatch(tactics);
+  const lockIn = (playInstant: boolean) => {
+    s.tutorialEvent("tactics-locked");
+    s.playUserMatch(tactics, true);
+    setInstant(playInstant);
     setStage("live");
   };
+
+  // The tutorial's scouting step completes by actually opening the report.
+  const tutorialEvent = s.tutorialEvent;
+  const prepVisible = stage === "prep" && opponent !== null;
+  useEffect(() => {
+    if (prepVisible) tutorialEvent("scouting-viewed");
+  }, [prepVisible, tutorialEvent]);
 
   // ── No game to show ─────────────────────────────────────────
   if (stage === "prep" && !pendingGame) {
@@ -106,9 +124,22 @@ export default function MatchPage() {
               stakes — clutch matters
             </span>
           ) : null}
-          <button onClick={lockIn} className="hex-clip display ml-auto bg-gold px-6 py-2.5 text-sm font-bold text-void hover:brightness-110">
-            Lock in &amp; play
-          </button>
+          <div className="ml-auto flex gap-2">
+            <button
+              onClick={() => lockIn(true)}
+              className="hex-clip display border border-hairline bg-fog-800 px-4 py-2.5 text-sm font-bold text-ink hover:bg-fog-700"
+              title="Sim and review the result at the old fast pace"
+            >
+              Instant sim
+            </button>
+            <button
+              onClick={() => lockIn(false)}
+              data-tut="lock-in"
+              className="hex-clip display bg-gold px-6 py-2.5 text-sm font-bold text-void hover:brightness-110"
+            >
+              Lock in &amp; play
+            </button>
+          </div>
         </header>
         <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
           <div className="xl:col-span-2">
@@ -120,7 +151,9 @@ export default function MatchPage() {
               likelyOpponentComp={likelyComp}
             />
           </div>
-          <ScoutingCard team={opponent} players={s.players} scoutLevel={s.scouting[opponent.id] ?? 0} />
+          <div data-tut="scouting">
+            <ScoutingCard team={opponent} players={s.players} scoutLevel={s.scouting[opponent.id] ?? 0} />
+          </div>
         </div>
       </div>
     );
@@ -138,12 +171,17 @@ export default function MatchPage() {
     return (
       <LiveMatch
         result={result}
+        spatial={s.lastMatch.spatial ?? null}
         blueTeam={blueTeam}
         redTeam={redTeam}
         label={s.lastMatch.label}
         userTeamId={s.playerTeamId}
-        instant={reducedMotion}
-        onFinished={() => setStage("post")}
+        instant={instant}
+        reducedMotion={reducedMotion}
+        onFinished={() => {
+          s.tutorialEvent("match-finished");
+          setStage("post");
+        }}
       />
     );
   }
@@ -167,6 +205,67 @@ export default function MatchPage() {
 
 function LiveMatch({
   result,
+  spatial,
+  blueTeam,
+  redTeam,
+  label,
+  userTeamId,
+  instant,
+  reducedMotion,
+  onFinished,
+}: {
+  result: MatchResult;
+  spatial: SpatialInputs | null;
+  blueTeam: Team;
+  redTeam: Team;
+  label: string;
+  userTeamId: string;
+  instant: boolean;
+  reducedMotion: boolean;
+  onFinished: () => void;
+}) {
+  // Regenerate the position log deterministically from the saved inputs —
+  // it is never persisted; the engine is pure, so same seed → same log.
+  const log = useMemo(() => (spatial ? spatialFromInputs(spatial).log : null), [spatial]);
+
+  if (reducedMotion) {
+    return (
+      <SnapshotViewer
+        result={result}
+        log={log}
+        blueTeam={blueTeam}
+        redTeam={redTeam}
+        label={label}
+        userTeamId={userTeamId}
+        onFinished={onFinished}
+      />
+    );
+  }
+  return (
+    <AnimatedMatch
+      result={result}
+      log={log}
+      blueTeam={blueTeam}
+      redTeam={redTeam}
+      label={label}
+      userTeamId={userTeamId}
+      instant={instant}
+      onFinished={onFinished}
+    />
+  );
+}
+
+function killsUpTo(result: MatchResult, minute: number): { blue: number; red: number } {
+  const kills = { blue: 0, red: 0 };
+  for (const e of result.events) {
+    if (e.minute <= minute && (e.type === "KILL" || e.type === "FIRST_BLOOD")) kills[e.team]++;
+  }
+  return kills;
+}
+
+function AnimatedMatch({
+  result,
+  log,
   blueTeam,
   redTeam,
   label,
@@ -175,6 +274,7 @@ function LiveMatch({
   onFinished,
 }: {
   result: MatchResult;
+  log: SpatialLog | null;
   blueTeam: Team;
   redTeam: Team;
   label: string;
@@ -183,9 +283,9 @@ function LiveMatch({
   onFinished: () => void;
 }) {
   const duration = result.durationMin;
-  const [minute, setMinute] = useState(instant ? duration : 0);
-  const [playing, setPlaying] = useState(!instant);
-  const [speed, setSpeed] = useState(1);
+  const [minute, setMinute] = useState(0);
+  const [playing, setPlaying] = useState(true);
+  const [speed, setSpeed] = useState<Speed>(instant ? "instant" : 1);
   const frame = useRef<number | null>(null);
   const last = useRef<number | null>(null);
 
@@ -197,7 +297,9 @@ function LiveMatch({
       if (last.current === null) last.current = now;
       const dt = (now - last.current) / 1000;
       last.current = now;
-      setMinute((m) => Math.min(duration, m + dt * (duration / BASE_SECONDS) * speed));
+      const gameMinPerSec =
+        speed === "instant" ? duration / INSTANT_TOTAL_SECONDS : speed / X1_SECONDS_PER_GAME_MINUTE;
+      setMinute((m) => Math.min(duration, m + dt * gameMinPerSec));
       frame.current = requestAnimationFrame(tick);
     };
     frame.current = requestAnimationFrame(tick);
@@ -214,33 +316,193 @@ function LiveMatch({
 
   const whole = Math.min(duration, Math.floor(minute));
   const gold = result.goldTimeline[whole];
-  const kills = { blue: 0, red: 0 };
-  for (const e of result.events) {
-    if (e.minute <= minute && (e.type === "KILL" || e.type === "FIRST_BLOOD")) kills[e.team]++;
-  }
-  const feed = result.events.filter((e) => !e.minor && e.minute <= minute).slice(-24).reverse();
+  const kills = killsUpTo(result, minute);
+  const feed = result.events.filter((e) => !e.minor && e.minute <= minute).slice(-14).reverse();
+  const tick = minute * TICKS_PER_MINUTE;
+  const userIsBlue =
+    blueTeam.id === userTeamId ? true : redTeam.id === userTeamId ? false : null;
+  const tutorialLive = useGameStore((st) => st.tutorial.active && st.tutorial.step === "MATCH");
 
   return (
-    <div className="flex flex-col gap-4">
-      <p className="eyebrow">{label}</p>
+    <div className="flex flex-col gap-3">
+      <Scoreboard
+        blueTeam={blueTeam}
+        redTeam={redTeam}
+        userTeamId={userTeamId}
+        kills={kills}
+        gold={gold}
+        clock={`${String(whole).padStart(2, "0")}:${String(Math.floor((minute % 1) * 60)).padStart(2, "0")}`}
+        label={label}
+      />
 
-      {/* Scoreboard */}
-      <div className="panel flex items-center justify-center gap-4 p-4 md:gap-8">
+      <div className="grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,1fr)_260px]">
+        {/* Map is the hero; gold graph docked below, scrubbing in sync. */}
+        <div className="flex min-w-0 flex-col gap-3">
+          {tutorialLive ? <CoachCallout result={result} minute={minute} /> : null}
+          {log ? (
+            <div className="panel mx-auto w-full max-w-[min(100%,60vh)] p-2" data-tut="map">
+              <MatchMap log={log} tick={tick} userIsBlue={userIsBlue} />
+            </div>
+          ) : (
+            <p className="panel p-4 text-center text-xs text-ink-muted">
+              No spatial replay for this game — showing the broadcast graph only.
+            </p>
+          )}
+          <div className="panel p-2" data-tut="gold-graph">
+            <GoldDiffGraph
+              timeline={result.goldTimeline}
+              events={result.events}
+              progress={minute / duration}
+              blueName={blueTeam.shortName}
+              redName={redTeam.shortName}
+            />
+          </div>
+          <div className="flex flex-wrap items-center gap-3">
+            <MatchControls
+              playing={playing}
+              speed={speed}
+              finished={finished}
+              onTogglePlay={() => setPlaying((p) => !p)}
+              onCycleSpeed={() =>
+                setSpeed((v) => (v === "instant" ? 1 : v === 4 ? 1 : ((v * 2) as Speed)))
+              }
+              onSkip={skip}
+            />
+            {finished ? (
+              <button
+                onClick={onFinished}
+                className="hex-clip display ml-auto bg-gold px-6 py-2.5 text-sm font-bold text-void hover:brightness-110"
+              >
+                Post-match →
+              </button>
+            ) : null}
+          </div>
+        </div>
+
+        {/* KDA rail. */}
+        <div className="flex min-w-0 flex-col gap-3">
+          {log ? (
+            <KdaRail log={log} tick={tick} blueTeam={blueTeam} redTeam={redTeam} />
+          ) : null}
+          <section className="panel max-h-56 overflow-y-auto p-2.5" aria-label="Match events" aria-live="polite">
+            {feed.length === 0 ? (
+              <p className="py-3 text-center text-xs text-ink-muted">Laning phase — the map is quiet.</p>
+            ) : (
+              <ul className="flex flex-col gap-1">
+                <AnimatePresence initial={false}>
+                  {feed.map((e) => (
+                    <motion.li
+                      key={`${e.minute}-${e.type}-${e.detail}`}
+                      initial={{ opacity: 0, x: -12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.18 }}
+                      className="flex items-baseline gap-2 text-xs"
+                    >
+                      <span className="num w-6 shrink-0 text-[10px] text-ink-muted">{e.minute}&apos;</span>
+                      <span
+                        className="eyebrow w-12 shrink-0 text-[10px]"
+                        style={{ color: e.team === "blue" ? "var(--blue-cyan)" : "var(--red-ember)" }}
+                      >
+                        {e.type.replace("_", " ")}
+                      </span>
+                      <span className={e.type === "THROW" || e.type === "NEXUS" ? "font-semibold" : ""}>{e.detail}</span>
+                    </motion.li>
+                  ))}
+                </AnimatePresence>
+              </ul>
+            )}
+          </section>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** Tutorial coach lines anchored to what's happening on the map/graph. */
+function CoachCallout({ result, minute }: { result: MatchResult; minute: number }) {
+  const latest = [...result.events]
+    .filter((e) => !e.minor && e.minute <= minute)
+    .pop();
+  let line =
+    "Quiet map means farming lanes. Watch the jungler dots — where they drift is where the first fight happens.";
+  if (latest) {
+    switch (latest.type) {
+      case "FIRST_BLOOD":
+        line = "First blood. One kill won't decide it — watch whether they convert the tempo into a tower or a drake.";
+        break;
+      case "DRAGON":
+        line = "That cluster at dragon was a setup — dots converging on a pit before the fight. Watch the gold line if one of those goes wrong.";
+        break;
+      case "HERALD":
+        line = "Herald banked. It gets cashed mid for tower gold — tempo you can see on the graph in about a minute.";
+        break;
+      case "BARON":
+        line = "Baron call. Highest-stakes pit on the map — a steal here swings games. Eyes on the gold line.";
+        break;
+      case "TOWER":
+        line = "Tower down — the map just opened. More room to rotate, more picks available.";
+        break;
+      case "THROW":
+        line = "THAT is a throw. A lead means nothing until the nexus falls — low-consistency teams do this under pressure.";
+        break;
+      case "ACE":
+        line = "An ace — five respawn timers. Nothing on the map can stop whatever comes next.";
+        break;
+      case "NEXUS":
+        line = "And that's the game. Head to the post-match — the ratings tell you who actually showed up.";
+        break;
+      default:
+        line = "Kills flash on the map where they happen. The gold line below is the same story in one number.";
+    }
+  }
+  return (
+    <div
+      className="panel-raised flex items-baseline gap-2 border-l-2 px-3 py-2 text-sm"
+      style={{ borderLeftColor: "var(--hextech-gold)" }}
+      aria-live="polite"
+    >
+      <span className="eyebrow shrink-0 text-gold">Coach</span>
+      <span>{line}</span>
+    </div>
+  );
+}
+
+function Scoreboard({
+  blueTeam,
+  redTeam,
+  userTeamId,
+  kills,
+  gold,
+  clock,
+  label,
+}: {
+  blueTeam: Team;
+  redTeam: Team;
+  userTeamId: string;
+  kills: { blue: number; red: number };
+  gold: number;
+  clock: string;
+  label: string;
+}) {
+  return (
+    <div>
+      <p className="eyebrow mb-1.5">{label}</p>
+      <div className="panel flex items-center justify-center gap-4 px-4 py-2.5 md:gap-8">
         <div className="flex items-center gap-3">
-          <TeamCrest shortName={blueTeam.shortName} color={blueTeam.color} size={40} />
+          <TeamCrest team={blueTeam} size={34} />
           <div>
-            <p className="display text-lg font-bold text-cyan">
+            <p className="display text-base font-bold text-cyan">
               {blueTeam.shortName}
               {blueTeam.id === userTeamId ? <span className="eyebrow ml-1 align-middle text-gold"> you</span> : null}
             </p>
             <p className="eyebrow">Blue side</p>
           </div>
-          <span className="num text-3xl font-bold text-cyan">{kills.blue}</span>
+          <span className="num text-2xl font-bold text-cyan">{kills.blue}</span>
         </div>
         <div className="text-center">
-          <p className="num text-sm text-ink-muted">{String(whole).padStart(2, "0")}:00</p>
+          <p className="num text-sm text-ink-muted">{clock}</p>
           <p
-            className="num text-xl font-bold"
+            className="num text-lg font-bold"
             style={{ color: gold >= 0 ? "var(--blue-cyan)" : "var(--red-ember)" }}
             aria-live="polite"
           >
@@ -248,74 +510,165 @@ function LiveMatch({
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <span className="num text-3xl font-bold text-ember">{kills.red}</span>
+          <span className="num text-2xl font-bold text-ember">{kills.red}</span>
           <div className="text-right">
-            <p className="display text-lg font-bold text-ember">
+            <p className="display text-base font-bold text-ember">
               {redTeam.id === userTeamId ? <span className="eyebrow mr-1 align-middle text-gold">you </span> : null}
               {redTeam.shortName}
             </p>
             <p className="eyebrow">Red side</p>
           </div>
-          <TeamCrest shortName={redTeam.shortName} color={redTeam.color} size={40} />
+          <TeamCrest team={redTeam} size={34} />
         </div>
       </div>
+    </div>
+  );
+}
 
-      {/* The hero graph */}
-      <div className="panel p-3">
+/** Live per-player K/D/A, derived from spatial kill events up to the playhead. */
+function KdaRail({
+  log,
+  tick,
+  blueTeam,
+  redTeam,
+}: {
+  log: SpatialLog;
+  tick: number;
+  blueTeam: Team;
+  redTeam: Team;
+}) {
+  const lines = useMemo(() => {
+    const acc = log.unitIds.map(() => ({ k: 0, d: 0, a: 0 }));
+    for (const kill of log.kills) {
+      if (kill.tick > tick) continue;
+      acc[kill.killer].k++;
+      acc[kill.victim].d++;
+      for (const a of kill.assists) acc[a].a++;
+    }
+    return acc;
+  }, [log, tick]);
+  const frame = log.frames[Math.max(0, Math.min(log.frames.length - 1, Math.floor(tick)))];
+
+  const rows = (offset: number, team: Team, color: string) => (
+    <div>
+      <p className="eyebrow mb-1" style={{ color }}>
+        {team.shortName}
+      </p>
+      <table className="w-full border-collapse text-xs">
+        <tbody>
+          {[0, 1, 2, 3, 4].map((i) => {
+            const idx = offset + i;
+            const dead = frame?.state[idx] === "dead";
+            return (
+              <tr key={idx} className="border-b border-hairline/30">
+                <td className="num w-8 py-1 text-[10px] text-ink-muted">{log.roles[idx]}</td>
+                <td className={`py-1 pr-1 ${dead ? "text-ink-muted line-through" : ""}`}>
+                  {log.handles[idx]}
+                </td>
+                <td className="num py-1 text-right">
+                  {lines[idx].k}/{lines[idx].d}/{lines[idx].a}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+
+  return (
+    <section className="panel flex flex-col gap-3 p-2.5" aria-label="Live scoreboard">
+      {rows(0, blueTeam, "var(--blue-cyan)")}
+      {rows(5, redTeam, "var(--red-ember)")}
+    </section>
+  );
+}
+
+/* ── Reduced motion: key-moment snapshots with a stepper ───────── */
+
+function SnapshotViewer({
+  result,
+  log,
+  blueTeam,
+  redTeam,
+  label,
+  userTeamId,
+  onFinished,
+}: {
+  result: MatchResult;
+  log: SpatialLog | null;
+  blueTeam: Team;
+  redTeam: Team;
+  label: string;
+  userTeamId: string;
+  onFinished: () => void;
+}) {
+  const moments = useMemo(() => result.events.filter((e) => !e.minor), [result]);
+  const [index, setIndex] = useState(0);
+  const e = moments[Math.min(index, moments.length - 1)];
+  const minute = e?.minute ?? result.durationMin;
+  const tick = Math.max(0, minute * TICKS_PER_MINUTE - 8);
+  const kills = killsUpTo(result, minute);
+  const atEnd = index >= moments.length - 1;
+  const userIsBlue =
+    blueTeam.id === userTeamId ? true : redTeam.id === userTeamId ? false : null;
+
+  return (
+    <div className="flex flex-col gap-3">
+      <Scoreboard
+        blueTeam={blueTeam}
+        redTeam={redTeam}
+        userTeamId={userTeamId}
+        kills={kills}
+        gold={result.goldTimeline[Math.min(minute, result.durationMin)]}
+        clock={`${String(minute).padStart(2, "0")}:00`}
+        label={`${label} · reduced motion`}
+      />
+      {log ? (
+        <div className="panel mx-auto w-full max-w-[min(100%,60vh)] p-2">
+          <MatchMap log={log} tick={tick} userIsBlue={userIsBlue} />
+        </div>
+      ) : null}
+      <div className="panel p-2">
         <GoldDiffGraph
           timeline={result.goldTimeline}
           events={result.events}
-          progress={minute / duration}
+          progress={minute / result.durationMin}
           blueName={blueTeam.shortName}
           redName={redTeam.shortName}
         />
       </div>
-
-      <div className="flex flex-wrap items-center gap-3">
-        <MatchControls
-          playing={playing}
-          speed={speed}
-          finished={finished}
-          onTogglePlay={() => setPlaying((p) => !p)}
-          onCycleSpeed={() => setSpeed((v) => (v === 4 ? 1 : v * 2))}
-          onSkip={skip}
-        />
-        {finished ? (
-          <button onClick={onFinished} className="hex-clip display ml-auto bg-gold px-6 py-2.5 text-sm font-bold text-void hover:brightness-110">
+      <div className="panel flex items-center gap-3 p-3" aria-live="polite">
+        <span className="num w-10 shrink-0 text-sm text-ink-muted">{e?.minute}&apos;</span>
+        <span className="text-sm">{e?.detail}</span>
+        <span className="eyebrow ml-auto shrink-0">
+          {index + 1}/{moments.length}
+        </span>
+      </div>
+      <div className="flex items-center gap-2" role="group" aria-label="Key moment stepper">
+        <button
+          onClick={() => setIndex((i) => Math.max(0, i - 1))}
+          disabled={index === 0}
+          className="hex-clip display border border-hairline bg-fog-800 px-4 py-2 text-sm font-bold enabled:hover:bg-fog-700 disabled:opacity-40"
+        >
+          ← Previous
+        </button>
+        <button
+          onClick={() => setIndex((i) => Math.min(moments.length - 1, i + 1))}
+          disabled={atEnd}
+          className="hex-clip display border border-hairline bg-fog-800 px-4 py-2 text-sm font-bold enabled:hover:bg-fog-700 disabled:opacity-40"
+        >
+          Next event →
+        </button>
+        {atEnd ? (
+          <button
+            onClick={onFinished}
+            className="hex-clip display ml-auto bg-gold px-6 py-2.5 text-sm font-bold text-void hover:brightness-110"
+          >
             Post-match →
           </button>
         ) : null}
       </div>
-
-      {/* Event feed */}
-      <section className="panel max-h-72 overflow-y-auto p-3" aria-label="Match events" aria-live="polite">
-        {feed.length === 0 ? (
-          <p className="py-4 text-center text-xs text-ink-muted">Laning phase — the map is quiet.</p>
-        ) : (
-          <ul className="flex flex-col gap-1">
-            <AnimatePresence initial={false}>
-              {feed.map((e) => (
-                <motion.li
-                  key={`${e.minute}-${e.type}-${e.detail}`}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.18 }}
-                  className="flex items-baseline gap-2 text-sm"
-                >
-                  <span className="num w-8 shrink-0 text-xs text-ink-muted">{e.minute}&apos;</span>
-                  <span
-                    className="eyebrow w-14 shrink-0"
-                    style={{ color: e.team === "blue" ? "var(--blue-cyan)" : "var(--red-ember)" }}
-                  >
-                    {e.type.replace("_", " ")}
-                  </span>
-                  <span className={e.type === "THROW" || e.type === "NEXUS" ? "font-semibold" : ""}>{e.detail}</span>
-                </motion.li>
-              ))}
-            </AnimatePresence>
-          </ul>
-        )}
-      </section>
     </div>
   );
 }
@@ -397,7 +750,7 @@ function PostMatch({
         {[blueTeam, redTeam].map((team) => (
           <section key={team.id} className="panel p-3" aria-label={`${team.name} scoreboard`}>
             <h2 className="eyebrow mb-2 flex items-center gap-2">
-              <TeamCrest shortName={team.shortName} color={team.color} size={20} />
+              <TeamCrest team={team} size={20} />
               {team.name}
               {(result.winner === "blue" ? blueTeam.id : redTeam.id) === team.id ? (
                 <span className="text-gold">— winners</span>
@@ -410,7 +763,9 @@ function PostMatch({
                   <th className="eyebrow py-1.5 pr-2 text-right font-medium">KDA</th>
                   <th className="eyebrow py-1.5 pr-2 text-right font-medium">CS</th>
                   <th className="eyebrow py-1.5 pr-2 text-right font-medium">DMG</th>
-                  <th className="eyebrow py-1.5 text-right font-medium">Rating</th>
+                  <th className="eyebrow py-1.5 text-right font-medium">
+                    <Term k="rating">Rating</Term>
+                  </th>
                 </tr>
               </thead>
               <tbody>

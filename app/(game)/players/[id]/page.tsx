@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { use } from "react";
 import { AttributeBar } from "@/components/AttributeBar";
+import { Term } from "@/components/Term";
+import { TRAIT_INFO, traitOf } from "@/lib/engine/personality";
 import { hiddenVisibleAt, scoutedRange } from "@/lib/engine/scouting";
 import { fmtMoney, kdaRatio } from "@/lib/format";
 import { useGameStore } from "@/lib/store";
@@ -44,6 +46,7 @@ export default function PlayerDetailPage({ params }: { params: Promise<{ id: str
   const teams = useGameStore((s) => s.teams);
   const playerTeamId = useGameStore((s) => s.playerTeamId);
   const scouting = useGameStore((s) => s.scouting);
+  const fictional = useGameStore((s) => s.dataMode === "fictional");
 
   if (!player) {
     return (
@@ -83,14 +86,14 @@ export default function PlayerDetailPage({ params }: { params: Promise<{ id: str
                   key={key}
                   label={ATTR_LABEL[key]}
                   value={player.attributes[key]}
-                  modeled={player.provenance[key] === "modeled"}
+                  modeled={!fictional && player.provenance[key] === "modeled"}
                 />
               ) : (
                 <AttributeBar
                   key={key}
                   label={ATTR_LABEL[key]}
                   range={scoutedRange(player, key, scoutLevel)}
-                  modeled={player.provenance[key] === "modeled"}
+                  modeled={!fictional && player.provenance[key] === "modeled"}
                 />
               ),
             )}
@@ -103,31 +106,49 @@ export default function PlayerDetailPage({ params }: { params: Promise<{ id: str
                   label={ATTR_LABEL[key]}
                   range={unlocked ? scoutedRange(player, key, exact ? 4 : scoutLevel) : undefined}
                   locked={!unlocked}
-                  modeled={player.provenance[key] === "modeled"}
+                  modeled={!fictional && player.provenance[key] === "modeled"}
                 />
               );
             })}
           </div>
           <p className="mt-3 text-xs leading-5 text-ink-muted">
             Hidden attributes are never exact — even for your own players, staff give estimate
-            ranges. <span className="text-gold">est</span> marks modeled values;{" "}
-            unmarked values are derived from real match data.
+            ranges.
+            {fictional ? (
+              " This is a fictional league: every player here is procedurally generated."
+            ) : (
+              <>
+                {" "}
+                <span className="text-gold">est</span> marks modeled values; unmarked values are
+                derived from real match data.
+              </>
+            )}
           </p>
         </section>
 
         <section className="panel p-4" aria-labelledby="radar-head">
           <h2 id="radar-head" className="eyebrow mb-1">Profile</h2>
           <PlayerRadar attributes={player.attributes} color={isMine ? "var(--blue-cyan)" : "var(--red-ember)"} />
+          {(() => {
+            const trait = traitOf(player.id);
+            if (!trait) return null;
+            return (
+              <p className="mt-2 border-l-2 pl-2 text-xs leading-5 text-ink-muted" style={{ borderColor: "var(--hextech-gold)" }}>
+                <span className="display font-bold text-gold">{TRAIT_INFO[trait].label}</span>{" "}
+                — {TRAIT_INFO[trait].blurb}
+              </p>
+            );
+          })()}
           <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
             <span className="text-ink-muted">Contract</span>
             <span className="num text-right">{fmtMoney(player.contract.salary)}/yr × {player.contract.years}y</span>
-            <span className="text-ink-muted">Form</span>
+            <span className="text-ink-muted"><Term k="form">Form</Term></span>
             <span className="num text-right" style={{ color: player.form > 0.5 ? "var(--blue-cyan)" : player.form < -0.5 ? "var(--red-ember)" : undefined }}>
               {player.form > 0 ? "+" : ""}{player.form.toFixed(1)}
             </span>
-            <span className="text-ink-muted">Fatigue</span>
+            <span className="text-ink-muted"><Term k="fatigue">Fatigue</Term></span>
             <span className="num text-right">{Math.round(player.fatigue)}/100</span>
-            <span className="text-ink-muted">Morale</span>
+            <span className="text-ink-muted"><Term k="morale">Morale</Term></span>
             <span className="num text-right">{Math.round(player.morale)}/100</span>
           </div>
         </section>
@@ -161,7 +182,9 @@ export default function PlayerDetailPage({ params }: { params: Promise<{ id: str
               <dl className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
                 {Object.entries(player.rawMetrics).map(([k, v]) => (
                   <div key={k} className="contents">
-                    <dt className="text-ink-muted">{METRIC_LABEL[k] ?? k}</dt>
+                    <dt className="text-ink-muted">
+                      <Term k={k}>{METRIC_LABEL[k] ?? k}</Term>
+                    </dt>
                     <dd className="num text-right">{v}</dd>
                   </div>
                 ))}
