@@ -101,6 +101,10 @@ export interface Team {
   starters: Record<Role, string>;
   budget: number;
   record: { wins: number; losses: number };
+  /** Created (player-made) franchise: renders a procedural crest. */
+  custom?: boolean;
+  /** Secondary brand color for created teams. */
+  secondaryColor?: string;
 }
 
 export type MatchEventType =
@@ -187,6 +191,8 @@ export interface TeamContext {
 export interface MatchOptions {
   /** Elimination games weight CLUTCH. */
   elimination?: boolean;
+  /** Rivalry games get extra variance (multiplier on match noise, ≥1). */
+  varianceBoost?: number;
 }
 
 /* ── Season structures ────────────────────────────────────────── */
@@ -222,6 +228,14 @@ export interface InboxMessage {
   read: boolean;
 }
 
+export interface SeasonAwards {
+  mvpHandle: string;
+  /** Best player per role by average rating (min games gate). */
+  allPro: { role: Role; handle: string; teamName: string }[];
+  /** Rookie of the Split — best first-season player, if any qualified. */
+  rookieHandle: string | null;
+}
+
 export interface SeasonHistoryEntry {
   season: number;
   champion: string;
@@ -229,6 +243,7 @@ export interface SeasonHistoryEntry {
   playerTeamFinish: string;
   playerTeamRecord: string;
   mvpHandle: string;
+  awards?: SeasonAwards;
 }
 
 export type SeasonPhase = "REGULAR" | "PLAYOFFS" | "OFFSEASON";

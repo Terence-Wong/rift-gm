@@ -17,6 +17,8 @@ export interface SaveSlotMeta {
   week: number;
   teamName: string;
   phase: string;
+  /** "real" | "fictional" — absent on pre-v2 slots (treated as real). */
+  dataMode?: string;
 }
 
 interface SlotPayload {
@@ -60,6 +62,7 @@ export function saveSlot(name: string): SaveSlotMeta | null {
     week: data.week,
     teamName: data.teams[data.playerTeamId]?.name ?? "—",
     phase: data.phase,
+    dataMode: data.dataMode ?? "real",
   };
   window.localStorage.setItem(meta.key, JSON.stringify({ meta, data }));
   return meta;

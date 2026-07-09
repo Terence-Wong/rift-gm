@@ -98,7 +98,8 @@ export default function SettingsPage() {
               <li key={slot.key} className="flex flex-wrap items-center gap-3 py-2 text-sm">
                 <span className="font-semibold">{slot.name}</span>
                 <span className="eyebrow">
-                  {slot.teamName} · S{slot.season} W{slot.week} · {slot.phase.toLowerCase()}
+                  {slot.teamName} · S{slot.season} W{slot.week} · {slot.phase.toLowerCase()} ·{" "}
+                  {slot.dataMode === "fictional" ? "fictional league" : "real rosters"}
                 </span>
                 <span className="num ml-auto text-xs text-ink-muted">
                   {new Date(slot.savedAt).toLocaleString()}
@@ -127,6 +128,35 @@ export default function SettingsPage() {
         )}
       </section>
 
+      <section className="panel p-4" aria-labelledby="tutorial-head">
+        <h2 id="tutorial-head" className="eyebrow mb-3">First-week tutorial</h2>
+        <p className="text-sm text-ink-muted">
+          {s.tutorial.active
+            ? `In progress — current step: ${s.tutorial.step}. Your assistant coach's memos are in the inbox.`
+            : "Not running. Relaunch the guided “first week as head coach” any time — it walks the squad → scouting → draft → match → debrief loop with your assistant coach."}
+        </p>
+        <div className="mt-3 flex gap-2">
+          {s.tutorial.active ? (
+            <button
+              onClick={() => s.skipTutorial()}
+              className="hex-clip display border border-hairline bg-fog-800 px-4 py-2 text-sm font-bold hover:bg-fog-700"
+            >
+              Skip the rest
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                s.startTutorial();
+                setNotice("Tutorial relaunched — check your inbox for the coach's memo.");
+              }}
+              className="hex-clip display border border-hairline bg-fog-800 px-4 py-2 text-sm font-bold hover:bg-fog-700"
+            >
+              Relaunch tutorial
+            </button>
+          )}
+        </div>
+      </section>
+
       <section className="panel p-4" aria-labelledby="a11y-head">
         <h2 id="a11y-head" className="eyebrow mb-3">Accessibility</h2>
         <label className="flex items-center gap-3 text-sm">
@@ -146,42 +176,63 @@ export default function SettingsPage() {
         <p className="text-sm leading-6 text-ink-muted">
           <strong className="text-ink">This is an unofficial fan project.</strong> Not affiliated
           with or endorsed by Riot Games. League of Legends is a trademark of Riot Games, Inc.
-          Player data © their respective sources.
         </p>
-        <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
-          <dt className="text-ink-muted">Dataset</dt>
-          <dd>
-            {DATA_META.seasonLabel} · v{DATA_META.dataVersion} · fetched{" "}
-            <span className="num">{DATA_META.fetchedAt.slice(0, 10)}</span>
-          </dd>
-          <dt className="text-ink-muted">Mode</dt>
-          <dd className={DATA_META.usingSampleData ? "text-gold" : "text-cyan"}>
-            {DATA_META.usingSampleData
-              ? "Sample data — live stats couldn't be loaded at build time; attributes are approximate."
-              : "Derived from real competitive match data."}
-          </dd>
-          <dt className="text-ink-muted">Notes</dt>
-          <dd>{DATA_META.notes}</dd>
-          <dt className="text-ink-muted">Champions</dt>
-          <dd><span className="num">{CHAMPIONS.length}</span> from Riot Data Dragon</dd>
-        </dl>
-        <ul className="mt-3 flex flex-col gap-1 text-sm">
-          {DATA_META.sources.map((src) => (
-            <li key={src.name}>
-              <a href={src.url} target="_blank" rel="noreferrer" className="text-cyan hover:underline">
-                {src.name}
-              </a>{" "}
-              <span className="text-ink-muted">— {src.license}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="mt-3 text-xs leading-5 text-ink-muted">
-          Attribute provenance: values marked <span className="text-gold">est</span> on player
-          pages are modeled estimates (Clutch and Potential usually are); unmarked values are
-          derived from role-normalized percentiles of real per-game metrics. Free-agent
-          &quot;trainee&quot; prospects are fictional. Attributes marked{" "}
-          <span className="text-gold">est</span> should not be read as real-world skill claims.
-        </p>
+        {s.dataMode === "fictional" ? (
+          <>
+            <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
+              <dt className="text-ink-muted">Mode</dt>
+              <dd className="text-cyan">
+                Fictional league — this save&apos;s entire world (teams, players, names,
+                attributes) is procedurally generated. Nothing here refers to a real person or
+                organization.
+              </dd>
+              <dt className="text-ink-muted">World seed</dt>
+              <dd className="num text-gold">{s.worldSeed ?? "—"}</dd>
+            </dl>
+            <p className="mt-3 text-xs leading-5 text-ink-muted">
+              Share the world seed to let someone else start a career in the exact same generated
+              league. Real-data attribution applies only to Real-rosters saves.
+            </p>
+          </>
+        ) : (
+          <>
+            <p className="mt-2 text-sm leading-6 text-ink-muted">Player data © their respective sources.</p>
+            <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
+              <dt className="text-ink-muted">Dataset</dt>
+              <dd>
+                {DATA_META.seasonLabel} · v{DATA_META.dataVersion} · fetched{" "}
+                <span className="num">{DATA_META.fetchedAt.slice(0, 10)}</span>
+              </dd>
+              <dt className="text-ink-muted">Mode</dt>
+              <dd className={DATA_META.usingSampleData ? "text-gold" : "text-cyan"}>
+                {DATA_META.usingSampleData
+                  ? "Sample data — live stats couldn't be loaded at build time; attributes are approximate."
+                  : "Derived from real competitive match data."}
+              </dd>
+              <dt className="text-ink-muted">Notes</dt>
+              <dd>{DATA_META.notes}</dd>
+              <dt className="text-ink-muted">Champions</dt>
+              <dd><span className="num">{CHAMPIONS.length}</span> from Riot Data Dragon</dd>
+            </dl>
+            <ul className="mt-3 flex flex-col gap-1 text-sm">
+              {DATA_META.sources.map((src) => (
+                <li key={src.name}>
+                  <a href={src.url} target="_blank" rel="noreferrer" className="text-cyan hover:underline">
+                    {src.name}
+                  </a>{" "}
+                  <span className="text-ink-muted">— {src.license}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-3 text-xs leading-5 text-ink-muted">
+              Attribute provenance: values marked <span className="text-gold">est</span> on player
+              pages are modeled estimates (Clutch and Potential usually are); unmarked values are
+              derived from role-normalized percentiles of real per-game metrics. Free-agent
+              &quot;trainee&quot; prospects are fictional. Attributes marked{" "}
+              <span className="text-gold">est</span> should not be read as real-world skill claims.
+            </p>
+          </>
+        )}
       </section>
 
       <section className="panel border-ember/30 p-4" aria-labelledby="danger-head">

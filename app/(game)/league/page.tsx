@@ -97,6 +97,35 @@ export default function LeaguePage() {
         )}
       </section>
 
+      {s.powerRankings.length > 0 ? (
+        <section className="panel p-4 lg:col-span-2" aria-labelledby="power-head">
+          <h2 id="power-head" className="eyebrow mb-2">Power rankings — the analyst desk</h2>
+          <ol className="grid grid-cols-1 gap-x-6 gap-y-1.5 md:grid-cols-2">
+            {s.powerRankings.map((entry) => {
+              const team = s.teams[entry.teamId];
+              if (!team) return null;
+              const moved = entry.prevRank === null ? 0 : entry.prevRank - entry.rank;
+              return (
+                <li key={entry.teamId} className="flex items-baseline gap-2 text-sm">
+                  <span className="num w-6 shrink-0 text-right font-semibold text-gold">{entry.rank}</span>
+                  <span
+                    className="num w-7 shrink-0 text-xs"
+                    aria-label={moved > 0 ? `up ${moved}` : moved < 0 ? `down ${-moved}` : "steady"}
+                    style={{ color: moved > 0 ? "var(--blue-cyan)" : moved < 0 ? "var(--red-ember)" : "var(--ink-muted)" }}
+                  >
+                    {moved > 0 ? `▲${moved}` : moved < 0 ? `▼${-moved}` : "—"}
+                  </span>
+                  <span className={`display shrink-0 text-sm font-bold ${entry.teamId === s.playerTeamId ? "text-cyan" : ""}`}>
+                    {team.shortName}
+                  </span>
+                  <span className="min-w-0 truncate text-xs text-ink-muted">{entry.blurb}</span>
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+      ) : null}
+
       {s.playoffs.length > 0 ? (
         <section className="panel p-4 lg:col-span-2" aria-labelledby="bracket-head">
           <h2 id="bracket-head" className="eyebrow mb-3">Playoff bracket — best of 5</h2>
@@ -118,6 +147,38 @@ export default function LeaguePage() {
                 </div>
               );
             })}
+          </div>
+        </section>
+      ) : null}
+
+      {s.history.some((h) => h.awards) ? (
+        <section className="panel p-4 lg:col-span-2" aria-labelledby="hof-head">
+          <h2 id="hof-head" className="eyebrow mb-3">Hall of fame — season awards</h2>
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
+            {[...s.history]
+              .filter((h) => h.awards)
+              .reverse()
+              .map((h) => (
+                <div key={h.season} className="panel-raised p-3">
+                  <p className="eyebrow mb-1.5">
+                    Season {h.season} · <span className="text-gold">{h.champion}</span>
+                  </p>
+                  <p className="text-sm">
+                    <span className="text-ink-muted">MVP </span>
+                    <span className="font-semibold text-gold">{h.awards!.mvpHandle}</span>
+                    {h.awards!.rookieHandle ? (
+                      <>
+                        <span className="text-ink-muted"> · Rookie </span>
+                        <span className="font-semibold text-cyan">{h.awards!.rookieHandle}</span>
+                      </>
+                    ) : null}
+                  </p>
+                  <p className="mt-1.5 text-xs leading-5 text-ink-muted">
+                    <span className="eyebrow">All-Pro </span>
+                    {h.awards!.allPro.map((a) => `${a.role} ${a.handle}`).join(" · ")}
+                  </p>
+                </div>
+              ))}
           </div>
         </section>
       ) : null}

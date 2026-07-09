@@ -64,13 +64,13 @@ export default function DashboardPage() {
         ) : opponent ? (
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-3">
-              <TeamCrest shortName={team.shortName} color={team.color} size={44} />
+              <TeamCrest team={team} size={44} />
               <span className="display text-lg font-bold text-cyan">{team.shortName}</span>
             </div>
             <span className="eyebrow">vs</span>
             <div className="flex items-center gap-3">
               <span className="display text-lg font-bold text-ember">{opponent.shortName}</span>
-              <TeamCrest shortName={opponent.shortName} color={opponent.color} size={44} />
+              <TeamCrest team={opponent} size={44} />
             </div>
             <div className="ml-auto flex flex-col gap-1 text-right">
               {series ? (
@@ -196,7 +196,7 @@ function FiredPanel() {
               onClick={() => s.acceptJobOffer(t.id)}
               className="panel-raised flex items-center gap-3 p-3 text-left hover:bg-fog-700"
             >
-              <TeamCrest shortName={t.shortName} color={t.color} size={34} />
+              <TeamCrest team={t} size={34} />
               <span className="flex-1">
                 <span className="display block text-sm font-bold">{t.name}</span>
                 <span className="eyebrow">Head coach — immediate start</span>

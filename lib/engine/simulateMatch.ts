@@ -3,6 +3,12 @@
  * identical MatchResult. Minute-by-minute gold-difference random walk with
  * phase strengths, objective events, kills, throws, and a decaying nexus
  * threshold. No Math.random() anywhere in this module.
+ *
+ * v2 split: the STRATEGIC core (gold walk, objectives, team-level kill
+ * counts — all v1 tuning) is separated from kill ATTRIBUTION (which player
+ * killed/died/assisted). Attribution runs on its own RNG stream so the
+ * strategic outcome of a seed is identical whether kills are attributed by
+ * fast sampling (quick sim) or by the spatial layer (lib/engine/spatial.ts).
  */
 
 import type {
@@ -14,7 +20,7 @@ import type {
   Role,
   TeamContext,
 } from "../types";
-import { createRng, type Rng } from "./rng";
+import { createRng, hashSeed, type Rng } from "./rng";
 import { computeTacticModifiers, TARGET_BAN_PENALTY, type PhaseModifiers } from "./tactics";
 
 /**
@@ -45,7 +51,7 @@ export const TUNING = {
   towerGold: 300,
 };
 
-interface SideState {
+export interface SideState {
   ctx: TeamContext;
   mods: PhaseModifiers;
   /** Effective per-player attribute multipliers for this game. */
@@ -67,7 +73,7 @@ const PHASE_ROLE_WEIGHTS: Record<"early" | "mid" | "late", Record<Role, number>>
   late: { TOP: 0.16, JGL: 0.18, MID: 0.22, ADC: 0.28, SUP: 0.16 },
 };
 
-const DEATH_EXPOSURE: Record<Role, number> = {
+export const DEATH_EXPOSURE: Record<Role, number> = {
   TOP: 1.0,
   JGL: 1.1,
   MID: 0.95,
@@ -75,7 +81,7 @@ const DEATH_EXPOSURE: Record<Role, number> = {
   SUP: 1.25,
 };
 
-const CS_PER_MIN: Record<Role, number> = {
+export const CS_PER_MIN: Record<Role, number> = {
   TOP: 7.8,
   JGL: 5.6,
   MID: 8.8,
@@ -169,16 +175,16 @@ function buildSide(
   };
 }
 
-type SideKey = "blue" | "red";
+export type SideKey = "blue" | "red";
 
-function phaseOf(t: number): "early" | "mid" | "late" {
+export function phaseOf(t: number): "early" | "mid" | "late" {
   if (t < 14) return "early";
   if (t < 25) return "mid";
   return "late";
 }
 
 /* Broadcast-style event copy. */
-const KILL_LINES = [
+export const KILL_LINES = [
   (k: string, v: string) => `${k} finds ${v} overextended`,
   (k: string, v: string) => `${k} punishes ${v} in the river`,
   (k: string, v: string) => `${k} solo kills ${v}`,
@@ -192,18 +198,50 @@ const DRAGON_LINES = [
   (t: string) => `${t} steal the pit tempo — drake down`,
 ];
 
-export function simulateMatch(
+/** Where a kill came from, so the spatial layer can stage the fight. */
+export type KillContext = "skirmish" | "steal" | "throw";
+
+export interface KillSlot {
+  minute: number;
+  side: SideKey;
+  firstBlood: boolean;
+  minor: boolean;
+  context: KillContext;
+  /** Index into StrategicOutcome.events for the placeholder event. */
+  eventIndex: number;
+}
+
+/** Everything the strategic core decides; attribution fills in the names. */
+export interface StrategicOutcome {
+  sides: Record<SideKey, SideState>;
+  events: MatchEvent[];
+  killSlots: KillSlot[];
+  goldTimeline: number[];
+  winner: SideKey;
+  duration: number;
+  finalGold: number;
+  seed: number;
+  elimination: boolean;
+}
+
+/**
+ * Run the v1 strategic layer: gold walk, objectives, team-level kills.
+ * Kill events get placeholder details; killSlots list what needs attribution.
+ */
+export function runStrategic(
   blue: TeamContext,
   red: TeamContext,
   seed: number,
   options: MatchOptions = {},
-): MatchResult {
+): StrategicOutcome {
   const rng = createRng(seed);
-  const b = buildSide(blue, red, rng, options.elimination ?? false);
-  const r = buildSide(red, blue, rng, options.elimination ?? false);
+  const elimination = options.elimination ?? false;
+  const b = buildSide(blue, red, rng, elimination);
+  const r = buildSide(red, blue, rng, elimination);
   const sides: Record<SideKey, SideState> = { blue: b, red: r };
 
   const events: MatchEvent[] = [];
+  const killSlots: KillSlot[] = [];
   const goldTimeline: number[] = [0];
   let goldDiff = 0; // blue minus red
   let firstBlood = false;
@@ -213,7 +251,8 @@ export function simulateMatch(
   let winner: SideKey | null = null;
   let duration = TUNING.hardCapMin;
 
-  const varianceMult = Math.sqrt(b.mods.variance * r.mods.variance);
+  const varianceMult =
+    Math.sqrt(b.mods.variance * r.mods.variance) * Math.max(1, options.varianceBoost ?? 1);
   const aggrFactor = (b.aggression + r.aggression) / 20; // ~1 for avg teams
 
   let minute = 0;
@@ -223,64 +262,45 @@ export function simulateMatch(
   const other = (s: SideKey): SideKey => (s === "blue" ? "red" : "blue");
   const signed = (s: SideKey, amount: number) => (s === "blue" ? amount : -amount);
 
-  /** Pick a killer on `s` weighted by mechanics/aggression and role. */
-  const pickKiller = (s: SideKey): PlayerMatchInput => {
-    const ps = sides[s].ctx.players;
-    return rng.weightedPick(
-      ps,
-      ps.map(
-        (p) =>
-          (p.attributes.mechanics * 1.2 + p.attributes.aggression * 0.6) *
-          (p.role === "SUP" ? 0.35 : 1) *
-          (sides[s].eff.get(p.id) ?? 1),
-      ),
-    );
-  };
-
-  /** Pick a victim on `s` weighted by exposure and (inverse) mechanics. */
-  const pickVictim = (s: SideKey): PlayerMatchInput => {
-    const ps = sides[s].ctx.players;
-    return rng.weightedPick(
-      ps,
-      ps.map((p) => DEATH_EXPOSURE[p.role] * (24 - p.attributes.mechanics)),
-    );
-  };
-
-  const creditKill = (killSide: SideKey, minute: number, minor = false): void => {
-    const killer = pickKiller(killSide);
-    const victim = pickVictim(other(killSide));
-    const kl = sides[killSide].lines.get(killer.id);
-    const vl = sides[other(killSide)].lines.get(victim.id);
-    if (kl) kl.k++;
-    if (vl) vl.d++;
+  /** Book a team kill: gold swing now, player attribution later. */
+  const creditKill = (killSide: SideKey, minute: number, minor = false, context: KillContext = "skirmish"): void => {
     sides[killSide].kills++;
-    const assistP = phaseOf(minute) === "early" ? 0.38 : 0.66;
-    for (const p of sides[killSide].ctx.players) {
-      if (p.id !== killer.id && rng.chance(assistP)) {
-        const al = sides[killSide].lines.get(p.id);
-        if (al) al.a++;
-      }
-    }
     const swing = TUNING.killGold + rng.int(-40, 60);
     goldDiff += signed(killSide, swing);
 
     if (!firstBlood) {
       firstBlood = true;
       goldDiff += signed(killSide, 100);
+      killSlots.push({
+        minute,
+        side: killSide,
+        firstBlood: true,
+        minor: false,
+        context,
+        eventIndex: events.length,
+      });
       push({
         minute,
         type: "FIRST_BLOOD",
         team: killSide,
-        detail: `First blood — ${killer.handle} draws it against ${victim.handle}`,
+        detail: "First blood",
         goldSwing: swing + 100,
       });
       return;
     }
+    killSlots.push({
+      minute,
+      side: killSide,
+      firstBlood: false,
+      minor,
+      context,
+      eventIndex: events.length,
+    });
     push({
       minute,
       type: "KILL",
       team: killSide,
-      detail: rng.pick(KILL_LINES)(killer.handle, victim.handle),
+      detail: `${teamName(killSide)} pick up a kill`,
       goldSwing: swing,
       minor: minor || undefined,
     });
@@ -373,7 +393,7 @@ export function simulateMatch(
         if (stolen) {
           // A steal usually comes with bodies.
           const extra = rng.int(1, 3);
-          for (let i = 0; i < extra; i++) creditKill(w, minute, true);
+          for (let i = 0; i < extra; i++) creditKill(w, minute, true, "steal");
         }
       }
     }
@@ -405,7 +425,7 @@ export function simulateMatch(
         const swingBack = lead * (0.4 + rng.next() * 0.3);
         goldDiff += signed(loser, swingBack);
         const bodies = rng.int(2, 4);
-        for (let i = 0; i < bodies; i++) creditKill(loser, minute, true);
+        for (let i = 0; i < bodies; i++) creditKill(loser, minute, true, "throw");
         push({
           minute,
           type: "THROW",
@@ -454,7 +474,105 @@ export function simulateMatch(
     goldSwing: 0,
   });
 
-  // ── Post-game stat lines ────────────────────────────────────
+  return {
+    sides,
+    events,
+    killSlots,
+    goldTimeline,
+    winner,
+    duration,
+    finalGold: goldDiff,
+    seed,
+    elimination,
+  };
+}
+
+/* ── Attribution ────────────────────────────────────────────────── */
+
+export interface KillAttribution {
+  killerId: string;
+  victimId: string;
+  assistIds: string[];
+}
+
+/** v1 killer weights: mechanics + aggression, supports rarely secure. */
+export function killerWeights(side: SideState): number[] {
+  return side.ctx.players.map(
+    (p) =>
+      (p.attributes.mechanics * 1.2 + p.attributes.aggression * 0.6) *
+      (p.role === "SUP" ? 0.35 : 1) *
+      (side.eff.get(p.id) ?? 1),
+  );
+}
+
+/** v1 victim weights: role exposure × inverse mechanics. */
+export function victimWeights(side: SideState): number[] {
+  return side.ctx.players.map((p) => DEATH_EXPOSURE[p.role] * (24 - p.attributes.mechanics));
+}
+
+/**
+ * Fast sampled attribution (quick sim): the v1 weighted picks, unchanged,
+ * but drawn from a dedicated stream so the strategic outcome is untouched.
+ */
+export function sampleKillAttributions(outcome: StrategicOutcome, rng: Rng): KillAttribution[] {
+  return outcome.killSlots.map((slot) => {
+    const ks = outcome.sides[slot.side];
+    const vs = outcome.sides[slot.side === "blue" ? "red" : "blue"];
+    const killer = rng.weightedPick(ks.ctx.players, killerWeights(ks));
+    const victim = rng.weightedPick(vs.ctx.players, victimWeights(vs));
+    const assistP = phaseOf(slot.minute) === "early" ? 0.38 : 0.66;
+    const assistIds: string[] = [];
+    for (const p of ks.ctx.players) {
+      if (p.id !== killer.id && rng.chance(assistP)) assistIds.push(p.id);
+    }
+    return { killerId: killer.id, victimId: victim.id, assistIds };
+  });
+}
+
+/** Write attributions into player lines and event feed details. */
+export function applyKillAttributions(
+  outcome: StrategicOutcome,
+  attributions: KillAttribution[],
+  rng: Rng,
+): void {
+  outcome.killSlots.forEach((slot, i) => {
+    const a = attributions[i];
+    if (!a) return;
+    const ks = outcome.sides[slot.side];
+    const vs = outcome.sides[slot.side === "blue" ? "red" : "blue"];
+    const kl = ks.lines.get(a.killerId);
+    const vl = vs.lines.get(a.victimId);
+    if (kl) kl.k++;
+    if (vl) vl.d++;
+    for (const id of a.assistIds) {
+      const al = ks.lines.get(id);
+      if (al) al.a++;
+    }
+    const killer = ks.ctx.players.find((p) => p.id === a.killerId);
+    const victim = vs.ctx.players.find((p) => p.id === a.victimId);
+    const ev = outcome.events[slot.eventIndex];
+    if (ev && killer && victim) {
+      ev.detail = slot.firstBlood
+        ? `First blood — ${killer.handle} draws it against ${victim.handle}`
+        : rng.pick(KILL_LINES)(killer.handle, victim.handle);
+    }
+  });
+}
+
+/* ── Finalize ───────────────────────────────────────────────────── */
+
+/**
+ * Compute CS, damage, ratings, and MVP from attributed lines.
+ * csOverride (playerId → cs) lets the spatial layer supply time-in-lane CS.
+ */
+export function finalizeMatch(
+  outcome: StrategicOutcome,
+  csOverride?: Map<string, number>,
+): MatchResult {
+  const { sides, winner, duration, finalGold } = outcome;
+  const other = (s: SideKey): SideKey => (s === "blue" ? "red" : "blue");
+  const signed = (s: SideKey, amount: number) => (s === "blue" ? amount : -amount);
+
   const winTeamKills = sides[winner].kills;
   const loseTeamKills = sides[other(winner)].kills;
 
@@ -467,10 +585,12 @@ export function simulateMatch(
     for (const p of side.ctx.players) {
       const line = side.lines.get(p.id)!;
       const effMult = side.eff.get(p.id) ?? 1;
-      const leadFactor = 1 + signed(s, goldDiff) / 40000;
-      line.cs = Math.round(
-        CS_PER_MIN[p.role] * duration * (0.72 + (p.attributes.mechanics / 40) * effMult) * leadFactor,
-      );
+      const leadFactor = 1 + signed(s, finalGold) / 40000;
+      line.cs =
+        csOverride?.get(p.id) ??
+        Math.round(
+          CS_PER_MIN[p.role] * duration * (0.72 + (p.attributes.mechanics / 40) * effMult) * leadFactor,
+        );
       const dmg =
         (p.attributes.mechanics * 30 + p.attributes.teamfight * 9) *
           DMG_ROLE_MULT[p.role] *
@@ -518,14 +638,30 @@ export function simulateMatch(
       : winBest.id;
 
   return {
-    blueTeamId: blue.teamId,
-    redTeamId: red.teamId,
+    blueTeamId: sides.blue.ctx.teamId,
+    redTeamId: sides.red.ctx.teamId,
     winner,
     durationMin: duration,
-    goldTimeline,
-    events,
+    goldTimeline: outcome.goldTimeline,
+    events: outcome.events,
     playerLines,
     mvpPlayerId,
-    seed,
+    seed: outcome.seed,
   };
+}
+
+/**
+ * Quick-sim entry point: strategic core + fast sampled attribution.
+ * Skips all spatial generation — simming the rest of the league stays fast.
+ */
+export function simulateMatch(
+  blue: TeamContext,
+  red: TeamContext,
+  seed: number,
+  options: MatchOptions = {},
+): MatchResult {
+  const outcome = runStrategic(blue, red, seed, options);
+  const rngAttr = createRng(hashSeed(`${seed}:attribution`));
+  applyKillAttributions(outcome, sampleKillAttributions(outcome, rngAttr), rngAttr);
+  return finalizeMatch(outcome);
 }

@@ -45,7 +45,7 @@ export function StandingsTable({
                 <td className="num py-2 pr-2 text-ink-muted">{i + 1}</td>
                 <td className="py-2 pr-2">
                   <span className="flex items-center gap-2">
-                    <TeamCrest shortName={team.shortName} color={team.color} size={22} />
+                    <TeamCrest team={team} size={22} />
                     <span className={`truncate ${mine ? "font-semibold text-cyan" : ""}`}>
                       {compact ? team.shortName : team.name}
                     </span>

@@ -14,28 +14,38 @@ import type {
   TeamTactics,
 } from "../types";
 import { ROLES } from "../types";
+import { applyTraitToInput } from "./personality";
 import { createRng, hashSeed } from "./rng";
 
-/** Build the engine input for a team from current game state. */
+/**
+ * Build the engine input for a team from current game state. `week` feeds
+ * personality traits (slow starters struggle in the opening weeks); the
+ * default is past that window, so playoff/synthetic contexts are unaffected.
+ */
 export function buildTeamContext(
   team: Team,
   players: Record<string, Player>,
   tactics: TeamTactics,
+  week = 99,
 ): TeamContext {
   return {
     teamId: team.id,
     name: team.shortName,
     players: ROLES.map((role) => {
       const p = players[team.starters[role]];
-      return {
-        id: p.id,
-        handle: p.handle,
-        role,
-        attributes: p.attributes,
-        form: p.form,
-        morale: p.morale,
-        fatigue: p.fatigue,
-      };
+      return applyTraitToInput(
+        {
+          id: p.id,
+          handle: p.handle,
+          role,
+          attributes: p.attributes,
+          form: p.form,
+          morale: p.morale,
+          fatigue: p.fatigue,
+        },
+        p,
+        week,
+      );
     }),
     tactics,
   };

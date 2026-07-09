@@ -5,6 +5,7 @@
  * playstyle, objective focus, and one target ban from the enemy five.
  */
 
+import { Term } from "@/components/Term";
 import { ARCHETYPES, counterEdge, OBJECTIVES, PLAYSTYLES } from "@/lib/engine/tactics";
 import type {
   CompArchetype,
@@ -37,7 +38,7 @@ export function DraftBoard({
   const set = (patch: Partial<TeamTactics>) => onChange({ ...tactics, ...patch });
 
   return (
-    <section className="panel p-4" aria-labelledby="draft-head">
+    <section className="panel p-4" aria-labelledby="draft-head" data-tut="draft-board">
       <h2 id="draft-head" className="eyebrow mb-3">
         Draft &amp; tactics
         {likelyOpponentComp ? (
@@ -49,7 +50,9 @@ export function DraftBoard({
 
       {/* Comp archetype — champ-select style row */}
       <fieldset className="mb-4 border-0 p-0">
-        <legend className="eyebrow mb-2">Comp archetype</legend>
+        <legend className="eyebrow mb-2">
+          <Term k="archetype">Comp archetype</Term>
+        </legend>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-5">
           {ARCHETYPE_KEYS.map((key) => {
             const edge = likelyOpponentComp ? counterEdge(key, likelyOpponentComp) : 0;
@@ -129,7 +132,9 @@ export function DraftBoard({
 
       {/* Target ban row */}
       <fieldset className="mt-4 border-0 p-0">
-        <legend className="eyebrow mb-2">Target ban — cripple one enemy champion pool</legend>
+        <legend className="eyebrow mb-2">
+          <Term k="targetBan">Target ban</Term> — cripple one enemy champion pool
+        </legend>
         <div className="flex flex-wrap gap-1.5">
           {ROLES.map((role) => {
             const p = players[opponent.starters[role]];

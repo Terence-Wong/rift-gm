@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
+import realPlayers from "../data/players.json";
 import { standingsOf, useGameStore, userFixtureThisWeek, userSeries } from "../lib/store";
 
 describe("full season smoke test", () => {
@@ -11,7 +12,7 @@ describe("full season smoke test", () => {
     const teams = Object.keys(useGameStore.getState().teams);
     expect(teams).toHaveLength(0);
 
-    store.newGame("t1", "Smoke Test");
+    store.newGame({ teamId: "t1", saveName: "Smoke Test", dataMode: "real" });
     let s = useGameStore.getState();
     expect(s.initialized).toBe(true);
     expect(Object.keys(s.teams).length).toBeGreaterThanOrEqual(8);
@@ -76,8 +77,56 @@ describe("full season smoke test", () => {
     ).toBeGreaterThan(0);
   });
 
+  it("fictional mode plays a complete season with no real names", () => {
+    useGameStore.getState().newGame({
+      teamId: "fic-0",
+      saveName: "Fictional Smoke",
+      dataMode: "fictional",
+      worldSeed: 20260709,
+    });
+    let s = useGameStore.getState();
+    expect(s.initialized).toBe(true);
+    expect(s.dataMode).toBe("fictional");
+    expect(s.worldSeed).toBe(20260709);
+    expect(s.usingSampleData).toBe(false);
+    expect(Object.keys(s.teams)).toHaveLength(10);
+    expect(s.teams["fic-0"]).toBeTruthy();
+
+    // Season → playoffs → offseason, then roll into season 2.
+    let guard = 0;
+    while (useGameStore.getState().phase !== "OFFSEASON" && guard < 80) {
+      useGameStore.getState().quickSimWeek();
+      guard++;
+    }
+    s = useGameStore.getState();
+    expect(s.phase).toBe("OFFSEASON");
+    expect(s.history).toHaveLength(1);
+
+    // No real pro handle anywhere in the fictional world — including
+    // offseason prospect intake.
+    const real = new Set(
+      (realPlayers as { handle: string }[]).map((p) => p.handle.toLowerCase()),
+    );
+    for (const p of Object.values(s.players)) {
+      expect(real.has(p.handle.toLowerCase()), p.handle).toBe(false);
+    }
+
+    if (s.board.fired) {
+      useGameStore.getState().acceptJobOffer(useGameStore.getState().jobOffers[0]);
+    }
+    useGameStore.getState().startNextSeason();
+    s = useGameStore.getState();
+    expect(s.season).toBe(2);
+    expect(s.dataMode).toBe("fictional");
+    for (const team of Object.values(s.teams)) {
+      for (const role of ["TOP", "JGL", "MID", "ADC", "SUP"] as const) {
+        expect(s.players[team.starters[role]], `${team.name} missing ${role}`).toBeTruthy();
+      }
+    }
+  });
+
   it("playoffs use best-of-five series", () => {
-    useGameStore.getState().newGame("gen", "Playoff Test");
+    useGameStore.getState().newGame({ teamId: "gen", saveName: "Playoff Test", dataMode: "real" });
     let guard = 0;
     while (useGameStore.getState().phase === "REGULAR" && guard < 40) {
       useGameStore.getState().quickSimWeek();

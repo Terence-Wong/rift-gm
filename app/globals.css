@@ -102,6 +102,46 @@ body {
   scrollbar-color: var(--hairline) transparent;
 }
 
+/* ── Tutorial spotlight ────────────────────────────────────────
+   The shell sets data-tut-step while the tutorial runs; elements tagged
+   data-tut get the gold ring on their step and pop above the dim backdrop. */
+.tut-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(10, 14, 20, 0.55);
+  pointer-events: none;
+}
+
+.tut-bar {
+  position: relative;
+  z-index: 46;
+}
+
+[data-tut-step="SQUAD"] [data-tut="starter"],
+[data-tut-step="SCOUT"] [data-tut="scouting"],
+[data-tut-step="DRAFT"] [data-tut="draft-board"],
+[data-tut-step="DRAFT"] [data-tut="lock-in"],
+[data-tut-step="MATCH"] [data-tut="map"],
+[data-tut-step="MATCH"] [data-tut="gold-graph"],
+[data-tut-step="DEBRIEF"] [data-tut="training-focus"] {
+  position: relative;
+  z-index: 45;
+  outline: 2px solid var(--hextech-gold);
+  outline-offset: 2px;
+  animation: tut-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes tut-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--hextech-gold) 22%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 9px color-mix(in srgb, var(--hextech-gold) 8%, transparent);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

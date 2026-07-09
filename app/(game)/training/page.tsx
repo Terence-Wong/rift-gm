@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Term } from "@/components/Term";
 import { projectedGain, TRAINABLE } from "@/lib/engine/development";
 import { useGameStore } from "@/lib/store";
 import type { AttributeKey, Player } from "@/lib/types";
@@ -22,9 +23,9 @@ export default function TrainingPage() {
   return (
     <div className="flex flex-col gap-4">
       <h1 className="display text-xl font-bold">Training &amp; scouting</h1>
-      <p className="-mt-2 text-sm text-ink-muted">
-        Focus applies when the week advances. Growth is gated by age and hidden potential — young
-        players with headroom move fastest.
+      <p className="-mt-2 flex flex-wrap items-baseline gap-x-1 text-sm text-ink-muted">
+        Focus applies when the week advances. Growth is gated by age and hidden{" "}
+        <Term k="potential">potential</Term> — young players with headroom move fastest.
       </p>
 
       <section className="panel overflow-x-auto" aria-labelledby="training-head">
@@ -58,6 +59,7 @@ export default function TrainingPage() {
                       value={focus}
                       onChange={(e) => s.setTrainingFocus(p.id, e.target.value as AttributeKey)}
                       aria-label={`Training focus for ${p.handle}`}
+                      data-tut="training-focus"
                       className="panel-raised px-2 py-1 text-sm text-ink"
                     >
                       {TRAINABLE.map((key) => (

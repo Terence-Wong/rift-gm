@@ -1,0 +1,7458 @@
+{
+  "riftgm": 1,
+  "data": {
+    "initialized": true,
+    "saveName": "V1 Veteran",
+    "playerTeamId": "t1",
+    "season": 1,
+    "week": 3,
+    "phase": "REGULAR",
+    "teams": {
+      "gen": {
+        "id": "gen",
+        "name": "Gen.G",
+        "shortName": "GEN",
+        "region": "LCK",
+        "color": "#AA8B56",
+        "roster": [
+          "oe-kiin-top",
+          "oe-canyon-jgl",
+          "oe-chovy-mid",
+          "oe-ruler-adc",
+          "oe-duro-sup"
+        ],
+        "starters": {
+          "TOP": "oe-kiin-top",
+          "JGL": "oe-canyon-jgl",
+          "MID": "oe-chovy-mid",
+          "ADC": "oe-ruler-adc",
+          "SUP": "oe-duro-sup"
+        },
+        "budget": 7200,
+        "record": {
+          "wins": 2,
+          "losses": 0
+        }
+      },
+      "hle": {
+        "id": "hle",
+        "name": "Hanwha Life Esports",
+        "shortName": "HLE",
+        "region": "LCK",
+        "color": "#F07C28",
+        "roster": [
+          "oe-zeus-top",
+          "oe-peanut-jgl",
+          "oe-zeka-mid",
+          "oe-viper-adc",
+          "oe-delight-sup"
+        ],
+        "starters": {
+          "TOP": "oe-zeus-top",
+          "JGL": "oe-peanut-jgl",
+          "MID": "oe-zeka-mid",
+          "ADC": "oe-viper-adc",
+          "SUP": "oe-delight-sup"
+        },
+        "budget": 7000,
+        "record": {
+          "wins": 2,
+          "losses": 0
+        }
+      },
+      "t1": {
+        "id": "t1",
+        "name": "T1",
+        "shortName": "T1",
+        "region": "LCK",
+        "color": "#E2012D",
+        "roster": [
+          "oe-doran-top",
+          "oe-oner-jgl",
+          "oe-faker-mid",
+          "oe-gumayusi-adc",
+          "oe-keria-sup"
+        ],
+        "starters": {
+          "TOP": "oe-doran-top",
+          "JGL": "oe-oner-jgl",
+          "MID": "oe-faker-mid",
+          "ADC": "oe-gumayusi-adc",
+          "SUP": "oe-keria-sup"
+        },
+        "budget": 7400,
+        "record": {
+          "wins": 2,
+          "losses": 0
+        }
+      },
+      "dk": {
+        "id": "dk",
+        "name": "Dplus KIA",
+        "shortName": "DK",
+        "region": "LCK",
+        "color": "#00E5BE",
+        "roster": [
+          "oe-siwoo-top",
+          "oe-lucid-jgl",
+          "oe-showmaker-mid",
+          "oe-aiming-adc",
+          "oe-beryl-sup"
+        ],
+        "starters": {
+          "TOP": "oe-siwoo-top",
+          "JGL": "oe-lucid-jgl",
+          "MID": "oe-showmaker-mid",
+          "ADC": "oe-aiming-adc",
+          "SUP": "oe-beryl-sup"
+        },
+        "budget": 6200,
+        "record": {
+          "wins": 1,
+          "losses": 1
+        }
+      },
+      "kt": {
+        "id": "kt",
+        "name": "KT Rolster",
+        "shortName": "KT",
+        "region": "LCK",
+        "color": "#FF0A07",
+        "roster": [
+          "oe-perfect-top",
+          "oe-cuzz-jgl",
+          "oe-bdd-mid",
+          "oe-deokdam-adc",
+          "oe-peter-sup"
+        ],
+        "starters": {
+          "TOP": "oe-perfect-top",
+          "JGL": "oe-cuzz-jgl",
+          "MID": "oe-bdd-mid",
+          "ADC": "oe-deokdam-adc",
+          "SUP": "oe-peter-sup"
+        },
+        "budget": 5800,
+        "record": {
+          "wins": 0,
+          "losses": 2
+        }
+      },
+      "drx": {
+        "id": "drx",
+        "name": "DRX",
+        "shortName": "DRX",
+        "region": "LCK",
+        "color": "#5A8DFF",
+        "roster": [
+          "oe-rich-top",
+          "oe-sponge-jgl",
+          "oe-ucal-mid",
+          "oe-teddy-adc",
+          "oe-andil-sup"
+        ],
+        "starters": {
+          "TOP": "oe-rich-top",
+          "JGL": "oe-sponge-jgl",
+          "MID": "oe-ucal-mid",
+          "ADC": "oe-teddy-adc",
+          "SUP": "oe-andil-sup"
+        },
+        "budget": 5200,
+        "record": {
+          "wins": 1,
+          "losses": 1
+        }
+      },
+      "ns": {
+        "id": "ns",
+        "name": "Nongshim RedForce",
+        "shortName": "NS",
+        "region": "LCK",
+        "color": "#DE2027",
+        "roster": [
+          "oe-kingen-top",
+          "oe-gideon-jgl",
+          "oe-calix-mid",
+          "oe-jiwoo-adc",
+          "oe-lehends-sup"
+        ],
+        "starters": {
+          "TOP": "oe-kingen-top",
+          "JGL": "oe-gideon-jgl",
+          "MID": "oe-calix-mid",
+          "ADC": "oe-jiwoo-adc",
+          "SUP": "oe-lehends-sup"
+        },
+        "budget": 5400,
+        "record": {
+          "wins": 1,
+          "losses": 1
+        }
+      },
+      "bfx": {
+        "id": "bfx",
+        "name": "BNK FEARX",
+        "shortName": "BFX",
+        "region": "LCK",
+        "color": "#FFC900",
+        "roster": [
+          "oe-clear-top",
+          "oe-raptor-jgl",
+          "oe-vicla-mid",
+          "oe-diable-adc",
+          "oe-kellin-sup"
+        ],
+        "starters": {
+          "TOP": "oe-clear-top",
+          "JGL": "oe-raptor-jgl",
+          "MID": "oe-vicla-mid",
+          "ADC": "oe-diable-adc",
+          "SUP": "oe-kellin-sup"
+        },
+        "budget": 4800,
+        "record": {
+          "wins": 1,
+          "losses": 1
+        }
+      },
+      "bro": {
+        "id": "bro",
+        "name": "HANJIN BRION",
+        "shortName": "BRO",
+        "region": "LCK",
+        "color": "#2FBF71",
+        "roster": [
+          "oe-morgan-top",
+          "oe-croco-jgl",
+          "oe-clozer-mid",
+          "oe-hype-adc",
+          "oe-pollu-sup"
+        ],
+        "starters": {
+          "TOP": "oe-morgan-top",
+          "JGL": "oe-croco-jgl",
+          "MID": "oe-clozer-mid",
+          "ADC": "oe-hype-adc",
+          "SUP": "oe-pollu-sup"
+        },
+        "budget": 4600,
+        "record": {
+          "wins": 0,
+          "losses": 2
+        }
+      },
+      "dns": {
+        "id": "dns",
+        "name": "DN SOOPers",
+        "shortName": "DNS",
+        "region": "LCK",
+        "color": "#4C6EF5",
+        "roster": [
+          "oe-dudu-top",
+          "oe-pyosik-jgl",
+          "oe-bulldog-mid",
+          "oe-berserker-adc",
+          "oe-life-sup"
+        ],
+        "starters": {
+          "TOP": "oe-dudu-top",
+          "JGL": "oe-pyosik-jgl",
+          "MID": "oe-bulldog-mid",
+          "ADC": "oe-berserker-adc",
+          "SUP": "oe-life-sup"
+        },
+        "budget": 4600,
+        "record": {
+          "wins": 0,
+          "losses": 2
+        }
+      }
+    },
+    "players": {
+      "oe-morgan-top": {
+        "id": "oe-morgan-top",
+        "handle": "Morgan",
+        "role": "TOP",
+        "age": 22,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 11.5,
+          "mechanics": 10.2,
+          "macro": 13.2,
+          "teamfight": 11.9,
+          "aggression": 7.5,
+          "consistency": 12.7,
+          "clutch": 6,
+          "potential": 16
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 101,
+          "csd15": -2,
+          "gd15": -70.2,
+          "xpd15": -42.8,
+          "dpm": 566.8,
+          "dmgShare": 23,
+          "kda": 4.3,
+          "kp": 56.9,
+          "vspm": 1.1
+        },
+        "ovr": 11.3,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 335
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-clozer-mid": {
+        "id": "oe-clozer-mid",
+        "handle": "Clozer",
+        "role": "MID",
+        "age": 23,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 16.4,
+          "mechanics": 11.5,
+          "macro": 11.2,
+          "teamfight": 13.4,
+          "aggression": 11.2,
+          "consistency": 12.6,
+          "clutch": 13.1,
+          "potential": 16
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 101,
+          "csd15": 2.1,
+          "gd15": 37.7,
+          "xpd15": 10,
+          "dpm": 635.8,
+          "dmgShare": 25.7,
+          "kda": 5.8,
+          "kp": 69.4,
+          "vspm": 1
+        },
+        "ovr": 12.9,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 558
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-hype-adc": {
+        "id": "oe-hype-adc",
+        "handle": "Hype",
+        "role": "ADC",
+        "age": 22,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 9.1,
+          "mechanics": 11.5,
+          "macro": 11.9,
+          "teamfight": 12.6,
+          "aggression": 9.5,
+          "consistency": 6,
+          "clutch": 9.2,
+          "potential": 13.4
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 90,
+          "csd15": -6.6,
+          "gd15": -226.9,
+          "xpd15": -43.1,
+          "dpm": 678.9,
+          "dmgShare": 26.9,
+          "kda": 6.3,
+          "kp": 69.3,
+          "vspm": 1.2
+        },
+        "ovr": 11.2,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 324
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-pollu-sup": {
+        "id": "oe-pollu-sup",
+        "handle": "Pollu",
+        "role": "SUP",
+        "age": 23,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 7.4,
+          "mechanics": 10.2,
+          "macro": 9.1,
+          "teamfight": 11.3,
+          "aggression": 12.5,
+          "consistency": 10.9,
+          "clutch": 7.4,
+          "potential": 13.1
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 101,
+          "csd15": -2.1,
+          "gd15": -119.5,
+          "xpd15": -212.3,
+          "dpm": 193.8,
+          "dmgShare": 7.9,
+          "kda": 3.9,
+          "kp": 74.1,
+          "vspm": 3.5
+        },
+        "ovr": 10.2,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 232
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-rich-top": {
+        "id": "oe-rich-top",
+        "handle": "Rich",
+        "role": "TOP",
+        "age": 27,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 6.2,
+          "mechanics": 13.2,
+          "macro": 13.6,
+          "teamfight": 14,
+          "aggression": 8.6,
+          "consistency": 14,
+          "clutch": 13.1,
+          "potential": 9.8
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 97,
+          "csd15": -7.2,
+          "gd15": -275.4,
+          "xpd15": -263.8,
+          "dpm": 597.2,
+          "dmgShare": 24,
+          "kda": 4,
+          "kp": 57.4,
+          "vspm": 1.1
+        },
+        "ovr": 11.1,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 313
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-sponge-jgl": {
+        "id": "oe-sponge-jgl",
+        "handle": "Sponge",
+        "role": "JGL",
+        "age": 21,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 9.8,
+          "mechanics": 13,
+          "macro": 12.6,
+          "teamfight": 14.5,
+          "aggression": 13.5,
+          "consistency": 13.5,
+          "clutch": 13.3,
+          "potential": 16.1
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 97,
+          "csd15": -0.9,
+          "gd15": -68.9,
+          "xpd15": -117.7,
+          "dpm": 441.1,
+          "dmgShare": 17.6,
+          "kda": 4.5,
+          "kp": 74.8,
+          "vspm": 1.6
+        },
+        "ovr": 13.1,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 592
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-ucal-mid": {
+        "id": "oe-ucal-mid",
+        "handle": "Ucal",
+        "role": "MID",
+        "age": 25,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 11.5,
+          "mechanics": 9.1,
+          "macro": 8.8,
+          "teamfight": 11.9,
+          "aggression": 15.6,
+          "consistency": 6.7,
+          "clutch": 9.8,
+          "potential": 11.5
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 58,
+          "csd15": -0.4,
+          "gd15": -93.4,
+          "xpd15": -65.6,
+          "dpm": 611.6,
+          "dmgShare": 25,
+          "kda": 4.5,
+          "kp": 64.5,
+          "vspm": 1
+        },
+        "ovr": 10.6,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 265
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-andil-sup": {
+        "id": "oe-andil-sup",
+        "handle": "Andil",
+        "role": "SUP",
+        "age": 22,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 11.3,
+          "mechanics": 9.8,
+          "macro": 7.4,
+          "teamfight": 11.7,
+          "aggression": 12.9,
+          "consistency": 15.7,
+          "clutch": 7.7,
+          "potential": 14.8
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 87,
+          "csd15": 1.4,
+          "gd15": -83.5,
+          "xpd15": -16.3,
+          "dpm": 197.9,
+          "dmgShare": 7.9,
+          "kda": 3.4,
+          "kp": 70.8,
+          "vspm": 3.2
+        },
+        "ovr": 10.2,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 232
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-dudu-top": {
+        "id": "oe-dudu-top",
+        "handle": "DuDu",
+        "role": "TOP",
+        "age": 22,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 15.4,
+          "mechanics": 9.8,
+          "macro": 9,
+          "teamfight": 11.5,
+          "aggression": 7.9,
+          "consistency": 9,
+          "clutch": 8.4,
+          "potential": 13.1
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 88,
+          "csd15": 3.1,
+          "gd15": 22.1,
+          "xpd15": 84.5,
+          "dpm": 575,
+          "dmgShare": 23.5,
+          "kda": 3.4,
+          "kp": 55.9,
+          "vspm": 0.9
+        },
+        "ovr": 11.4,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 347
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-pyosik-jgl": {
+        "id": "oe-pyosik-jgl",
+        "handle": "Pyosik",
+        "role": "JGL",
+        "age": 25,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 7,
+          "mechanics": 6.6,
+          "macro": 12.1,
+          "teamfight": 10.3,
+          "aggression": 7.7,
+          "consistency": 7,
+          "clutch": 6.4,
+          "potential": 11.9
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 85,
+          "csd15": -5.1,
+          "gd15": -171,
+          "xpd15": -219.1,
+          "dpm": 356.9,
+          "dmgShare": 14.6,
+          "kda": 4.5,
+          "kp": 76.8,
+          "vspm": 1.6
+        },
+        "ovr": 9.4,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 183
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-bulldog-mid": {
+        "id": "oe-bulldog-mid",
+        "handle": "BuLLDoG",
+        "role": "MID",
+        "age": 22,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 14.1,
+          "mechanics": 13.4,
+          "macro": 13.4,
+          "teamfight": 13.7,
+          "aggression": 8.5,
+          "consistency": 16,
+          "clutch": 12.4,
+          "potential": 14.5
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 76,
+          "csd15": -0.1,
+          "gd15": -78.3,
+          "xpd15": 51.5,
+          "dpm": 683,
+          "dmgShare": 27.7,
+          "kda": 3.8,
+          "kp": 68.6,
+          "vspm": 1.2
+        },
+        "ovr": 13.2,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 610
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-berserker-adc": {
+        "id": "oe-berserker-adc",
+        "handle": "Berserker",
+        "role": "ADC",
+        "age": 22,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 11.2,
+          "mechanics": 9.1,
+          "macro": 8.8,
+          "teamfight": 9.1,
+          "aggression": 8,
+          "consistency": 7.6,
+          "clutch": 9.7,
+          "potential": 16.1
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 88,
+          "csd15": 2,
+          "gd15": -0.2,
+          "xpd15": -72.1,
+          "dpm": 650.9,
+          "dmgShare": 26.4,
+          "kda": 5.1,
+          "kp": 69,
+          "vspm": 1.1
+        },
+        "ovr": 9.4,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 183
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-life-sup": {
+        "id": "oe-life-sup",
+        "handle": "Life",
+        "role": "SUP",
+        "age": 22,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 12.1,
+          "mechanics": 8.4,
+          "macro": 10.9,
+          "teamfight": 10.6,
+          "aggression": 8.7,
+          "consistency": 6.8,
+          "clutch": 12.2,
+          "potential": 14.5
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 80,
+          "csd15": 0.4,
+          "gd15": -18,
+          "xpd15": 0.7,
+          "dpm": 183.4,
+          "dmgShare": 7.7,
+          "kda": 3.6,
+          "kp": 75.3,
+          "vspm": 3.5
+        },
+        "ovr": 10.2,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 232
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-kingen-top": {
+        "id": "oe-kingen-top",
+        "handle": "Kingen",
+        "role": "TOP",
+        "age": 25,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 16.3,
+          "mechanics": 15.8,
+          "macro": 11.5,
+          "teamfight": 11.9,
+          "aggression": 13.2,
+          "consistency": 11.5,
+          "clutch": 7.4,
+          "potential": 10.5
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 117,
+          "csd15": 1.7,
+          "gd15": 135.8,
+          "xpd15": 134.8,
+          "dpm": 641.7,
+          "dmgShare": 25,
+          "kda": 3.8,
+          "kp": 54.9,
+          "vspm": 1
+        },
+        "ovr": 14.1,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 783
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-gideon-jgl": {
+        "id": "oe-gideon-jgl",
+        "handle": "GIDEON",
+        "role": "JGL",
+        "age": 22,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 12.6,
+          "mechanics": 8.5,
+          "macro": 11.2,
+          "teamfight": 9,
+          "aggression": 12.1,
+          "consistency": 8.1,
+          "clutch": 6,
+          "potential": 13
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 117,
+          "csd15": 0.3,
+          "gd15": -26.2,
+          "xpd15": 2.3,
+          "dpm": 394.6,
+          "dmgShare": 15.3,
+          "kda": 4.8,
+          "kp": 73.1,
+          "vspm": 1.6
+        },
+        "ovr": 10.6,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 265
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-jiwoo-adc": {
+        "id": "oe-jiwoo-adc",
+        "handle": "Jiwoo",
+        "role": "ADC",
+        "age": 21,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 11.2,
+          "mechanics": 10.2,
+          "macro": 6.7,
+          "teamfight": 9.5,
+          "aggression": 14.1,
+          "consistency": 9.5,
+          "clutch": 7.4,
+          "potential": 19.4
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 109,
+          "csd15": -3.4,
+          "gd15": -187.6,
+          "xpd15": 59.9,
+          "dpm": 687.5,
+          "dmgShare": 26.4,
+          "kda": 4.8,
+          "kp": 65.7,
+          "vspm": 1.1
+        },
+        "ovr": 10.1,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 225
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-lehends-sup": {
+        "id": "oe-lehends-sup",
+        "handle": "Lehends",
+        "role": "SUP",
+        "age": 27,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 13.3,
+          "mechanics": 13.3,
+          "macro": 9.1,
+          "teamfight": 11.7,
+          "aggression": 15.3,
+          "consistency": 7.7,
+          "clutch": 9.2,
+          "potential": 7.4
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 117,
+          "csd15": 0.8,
+          "gd15": -33,
+          "xpd15": 77.9,
+          "dpm": 228.9,
+          "dmgShare": 8.9,
+          "kda": 3.3,
+          "kp": 66.6,
+          "vspm": 3.4
+        },
+        "ovr": 11.8,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 395
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-clear-top": {
+        "id": "oe-clear-top",
+        "handle": "Clear",
+        "role": "TOP",
+        "age": 22,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 11.5,
+          "mechanics": 11.5,
+          "macro": 8.3,
+          "teamfight": 6.5,
+          "aggression": 9.4,
+          "consistency": 6.9,
+          "clutch": 19.5,
+          "potential": 12.7
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 95,
+          "csd15": -1.9,
+          "gd15": -87.3,
+          "xpd15": -13.7,
+          "dpm": 589.1,
+          "dmgShare": 21.7,
+          "kda": 4.7,
+          "kp": 52.2,
+          "vspm": 0.9
+        },
+        "ovr": 9.7,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 199
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-raptor-jgl": {
+        "id": "oe-raptor-jgl",
+        "handle": "Raptor",
+        "role": "JGL",
+        "age": 23,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 7.7,
+          "mechanics": 14.5,
+          "macro": 9.8,
+          "teamfight": 13,
+          "aggression": 16.9,
+          "consistency": 15,
+          "clutch": 19.5,
+          "potential": 11.6
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 105,
+          "csd15": -5.3,
+          "gd15": -96.1,
+          "xpd15": -190.1,
+          "dpm": 472,
+          "dmgShare": 17.3,
+          "kda": 5.4,
+          "kp": 73.6,
+          "vspm": 1.5
+        },
+        "ovr": 12.7,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 526
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-vicla-mid": {
+        "id": "oe-vicla-mid",
+        "handle": "VicLa",
+        "role": "MID",
+        "age": 23,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 8.2,
+          "mechanics": 10.8,
+          "macro": 9.5,
+          "teamfight": 10.2,
+          "aggression": 13.4,
+          "consistency": 10.5,
+          "clutch": 19.5,
+          "potential": 12.9
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 97,
+          "csd15": -3.6,
+          "gd15": -169.6,
+          "xpd15": -94.7,
+          "dpm": 680.4,
+          "dmgShare": 25,
+          "kda": 4.6,
+          "kp": 65.6,
+          "vspm": 1.1
+        },
+        "ovr": 10,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 218
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-diable-adc": {
+        "id": "oe-diable-adc",
+        "handle": "Diable",
+        "role": "ADC",
+        "age": 21,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 16.4,
+          "mechanics": 14.8,
+          "macro": 15.6,
+          "teamfight": 17.1,
+          "aggression": 14.1,
+          "consistency": 11.5,
+          "clutch": 19.5,
+          "potential": 15.5
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 105,
+          "csd15": 4,
+          "gd15": 150.3,
+          "xpd15": 228.5,
+          "dpm": 759.5,
+          "dmgShare": 27.7,
+          "kda": 6.6,
+          "kp": 72.7,
+          "vspm": 1.2
+        },
+        "ovr": 15.8,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 1184
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-kellin-sup": {
+        "id": "oe-kellin-sup",
+        "handle": "Kellin",
+        "role": "SUP",
+        "age": 25,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 7.7,
+          "mechanics": 14.5,
+          "macro": 14.1,
+          "teamfight": 14.1,
+          "aggression": 13.3,
+          "consistency": 12.1,
+          "clutch": 19.5,
+          "potential": 10.9
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 105,
+          "csd15": -2.5,
+          "gd15": -69.3,
+          "xpd15": -293.5,
+          "dpm": 222.8,
+          "dmgShare": 8.3,
+          "kda": 5,
+          "kp": 77,
+          "vspm": 3.6
+        },
+        "ovr": 13.4,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 646
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-perfect-top": {
+        "id": "oe-perfect-top",
+        "handle": "PerfecT",
+        "role": "TOP",
+        "age": 21,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 7.9,
+          "mechanics": 7.5,
+          "macro": 8.6,
+          "teamfight": 7.9,
+          "aggression": 11,
+          "consistency": 10.2,
+          "clutch": 13.1,
+          "potential": 16
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 95,
+          "csd15": -4.6,
+          "gd15": -245.9,
+          "xpd15": -154.2,
+          "dpm": 512,
+          "dmgShare": 20.4,
+          "kda": 4.2,
+          "kp": 49.6,
+          "vspm": 1.1
+        },
+        "ovr": 8.2,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 151
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-cuzz-jgl": {
+        "id": "oe-cuzz-jgl",
+        "handle": "Cuzz",
+        "role": "JGL",
+        "age": 26,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 15,
+          "mechanics": 15.9,
+          "macro": 15.9,
+          "teamfight": 15.9,
+          "aggression": 13.5,
+          "consistency": 10.7,
+          "clutch": 15.2,
+          "potential": 9.9
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 114,
+          "csd15": 2.4,
+          "gd15": 74.9,
+          "xpd15": 35,
+          "dpm": 443.8,
+          "dmgShare": 17.5,
+          "kda": 6.4,
+          "kp": 74.4,
+          "vspm": 1.7
+        },
+        "ovr": 15.3,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 1056
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-bdd-mid": {
+        "id": "oe-bdd-mid",
+        "handle": "Bdd",
+        "role": "MID",
+        "age": 26,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 14.5,
+          "mechanics": 13.7,
+          "macro": 16.4,
+          "teamfight": 16.4,
+          "aggression": 16.4,
+          "consistency": 11.5,
+          "clutch": 17.3,
+          "potential": 8.7
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 114,
+          "csd15": 0.1,
+          "gd15": 42.9,
+          "xpd15": -68.4,
+          "dpm": 653.3,
+          "dmgShare": 26.1,
+          "kda": 6.3,
+          "kp": 70.9,
+          "vspm": 1.1
+        },
+        "ovr": 15.2,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 1031
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-deokdam-adc": {
+        "id": "oe-deokdam-adc",
+        "handle": "deokdam",
+        "role": "ADC",
+        "age": 25,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 7.3,
+          "mechanics": 14.8,
+          "macro": 11.2,
+          "teamfight": 14.5,
+          "aggression": 15.2,
+          "consistency": 6.7,
+          "clutch": 17.3,
+          "potential": 9.7
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 106,
+          "csd15": -8.1,
+          "gd15": -232.8,
+          "xpd15": -204.7,
+          "dpm": 703.8,
+          "dmgShare": 28.1,
+          "kda": 6.6,
+          "kp": 71.4,
+          "vspm": 1.1
+        },
+        "ovr": 12.7,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 526
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-siwoo-top": {
+        "id": "oe-siwoo-top",
+        "handle": "Siwoo",
+        "role": "TOP",
+        "age": 19,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 10.6,
+          "mechanics": 12.7,
+          "macro": 12.3,
+          "teamfight": 13.6,
+          "aggression": 11.9,
+          "consistency": 16.7,
+          "clutch": 15.2,
+          "potential": 19.4
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 131,
+          "csd15": -1.8,
+          "gd15": -87,
+          "xpd15": -162.5,
+          "dpm": 597.8,
+          "dmgShare": 22.7,
+          "kda": 4.4,
+          "kp": 55.3,
+          "vspm": 1
+        },
+        "ovr": 12.1,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 436
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-lucid-jgl": {
+        "id": "oe-lucid-jgl",
+        "handle": "Lucid",
+        "role": "JGL",
+        "age": 20,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 18,
+          "mechanics": 13,
+          "macro": 14.5,
+          "teamfight": 15,
+          "aggression": 7.7,
+          "consistency": 12.1,
+          "clutch": 7.4,
+          "potential": 15.9
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 131,
+          "csd15": 3.7,
+          "gd15": 97.8,
+          "xpd15": 139.9,
+          "dpm": 421.1,
+          "dmgShare": 15.9,
+          "kda": 6.5,
+          "kp": 74.7,
+          "vspm": 1.7
+        },
+        "ovr": 13.2,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 610
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-showmaker-mid": {
+        "id": "oe-showmaker-mid",
+        "handle": "ShowMaker",
+        "role": "MID",
+        "age": 25,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 13,
+          "mechanics": 12.3,
+          "macro": 15.6,
+          "teamfight": 12.6,
+          "aggression": 10.8,
+          "consistency": 9.5,
+          "clutch": 6,
+          "potential": 9.5
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 131,
+          "csd15": -1.7,
+          "gd15": 7.3,
+          "xpd15": 0.4,
+          "dpm": 640.6,
+          "dmgShare": 24.5,
+          "kda": 6.9,
+          "kp": 68.4,
+          "vspm": 1.2
+        },
+        "ovr": 13.1,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 592
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-aiming-adc": {
+        "id": "oe-aiming-adc",
+        "handle": "Aiming",
+        "role": "ADC",
+        "age": 25,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 13.4,
+          "mechanics": 17.1,
+          "macro": 16.4,
+          "teamfight": 16.4,
+          "aggression": 6.7,
+          "consistency": 13.7,
+          "clutch": 6,
+          "potential": 11.9
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 131,
+          "csd15": 4,
+          "gd15": 124.4,
+          "xpd15": 0.5,
+          "dpm": 742.4,
+          "dmgShare": 28.1,
+          "kda": 8.3,
+          "kp": 72.9,
+          "vspm": 1.2
+        },
+        "ovr": 15.2,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 1031
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-beryl-sup": {
+        "id": "oe-beryl-sup",
+        "handle": "BeryL",
+        "role": "SUP",
+        "age": 28,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 17.8,
+          "mechanics": 15.3,
+          "macro": 10.9,
+          "teamfight": 10,
+          "aggression": 9.1,
+          "consistency": 8.7,
+          "clutch": 6,
+          "potential": 7.1
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 131,
+          "csd15": 2.3,
+          "gd15": 50.4,
+          "xpd15": 292.9,
+          "dpm": 229.3,
+          "dmgShare": 8.8,
+          "kda": 4.6,
+          "kp": 71,
+          "vspm": 3.4
+        },
+        "ovr": 11.6,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 370
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-doran-top": {
+        "id": "oe-doran-top",
+        "handle": "Doran",
+        "role": "TOP",
+        "age": 25,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 16.7,
+          "mechanics": 13.6,
+          "macro": 17.2,
+          "teamfight": 13.2,
+          "aggression": 16.7,
+          "consistency": 15.4,
+          "clutch": 17.3,
+          "potential": 10.2
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 115,
+          "csd15": 2.6,
+          "gd15": 172.1,
+          "xpd15": 87.4,
+          "dpm": 629.1,
+          "dmgShare": 22.5,
+          "kda": 4.5,
+          "kp": 57.6,
+          "vspm": 1.1
+        },
+        "ovr": 15.4,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 1081
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-oner-jgl": {
+        "id": "oe-oner-jgl",
+        "handle": "Oner",
+        "role": "JGL",
+        "age": 22,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 18.5,
+          "mechanics": 18,
+          "macro": 13.5,
+          "teamfight": 15.9,
+          "aggression": 14.5,
+          "consistency": 19.5,
+          "clutch": 17.3,
+          "potential": 14.2
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 115,
+          "csd15": 3.2,
+          "gd15": 137.1,
+          "xpd15": 163.9,
+          "dpm": 495.9,
+          "dmgShare": 17.5,
+          "kda": 7,
+          "kp": 74,
+          "vspm": 1.5
+        },
+        "ovr": 15.4,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 1081
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-faker-mid": {
+        "id": "oe-faker-mid",
+        "handle": "Faker",
+        "role": "MID",
+        "age": 29,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 8.8,
+          "mechanics": 12.3,
+          "macro": 9.1,
+          "teamfight": 8.5,
+          "aggression": 10.5,
+          "consistency": 14.8,
+          "clutch": 9.2,
+          "potential": 6.6
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 115,
+          "csd15": -3.2,
+          "gd15": -126.5,
+          "xpd15": -112.1,
+          "dpm": 679.3,
+          "dmgShare": 24.3,
+          "kda": 6.8,
+          "kp": 61,
+          "vspm": 1
+        },
+        "ovr": 9.9,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 211
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-gumayusi-adc": {
+        "id": "oe-gumayusi-adc",
+        "handle": "Gumayusi",
+        "role": "ADC",
+        "age": 23,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 17.1,
+          "mechanics": 15.6,
+          "macro": 13.4,
+          "teamfight": 14.1,
+          "aggression": 11.5,
+          "consistency": 10.5,
+          "clutch": 15.2,
+          "potential": 12.6
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 91,
+          "csd15": 6.5,
+          "gd15": 184.1,
+          "xpd15": 67.1,
+          "dpm": 769.6,
+          "dmgShare": 27.2,
+          "kda": 7.7,
+          "kp": 69.8,
+          "vspm": 1.2
+        },
+        "ovr": 14.9,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 959
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-keria-sup": {
+        "id": "oe-keria-sup",
+        "handle": "Keria",
+        "role": "SUP",
+        "age": 23,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 15.3,
+          "mechanics": 18.2,
+          "macro": 16.5,
+          "teamfight": 16.5,
+          "aggression": 13.7,
+          "consistency": 18.2,
+          "clutch": 17.3,
+          "potential": 12.3
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 115,
+          "csd15": 0,
+          "gd15": 87,
+          "xpd15": 105.2,
+          "dpm": 248.2,
+          "dmgShare": 8.9,
+          "kda": 6.6,
+          "kp": 75.6,
+          "vspm": 3.8
+        },
+        "ovr": 16.1,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 1265
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-kiin-top": {
+        "id": "oe-kiin-top",
+        "handle": "Kiin",
+        "role": "TOP",
+        "age": 26,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 15.8,
+          "mechanics": 14.9,
+          "macro": 18.6,
+          "teamfight": 14,
+          "aggression": 11,
+          "consistency": 19.5,
+          "clutch": 11.1,
+          "potential": 8.3
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 121,
+          "csd15": 3.6,
+          "gd15": 69.9,
+          "xpd15": 44.7,
+          "dpm": 634.5,
+          "dmgShare": 22.2,
+          "kda": 5.8,
+          "kp": 59.5,
+          "vspm": 1.1
+        },
+        "ovr": 15.4,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 1081
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-canyon-jgl": {
+        "id": "oe-canyon-jgl",
+        "handle": "Canyon",
+        "role": "JGL",
+        "age": 24,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 17.5,
+          "mechanics": 15.4,
+          "macro": 11.6,
+          "teamfight": 8.5,
+          "aggression": 9,
+          "consistency": 18,
+          "clutch": 9.2,
+          "potential": 10.3
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 121,
+          "csd15": 2.8,
+          "gd15": 96.9,
+          "xpd15": 205.8,
+          "dpm": 456.6,
+          "dmgShare": 15.7,
+          "kda": 7.4,
+          "kp": 69.6,
+          "vspm": 1.6
+        },
+        "ovr": 11.4,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 347
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-chovy-mid": {
+        "id": "oe-chovy-mid",
+        "handle": "Chovy",
+        "role": "MID",
+        "age": 24,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 19.5,
+          "mechanics": 18.7,
+          "macro": 17.5,
+          "teamfight": 16,
+          "aggression": 11.2,
+          "consistency": 18.3,
+          "clutch": 7.4,
+          "potential": 11.6
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 121,
+          "csd15": 9.6,
+          "gd15": 327.8,
+          "xpd15": 353,
+          "dpm": 775.2,
+          "dmgShare": 27.3,
+          "kda": 7.8,
+          "kp": 68,
+          "vspm": 1.3
+        },
+        "ovr": 17.5,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 1684
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-ruler-adc": {
+        "id": "oe-ruler-adc",
+        "handle": "Ruler",
+        "role": "ADC",
+        "age": 26,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 17.9,
+          "mechanics": 17.5,
+          "macro": 17.5,
+          "teamfight": 16.4,
+          "aggression": 12.4,
+          "consistency": 18.3,
+          "clutch": 13.1,
+          "potential": 8.8
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 121,
+          "csd15": 4.7,
+          "gd15": 252.2,
+          "xpd15": 116.6,
+          "dpm": 787.6,
+          "dmgShare": 27.7,
+          "kda": 7.9,
+          "kp": 70.2,
+          "vspm": 1.4
+        },
+        "ovr": 16.9,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 1497
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-duro-sup": {
+        "id": "oe-duro-sup",
+        "handle": "Duro",
+        "role": "SUP",
+        "age": 21,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 9.1,
+          "mechanics": 12.1,
+          "macro": 14.1,
+          "teamfight": 11.7,
+          "aggression": 10.2,
+          "consistency": 19.5,
+          "clutch": 11.1,
+          "potential": 15.7
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 121,
+          "csd15": -5.5,
+          "gd15": 19.8,
+          "xpd15": -84.9,
+          "dpm": 203.5,
+          "dmgShare": 7.1,
+          "kda": 6.8,
+          "kp": 74.9,
+          "vspm": 3.6
+        },
+        "ovr": 12,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 422
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-zeus-top": {
+        "id": "oe-zeus-top",
+        "handle": "Zeus",
+        "role": "TOP",
+        "age": 21,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 19.5,
+          "mechanics": 14.5,
+          "macro": 15.4,
+          "teamfight": 15.8,
+          "aggression": 16.3,
+          "consistency": 18.1,
+          "clutch": 9.2,
+          "potential": 16.2
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 121,
+          "csd15": 5.8,
+          "gd15": 299.9,
+          "xpd15": 269.7,
+          "dpm": 630,
+          "dmgShare": 23.2,
+          "kda": 4.4,
+          "kp": 58.9,
+          "vspm": 1
+        },
+        "ovr": 16.5,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 1378
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-peanut-jgl": {
+        "id": "oe-peanut-jgl",
+        "handle": "Peanut",
+        "role": "JGL",
+        "age": 27,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 10.3,
+          "mechanics": 9.8,
+          "macro": 11.6,
+          "teamfight": 8.5,
+          "aggression": 15.4,
+          "consistency": 16.4,
+          "clutch": 13.1,
+          "potential": 7.7
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 121,
+          "csd15": -1.8,
+          "gd15": -53.9,
+          "xpd15": -76.4,
+          "dpm": 414,
+          "dmgShare": 15.3,
+          "kda": 6.2,
+          "kp": 70.6,
+          "vspm": 1.6
+        },
+        "ovr": 11.4,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 347
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-zeka-mid": {
+        "id": "oe-zeka-mid",
+        "handle": "Zeka",
+        "role": "MID",
+        "age": 24,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 14.5,
+          "mechanics": 14.1,
+          "macro": 14.8,
+          "teamfight": 13,
+          "aggression": 13.4,
+          "consistency": 17.1,
+          "clutch": 15.2,
+          "potential": 15.1
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 121,
+          "csd15": -0.4,
+          "gd15": 66.1,
+          "xpd15": -31.5,
+          "dpm": 682.3,
+          "dmgShare": 25.3,
+          "kda": 6.5,
+          "kp": 64.2,
+          "vspm": 1.2
+        },
+        "ovr": 14.1,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 783
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-viper-adc": {
+        "id": "oe-viper-adc",
+        "handle": "Viper",
+        "role": "ADC",
+        "age": 24,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 12.6,
+          "mechanics": 18.7,
+          "macro": 14.8,
+          "teamfight": 16,
+          "aggression": 12.3,
+          "consistency": 12.6,
+          "clutch": 11.1,
+          "potential": 14.1
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 121,
+          "csd15": 0.5,
+          "gd15": 52,
+          "xpd15": 55.6,
+          "dpm": 778.2,
+          "dmgShare": 28.7,
+          "kda": 8,
+          "kp": 69.8,
+          "vspm": 1.3
+        },
+        "ovr": 15.6,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 1132
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-delight-sup": {
+        "id": "oe-delight-sup",
+        "handle": "Delight",
+        "role": "SUP",
+        "age": 24,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 18.2,
+          "mechanics": 12.5,
+          "macro": 16.5,
+          "teamfight": 10.9,
+          "aggression": 12.5,
+          "consistency": 16.9,
+          "clutch": 15.2,
+          "potential": 12.8
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 121,
+          "csd15": 4.6,
+          "gd15": 108.2,
+          "xpd15": 90.6,
+          "dpm": 205.6,
+          "dmgShare": 7.6,
+          "kda": 6.4,
+          "kp": 75.9,
+          "vspm": 3.6
+        },
+        "ovr": 14,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 2,
+          "salary": 762
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-teddy-adc": {
+        "id": "oe-teddy-adc",
+        "handle": "Teddy",
+        "role": "ADC",
+        "age": 27,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 9.8,
+          "mechanics": 9.5,
+          "macro": 15.2,
+          "teamfight": 11.5,
+          "aggression": 14.1,
+          "consistency": 8.5,
+          "clutch": 10,
+          "potential": 6.3
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 62,
+          "csd15": -3,
+          "gd15": -65,
+          "xpd15": -166,
+          "dpm": 667.3,
+          "dmgShare": 25.7,
+          "kda": 5.2,
+          "kp": 71.3,
+          "vspm": 1.2
+        },
+        "ovr": 11.2,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 3,
+          "salary": 324
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-peter-sup": {
+        "id": "oe-peter-sup",
+        "handle": "Peter",
+        "role": "SUP",
+        "age": 26,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 11.7,
+          "mechanics": 10.6,
+          "macro": 14.1,
+          "teamfight": 11.3,
+          "aggression": 12.9,
+          "consistency": 9.8,
+          "clutch": 13.1,
+          "potential": 8
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 92,
+          "csd15": 0.5,
+          "gd15": 25.5,
+          "xpd15": -88.9,
+          "dpm": 195.5,
+          "dmgShare": 7.7,
+          "kda": 5,
+          "kp": 74.1,
+          "vspm": 3.7
+        },
+        "ovr": 12.5,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 494
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-calix-mid": {
+        "id": "oe-calix-mid",
+        "handle": "Calix",
+        "role": "MID",
+        "age": 26,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 14.1,
+          "mechanics": 7,
+          "macro": 10.8,
+          "teamfight": 6.7,
+          "aggression": 12.3,
+          "consistency": 7.6,
+          "clutch": 11.1,
+          "potential": 10.3
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 77,
+          "csd15": -0.5,
+          "gd15": -62.3,
+          "xpd15": 54.2,
+          "dpm": 590.5,
+          "dmgShare": 23,
+          "kda": 4.3,
+          "kp": 59.7,
+          "vspm": 1.1
+        },
+        "ovr": 9.8,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 205
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "oe-croco-jgl": {
+        "id": "oe-croco-jgl",
+        "handle": "Croco",
+        "role": "JGL",
+        "age": 21,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 13,
+          "mechanics": 12.6,
+          "macro": 13,
+          "teamfight": 15.4,
+          "aggression": 13.5,
+          "consistency": 6,
+          "clutch": 11.1,
+          "potential": 15.7
+        },
+        "provenance": {
+          "laning": "derived",
+          "mechanics": "derived",
+          "macro": "derived",
+          "teamfight": "derived",
+          "aggression": "derived",
+          "consistency": "derived",
+          "clutch": "derived",
+          "potential": "modeled"
+        },
+        "rawMetrics": {
+          "games": 64,
+          "csd15": 0.8,
+          "gd15": -51.8,
+          "xpd15": 15,
+          "dpm": 440.3,
+          "dmgShare": 17.2,
+          "kda": 5.5,
+          "kp": 76.4,
+          "vspm": 1.4
+        },
+        "ovr": 13.6,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 1,
+          "salary": 683
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "fa-haru": {
+        "id": "fa-haru",
+        "handle": "Haru",
+        "role": "TOP",
+        "age": 17,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 8.5,
+          "mechanics": 11.2,
+          "macro": 11,
+          "teamfight": 8.6,
+          "aggression": 12.2,
+          "consistency": 9.6,
+          "clutch": 9.2,
+          "potential": 16.8
+        },
+        "provenance": {
+          "laning": "modeled",
+          "mechanics": "modeled",
+          "macro": "modeled",
+          "teamfight": "modeled",
+          "aggression": "modeled",
+          "consistency": "modeled",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "ovr": 10,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 0,
+          "salary": 137
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "fa-bitmap": {
+        "id": "fa-bitmap",
+        "handle": "Bitmap",
+        "role": "JGL",
+        "age": 19,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 11.2,
+          "mechanics": 8.9,
+          "macro": 10.4,
+          "teamfight": 12.3,
+          "aggression": 12.1,
+          "consistency": 9.7,
+          "clutch": 10.9,
+          "potential": 16.6
+        },
+        "provenance": {
+          "laning": "modeled",
+          "mechanics": "modeled",
+          "macro": "modeled",
+          "teamfight": "modeled",
+          "aggression": "modeled",
+          "consistency": "modeled",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "ovr": 11,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 0,
+          "salary": 216
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "fa-cricket": {
+        "id": "fa-cricket",
+        "handle": "Cricket",
+        "role": "MID",
+        "age": 18,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 8.3,
+          "mechanics": 12.8,
+          "macro": 9.9,
+          "teamfight": 10.1,
+          "aggression": 8.8,
+          "consistency": 11.2,
+          "clutch": 8.3,
+          "potential": 15.9
+        },
+        "provenance": {
+          "laning": "modeled",
+          "mechanics": "modeled",
+          "macro": "modeled",
+          "teamfight": "modeled",
+          "aggression": "modeled",
+          "consistency": "modeled",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "ovr": 10.3,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 0,
+          "salary": 214
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "fa-dawnfall": {
+        "id": "fa-dawnfall",
+        "handle": "Dawnfall",
+        "role": "ADC",
+        "age": 19,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 12,
+          "mechanics": 9.6,
+          "macro": 11.5,
+          "teamfight": 12.5,
+          "aggression": 9.2,
+          "consistency": 11,
+          "clutch": 9.6,
+          "potential": 15.6
+        },
+        "provenance": {
+          "laning": "modeled",
+          "mechanics": "modeled",
+          "macro": "modeled",
+          "teamfight": "modeled",
+          "aggression": "modeled",
+          "consistency": "modeled",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "ovr": 11.1,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 0,
+          "salary": 173
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "fa-ember": {
+        "id": "fa-ember",
+        "handle": "Ember",
+        "role": "SUP",
+        "age": 18,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 8.8,
+          "mechanics": 10.8,
+          "macro": 12.9,
+          "teamfight": 9.3,
+          "aggression": 9.7,
+          "consistency": 8.2,
+          "clutch": 9.1,
+          "potential": 16
+        },
+        "provenance": {
+          "laning": "modeled",
+          "mechanics": "modeled",
+          "macro": "modeled",
+          "teamfight": "modeled",
+          "aggression": "modeled",
+          "consistency": "modeled",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "ovr": 10.7,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 0,
+          "salary": 212
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "fa-fjord": {
+        "id": "fa-fjord",
+        "handle": "Fjord",
+        "role": "TOP",
+        "age": 17,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 8.4,
+          "mechanics": 12.9,
+          "macro": 9.4,
+          "teamfight": 10.3,
+          "aggression": 8.3,
+          "consistency": 11.4,
+          "clutch": 11.1,
+          "potential": 12.9
+        },
+        "provenance": {
+          "laning": "modeled",
+          "mechanics": "modeled",
+          "macro": "modeled",
+          "teamfight": "modeled",
+          "aggression": "modeled",
+          "consistency": "modeled",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "ovr": 10.1,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 0,
+          "salary": 187
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "fa-glacier": {
+        "id": "fa-glacier",
+        "handle": "Glacier",
+        "role": "JGL",
+        "age": 19,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 12,
+          "mechanics": 9.3,
+          "macro": 10.8,
+          "teamfight": 8.1,
+          "aggression": 12.7,
+          "consistency": 9.2,
+          "clutch": 8.2,
+          "potential": 16.4
+        },
+        "provenance": {
+          "laning": "modeled",
+          "mechanics": "modeled",
+          "macro": "modeled",
+          "teamfight": "modeled",
+          "aggression": "modeled",
+          "consistency": "modeled",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "ovr": 10.5,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 0,
+          "salary": 190
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "fa-halcyon": {
+        "id": "fa-halcyon",
+        "handle": "Halcyon",
+        "role": "MID",
+        "age": 19,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 10.2,
+          "mechanics": 13,
+          "macro": 8.4,
+          "teamfight": 12.1,
+          "aggression": 9.2,
+          "consistency": 10.5,
+          "clutch": 11.5,
+          "potential": 14.6
+        },
+        "provenance": {
+          "laning": "modeled",
+          "mechanics": "modeled",
+          "macro": "modeled",
+          "teamfight": "modeled",
+          "aggression": "modeled",
+          "consistency": "modeled",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "ovr": 10.9,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 0,
+          "salary": 170
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "fa-ion": {
+        "id": "fa-ion",
+        "handle": "Ion",
+        "role": "ADC",
+        "age": 18,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 12.4,
+          "mechanics": 10,
+          "macro": 12.2,
+          "teamfight": 12.3,
+          "aggression": 9.5,
+          "consistency": 11.7,
+          "clutch": 11.1,
+          "potential": 17.7
+        },
+        "provenance": {
+          "laning": "modeled",
+          "mechanics": "modeled",
+          "macro": "modeled",
+          "teamfight": "modeled",
+          "aggression": "modeled",
+          "consistency": "modeled",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "ovr": 11.4,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 0,
+          "salary": 131
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      },
+      "fa-juniper": {
+        "id": "fa-juniper",
+        "handle": "Juniper",
+        "role": "SUP",
+        "age": 18,
+        "nationality": "KR",
+        "attributes": {
+          "laning": 11.2,
+          "mechanics": 11.5,
+          "macro": 8.4,
+          "teamfight": 10,
+          "aggression": 8.3,
+          "consistency": 9.6,
+          "clutch": 7.8,
+          "potential": 17.1
+        },
+        "provenance": {
+          "laning": "modeled",
+          "mechanics": "modeled",
+          "macro": "modeled",
+          "teamfight": "modeled",
+          "aggression": "modeled",
+          "consistency": "modeled",
+          "clutch": "modeled",
+          "potential": "modeled"
+        },
+        "ovr": 9.5,
+        "form": 0,
+        "morale": 60,
+        "fatigue": 0,
+        "contract": {
+          "years": 0,
+          "salary": 237
+        },
+        "seasonStats": {
+          "games": 0,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 0,
+          "assists": 0,
+          "cs": 0,
+          "damage": 0,
+          "mvps": 0,
+          "ratingSum": 0
+        },
+        "careerHistory": []
+      }
+    },
+    "fixtures": [
+      {
+        "id": "fx-0",
+        "week": 1,
+        "blueId": "gen",
+        "redId": "dns",
+        "result": {
+          "blueTeamId": "gen",
+          "redTeamId": "dns",
+          "winner": "blue",
+          "durationMin": 22,
+          "goldTimeline": [
+            0,
+            370,
+            1193,
+            2133,
+            2311,
+            2296,
+            2468,
+            2816,
+            1491,
+            1963,
+            1863,
+            2612,
+            3490,
+            4432,
+            5559,
+            4791,
+            4338,
+            4602,
+            4021,
+            5069,
+            5800,
+            5265,
+            7472
+          ],
+          "events": [
+            {
+              "minute": 2,
+              "type": "FIRST_BLOOD",
+              "team": "blue",
+              "detail": "First blood — Canyon draws it against Pyosik",
+              "goldSwing": 457
+            },
+            {
+              "minute": 3,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Ruler finds BuLLDoG overextended",
+              "goldSwing": 310
+            },
+            {
+              "minute": 5,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "GEN secure the drake uncontested",
+              "goldSwing": 420
+            },
+            {
+              "minute": 8,
+              "type": "HERALD",
+              "team": "red",
+              "detail": "DNS bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 9,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Ruler punishes Berserker in the river",
+              "goldSwing": 300
+            },
+            {
+              "minute": 11,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "GEN take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 12,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "GEN steal the pit tempo — drake down",
+              "goldSwing": 420
+            },
+            {
+              "minute": 14,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "GEN take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 15,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Canyon picks off DuDu without vision",
+              "goldSwing": 352
+            },
+            {
+              "minute": 15,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Ruler finds Pyosik overextended",
+              "goldSwing": 310,
+              "minor": true
+            },
+            {
+              "minute": 15,
+              "type": "HERALD",
+              "team": "red",
+              "detail": "DNS bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 16,
+              "type": "KILL",
+              "team": "red",
+              "detail": "BuLLDoG collapses on Kiin",
+              "goldSwing": 315
+            },
+            {
+              "minute": 18,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "DNS take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 19,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Ruler picks off Pyosik without vision",
+              "goldSwing": 301
+            },
+            {
+              "minute": 19,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "GEN secure the drake uncontested",
+              "goldSwing": 420
+            },
+            {
+              "minute": 19,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "GEN take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 20,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Chovy collapses on Pyosik",
+              "goldSwing": 271
+            },
+            {
+              "minute": 20,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "GEN take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 21,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Chovy picks off Berserker without vision",
+              "goldSwing": 263
+            },
+            {
+              "minute": 22,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Canyon picks off BuLLDoG without vision",
+              "goldSwing": 356
+            },
+            {
+              "minute": 22,
+              "type": "BARON",
+              "team": "blue",
+              "detail": "GEN burn baron down and reset with the buff",
+              "goldSwing": 1400
+            },
+            {
+              "minute": 22,
+              "type": "NEXUS",
+              "team": "blue",
+              "detail": "GEN end it at 22 minutes",
+              "goldSwing": 0
+            }
+          ],
+          "playerLines": {
+            "oe-kiin-top": {
+              "k": 0,
+              "d": 1,
+              "a": 5,
+              "cs": 223,
+              "dmg": 10714,
+              "rating": 6.88
+            },
+            "oe-canyon-jgl": {
+              "k": 3,
+              "d": 0,
+              "a": 5,
+              "cs": 162,
+              "dmg": 9168,
+              "rating": 8.44
+            },
+            "oe-chovy-mid": {
+              "k": 2,
+              "d": 0,
+              "a": 5,
+              "cs": 258,
+              "dmg": 14747,
+              "rating": 8.35
+            },
+            "oe-ruler-adc": {
+              "k": 4,
+              "d": 0,
+              "a": 2,
+              "cs": 280,
+              "dmg": 17597,
+              "rating": 8.73
+            },
+            "oe-duro-sup": {
+              "k": 0,
+              "d": 0,
+              "a": 5,
+              "cs": 29,
+              "dmg": 4199,
+              "rating": 6.93
+            },
+            "oe-dudu-top": {
+              "k": 0,
+              "d": 1,
+              "a": 0,
+              "cs": 136,
+              "dmg": 7187,
+              "rating": 4.79
+            },
+            "oe-pyosik-jgl": {
+              "k": 0,
+              "d": 4,
+              "a": 0,
+              "cs": 88,
+              "dmg": 3779,
+              "rating": 3.19
+            },
+            "oe-bulldog-mid": {
+              "k": 1,
+              "d": 2,
+              "a": 0,
+              "cs": 162,
+              "dmg": 11106,
+              "rating": 5.87
+            },
+            "oe-berserker-adc": {
+              "k": 0,
+              "d": 2,
+              "a": 1,
+              "cs": 153,
+              "dmg": 7652,
+              "rating": 5.32
+            },
+            "oe-life-sup": {
+              "k": 0,
+              "d": 0,
+              "a": 1,
+              "cs": 18,
+              "dmg": 2895,
+              "rating": 5.69
+            }
+          },
+          "mvpPlayerId": "oe-ruler-adc",
+          "seed": 1000
+        }
+      },
+      {
+        "id": "fx-2",
+        "week": 1,
+        "blueId": "bro",
+        "redId": "hle",
+        "result": {
+          "blueTeamId": "bro",
+          "redTeamId": "hle",
+          "winner": "red",
+          "durationMin": 21,
+          "goldTimeline": [
+            0,
+            -515,
+            -369,
+            -1407,
+            -2693,
+            -2745,
+            -2248,
+            -3012,
+            -2753,
+            -3737,
+            -4936,
+            -4990,
+            -5360,
+            -5723,
+            -5440,
+            -5577,
+            -5756,
+            -4846,
+            -5356,
+            -6314,
+            -5832,
+            -7277
+          ],
+          "events": [
+            {
+              "minute": 3,
+              "type": "FIRST_BLOOD",
+              "team": "red",
+              "detail": "First blood — Viper draws it against Croco",
+              "goldSwing": 436
+            },
+            {
+              "minute": 6,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Zeka finds Pollu overextended",
+              "goldSwing": 355
+            },
+            {
+              "minute": 6,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "BRO secure the drake uncontested",
+              "goldSwing": 420
+            },
+            {
+              "minute": 8,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Hype solo kills Viper",
+              "goldSwing": 282
+            },
+            {
+              "minute": 9,
+              "type": "HERALD",
+              "team": "red",
+              "detail": "HLE bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 9,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "BRO take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 10,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Delight solo kills Pollu",
+              "goldSwing": 270
+            },
+            {
+              "minute": 10,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "HLE take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 11,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Zeka solo kills Pollu",
+              "goldSwing": 353
+            },
+            {
+              "minute": 11,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Zeus finds Pollu overextended",
+              "goldSwing": 300,
+              "minor": true
+            },
+            {
+              "minute": 12,
+              "type": "DRAGON",
+              "team": "red",
+              "detail": "HLE win the standoff and take dragon",
+              "goldSwing": 420
+            },
+            {
+              "minute": 12,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "HLE take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 13,
+              "type": "HERALD",
+              "team": "red",
+              "detail": "HLE bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 14,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "HLE take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 15,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "HLE take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 17,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Morgan picks off Delight without vision",
+              "goldSwing": 321
+            },
+            {
+              "minute": 18,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Zeka collapses on Morgan",
+              "goldSwing": 281
+            },
+            {
+              "minute": 19,
+              "type": "DRAGON",
+              "team": "red",
+              "detail": "HLE secure the drake uncontested",
+              "goldSwing": 420
+            },
+            {
+              "minute": 20,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Zeka collapses on Pollu",
+              "goldSwing": 350
+            },
+            {
+              "minute": 21,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Peanut collapses on Clozer",
+              "goldSwing": 326
+            },
+            {
+              "minute": 21,
+              "type": "BARON",
+              "team": "red",
+              "detail": "HLE burn baron down and reset with the buff",
+              "goldSwing": 1400
+            },
+            {
+              "minute": 21,
+              "type": "NEXUS",
+              "team": "red",
+              "detail": "HLE end it at 21 minutes",
+              "goldSwing": 0
+            }
+          ],
+          "playerLines": {
+            "oe-morgan-top": {
+              "k": 1,
+              "d": 1,
+              "a": 1,
+              "cs": 130,
+              "dmg": 7365,
+              "rating": 5.94
+            },
+            "oe-croco-jgl": {
+              "k": 0,
+              "d": 1,
+              "a": 0,
+              "cs": 94,
+              "dmg": 5485,
+              "rating": 4.55
+            },
+            "oe-clozer-mid": {
+              "k": 0,
+              "d": 1,
+              "a": 0,
+              "cs": 155,
+              "dmg": 10410,
+              "rating": 4.97
+            },
+            "oe-hype-adc": {
+              "k": 1,
+              "d": 0,
+              "a": 1,
+              "cs": 162,
+              "dmg": 11164,
+              "rating": 6.68
+            },
+            "oe-pollu-sup": {
+              "k": 0,
+              "d": 5,
+              "a": 2,
+              "cs": 18,
+              "dmg": 3142,
+              "rating": 3.69
+            },
+            "oe-zeus-top": {
+              "k": 1,
+              "d": 0,
+              "a": 3,
+              "cs": 204,
+              "dmg": 9709,
+              "rating": 7.39
+            },
+            "oe-peanut-jgl": {
+              "k": 1,
+              "d": 0,
+              "a": 4,
+              "cs": 133,
+              "dmg": 5557,
+              "rating": 7.33
+            },
+            "oe-zeka-mid": {
+              "k": 4,
+              "d": 0,
+              "a": 2,
+              "cs": 234,
+              "dmg": 13034,
+              "rating": 8.66
+            },
+            "oe-viper-adc": {
+              "k": 1,
+              "d": 1,
+              "a": 4,
+              "cs": 266,
+              "dmg": 15595,
+              "rating": 7.57
+            },
+            "oe-delight-sup": {
+              "k": 1,
+              "d": 1,
+              "a": 4,
+              "cs": 28,
+              "dmg": 4396,
+              "rating": 6.83
+            }
+          },
+          "mvpPlayerId": "oe-zeka-mid",
+          "seed": 1001
+        }
+      },
+      {
+        "id": "fx-4",
+        "week": 1,
+        "blueId": "t1",
+        "redId": "bfx",
+        "result": {
+          "blueTeamId": "t1",
+          "redTeamId": "bfx",
+          "winner": "blue",
+          "durationMin": 24,
+          "goldTimeline": [
+            0,
+            -345,
+            12,
+            543,
+            51,
+            58,
+            -112,
+            -191,
+            -184,
+            -310,
+            0,
+            -192,
+            164,
+            488,
+            921,
+            1613,
+            2652,
+            2120,
+            2841,
+            3672,
+            4916,
+            5457,
+            6153,
+            5837,
+            6254
+          ],
+          "events": [
+            {
+              "minute": 5,
+              "type": "FIRST_BLOOD",
+              "team": "red",
+              "detail": "First blood — Raptor draws it against Oner",
+              "goldSwing": 403
+            },
+            {
+              "minute": 5,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "T1 win the standoff and take dragon",
+              "goldSwing": 420
+            },
+            {
+              "minute": 7,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Oner solo kills VicLa",
+              "goldSwing": 270
+            },
+            {
+              "minute": 9,
+              "type": "HERALD",
+              "team": "red",
+              "detail": "BFX bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 9,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "BFX take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 10,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "T1 take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 12,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "T1 win the standoff and take dragon",
+              "goldSwing": 420
+            },
+            {
+              "minute": 13,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Doran finds VicLa overextended",
+              "goldSwing": 336
+            },
+            {
+              "minute": 15,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Faker collapses on Kellin",
+              "goldSwing": 260
+            },
+            {
+              "minute": 15,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Diable collapses on Faker",
+              "goldSwing": 280,
+              "minor": true
+            },
+            {
+              "minute": 15,
+              "type": "HERALD",
+              "team": "blue",
+              "detail": "T1 bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 16,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Oner picks off Raptor without vision",
+              "goldSwing": 313
+            },
+            {
+              "minute": 16,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Doran solo kills Kellin",
+              "goldSwing": 323,
+              "minor": true
+            },
+            {
+              "minute": 17,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Keria collapses on VicLa",
+              "goldSwing": 269
+            },
+            {
+              "minute": 18,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Oner finds Kellin overextended",
+              "goldSwing": 354
+            },
+            {
+              "minute": 18,
+              "type": "DRAGON",
+              "team": "red",
+              "detail": "BFX secure the drake uncontested",
+              "goldSwing": 420
+            },
+            {
+              "minute": 19,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Doran punishes VicLa in the river",
+              "goldSwing": 282
+            },
+            {
+              "minute": 19,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Keria finds VicLa overextended",
+              "goldSwing": 287,
+              "minor": true
+            },
+            {
+              "minute": 20,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Faker collapses on VicLa",
+              "goldSwing": 330
+            },
+            {
+              "minute": 20,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Doran picks off Raptor without vision",
+              "goldSwing": 304,
+              "minor": true
+            },
+            {
+              "minute": 20,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "T1 take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 21,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Gumayusi punishes Kellin in the river",
+              "goldSwing": 313
+            },
+            {
+              "minute": 21,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "BFX take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 22,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Keria finds Raptor overextended",
+              "goldSwing": 312
+            },
+            {
+              "minute": 22,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "T1 take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 24,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Doran collapses on VicLa",
+              "goldSwing": 334
+            },
+            {
+              "minute": 24,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Doran solo kills Raptor",
+              "goldSwing": 264,
+              "minor": true
+            },
+            {
+              "minute": 24,
+              "type": "NEXUS",
+              "team": "blue",
+              "detail": "T1 end it at 24 minutes",
+              "goldSwing": 0
+            }
+          ],
+          "playerLines": {
+            "oe-doran-top": {
+              "k": 6,
+              "d": 0,
+              "a": 7,
+              "cs": 226,
+              "dmg": 12805,
+              "rating": 9.75
+            },
+            "oe-oner-jgl": {
+              "k": 3,
+              "d": 1,
+              "a": 9,
+              "cs": 181,
+              "dmg": 12289,
+              "rating": 8.51
+            },
+            "oe-faker-mid": {
+              "k": 2,
+              "d": 1,
+              "a": 11,
+              "cs": 247,
+              "dmg": 12193,
+              "rating": 8.45
+            },
+            "oe-gumayusi-adc": {
+              "k": 1,
+              "d": 0,
+              "a": 9,
+              "cs": 287,
+              "dmg": 16982,
+              "rating": 8.42
+            },
+            "oe-keria-sup": {
+              "k": 3,
+              "d": 0,
+              "a": 9,
+              "cs": 35,
+              "dmg": 7509,
+              "rating": 8.68
+            },
+            "oe-clear-top": {
+              "k": 0,
+              "d": 0,
+              "a": 1,
+              "cs": 157,
+              "dmg": 7520,
+              "rating": 5.53
+            },
+            "oe-raptor-jgl": {
+              "k": 1,
+              "d": 4,
+              "a": 1,
+              "cs": 125,
+              "dmg": 9113,
+              "rating": 4.67
+            },
+            "oe-vicla-mid": {
+              "k": 0,
+              "d": 7,
+              "a": 2,
+              "cs": 173,
+              "dmg": 9480,
+              "rating": 3.23
+            },
+            "oe-diable-adc": {
+              "k": 1,
+              "d": 0,
+              "a": 0,
+              "cs": 202,
+              "dmg": 15308,
+              "rating": 6.27
+            },
+            "oe-kellin-sup": {
+              "k": 0,
+              "d": 4,
+              "a": 2,
+              "cs": 25,
+              "dmg": 5288,
+              "rating": 4.2
+            }
+          },
+          "mvpPlayerId": "oe-doran-top",
+          "seed": 1002
+        }
+      },
+      {
+        "id": "fx-6",
+        "week": 1,
+        "blueId": "ns",
+        "redId": "dk",
+        "result": {
+          "blueTeamId": "ns",
+          "redTeamId": "dk",
+          "winner": "blue",
+          "durationMin": 25,
+          "goldTimeline": [
+            0,
+            288,
+            34,
+            -409,
+            -1335,
+            -1052,
+            -1080,
+            -903,
+            -434,
+            -64,
+            1233,
+            193,
+            -358,
+            -289,
+            1181,
+            1346,
+            818,
+            1095,
+            1282,
+            1721,
+            1780,
+            1027,
+            2404,
+            3220,
+            3170,
+            6114
+          ],
+          "events": [
+            {
+              "minute": 2,
+              "type": "FIRST_BLOOD",
+              "team": "red",
+              "detail": "First blood — BeryL draws it against Lehends",
+              "goldSwing": 425
+            },
+            {
+              "minute": 2,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Jiwoo collapses on ShowMaker",
+              "goldSwing": 348,
+              "minor": true
+            },
+            {
+              "minute": 5,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "NS secure the drake uncontested",
+              "goldSwing": 420
+            },
+            {
+              "minute": 8,
+              "type": "KILL",
+              "team": "red",
+              "detail": "ShowMaker solo kills GIDEON",
+              "goldSwing": 298
+            },
+            {
+              "minute": 8,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Calix collapses on BeryL",
+              "goldSwing": 354,
+              "minor": true
+            },
+            {
+              "minute": 9,
+              "type": "HERALD",
+              "team": "blue",
+              "detail": "NS bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 10,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Calix picks off Lucid without vision",
+              "goldSwing": 271
+            },
+            {
+              "minute": 10,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "NS win the standoff and take dragon",
+              "goldSwing": 420
+            },
+            {
+              "minute": 11,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Lucid solo kills Calix",
+              "goldSwing": 356
+            },
+            {
+              "minute": 12,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Calix collapses on ShowMaker",
+              "goldSwing": 288
+            },
+            {
+              "minute": 14,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Lehends punishes Siwoo in the river",
+              "goldSwing": 345
+            },
+            {
+              "minute": 14,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Calix collapses on Lucid",
+              "goldSwing": 336,
+              "minor": true
+            },
+            {
+              "minute": 14,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Lehends finds Siwoo overextended",
+              "goldSwing": 282,
+              "minor": true
+            },
+            {
+              "minute": 14,
+              "type": "HERALD",
+              "team": "blue",
+              "detail": "NS bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 16,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "DK take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 17,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Calix collapses on Siwoo",
+              "goldSwing": 324
+            },
+            {
+              "minute": 17,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "GIDEON punishes Aiming in the river",
+              "goldSwing": 268,
+              "minor": true
+            },
+            {
+              "minute": 17,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "NS steal the pit tempo — drake down",
+              "goldSwing": 420
+            },
+            {
+              "minute": 18,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "GIDEON collapses on ShowMaker",
+              "goldSwing": 283
+            },
+            {
+              "minute": 19,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "GIDEON picks off Lucid without vision",
+              "goldSwing": 274
+            },
+            {
+              "minute": 19,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Calix picks off BeryL without vision",
+              "goldSwing": 261,
+              "minor": true
+            },
+            {
+              "minute": 21,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Siwoo punishes GIDEON in the river",
+              "goldSwing": 285
+            },
+            {
+              "minute": 21,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Aiming collapses on Kingen",
+              "goldSwing": 275,
+              "minor": true
+            },
+            {
+              "minute": 21,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "NS take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 22,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "GIDEON picks off Lucid without vision",
+              "goldSwing": 323
+            },
+            {
+              "minute": 22,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "NS complete the Dragon Soul — the map shrinks",
+              "goldSwing": 900
+            },
+            {
+              "minute": 23,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "GIDEON solo kills Siwoo",
+              "goldSwing": 353
+            },
+            {
+              "minute": 24,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Aiming punishes GIDEON in the river",
+              "goldSwing": 321
+            },
+            {
+              "minute": 24,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Calix punishes ShowMaker in the river",
+              "goldSwing": 354,
+              "minor": true
+            },
+            {
+              "minute": 24,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "DK take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 25,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Kingen collapses on BeryL",
+              "goldSwing": 303
+            },
+            {
+              "minute": 25,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Calix picks off BeryL without vision",
+              "goldSwing": 319,
+              "minor": true
+            },
+            {
+              "minute": 25,
+              "type": "BARON",
+              "team": "blue",
+              "detail": "NS burn baron down and reset with the buff",
+              "goldSwing": 1400
+            },
+            {
+              "minute": 25,
+              "type": "NEXUS",
+              "team": "blue",
+              "detail": "NS end it at 25 minutes",
+              "goldSwing": 0
+            }
+          ],
+          "playerLines": {
+            "oe-kingen-top": {
+              "k": 1,
+              "d": 1,
+              "a": 7,
+              "cs": 243,
+              "dmg": 11820,
+              "rating": 7.51
+            },
+            "oe-gideon-jgl": {
+              "k": 5,
+              "d": 3,
+              "a": 5,
+              "cs": 152,
+              "dmg": 7864,
+              "rating": 7.57
+            },
+            "oe-calix-mid": {
+              "k": 8,
+              "d": 1,
+              "a": 6,
+              "cs": 230,
+              "dmg": 10920,
+              "rating": 9.86
+            },
+            "oe-jiwoo-adc": {
+              "k": 1,
+              "d": 0,
+              "a": 9,
+              "cs": 265,
+              "dmg": 12661,
+              "rating": 8.3
+            },
+            "oe-lehends-sup": {
+              "k": 2,
+              "d": 1,
+              "a": 9,
+              "cs": 33,
+              "dmg": 6295,
+              "rating": 7.83
+            },
+            "oe-siwoo-top": {
+              "k": 1,
+              "d": 4,
+              "a": 3,
+              "cs": 173,
+              "dmg": 11178,
+              "rating": 4.65
+            },
+            "oe-lucid-jgl": {
+              "k": 1,
+              "d": 4,
+              "a": 3,
+              "cs": 126,
+              "dmg": 9210,
+              "rating": 4.53
+            },
+            "oe-showmaker-mid": {
+              "k": 1,
+              "d": 4,
+              "a": 1,
+              "cs": 192,
+              "dmg": 12757,
+              "rating": 4.25
+            },
+            "oe-aiming-adc": {
+              "k": 2,
+              "d": 1,
+              "a": 2,
+              "cs": 218,
+              "dmg": 17204,
+              "rating": 6.46
+            },
+            "oe-beryl-sup": {
+              "k": 1,
+              "d": 4,
+              "a": 4,
+              "cs": 25,
+              "dmg": 5288,
+              "rating": 4.55
+            }
+          },
+          "mvpPlayerId": "oe-calix-mid",
+          "seed": 1003
+        }
+      },
+      {
+        "id": "fx-8",
+        "week": 1,
+        "blueId": "kt",
+        "redId": "drx",
+        "result": {
+          "blueTeamId": "kt",
+          "redTeamId": "drx",
+          "winner": "red",
+          "durationMin": 21,
+          "goldTimeline": [
+            0,
+            -157,
+            -596,
+            -1085,
+            -1002,
+            -1496,
+            -1081,
+            -1693,
+            -719,
+            -1328,
+            -1086,
+            -1597,
+            -1935,
+            -2227,
+            -3006,
+            -3454,
+            -4104,
+            -4259,
+            -4463,
+            -4944,
+            -6292,
+            -7161
+          ],
+          "events": [
+            {
+              "minute": 2,
+              "type": "FIRST_BLOOD",
+              "team": "red",
+              "detail": "First blood — Andil draws it against Peter",
+              "goldSwing": 370
+            },
+            {
+              "minute": 5,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Andil collapses on Peter",
+              "goldSwing": 287
+            },
+            {
+              "minute": 5,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Sponge collapses on Cuzz",
+              "goldSwing": 352,
+              "minor": true
+            },
+            {
+              "minute": 5,
+              "type": "DRAGON",
+              "team": "red",
+              "detail": "DRX secure the drake uncontested",
+              "goldSwing": 420
+            },
+            {
+              "minute": 6,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Cuzz solo kills Sponge",
+              "goldSwing": 358
+            },
+            {
+              "minute": 8,
+              "type": "HERALD",
+              "team": "blue",
+              "detail": "KT bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 9,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "DRX take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 10,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "deokdam collapses on Sponge",
+              "goldSwing": 284
+            },
+            {
+              "minute": 10,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "KT take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 11,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Bdd punishes Andil in the river",
+              "goldSwing": 296
+            },
+            {
+              "minute": 11,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Sponge punishes deokdam in the river",
+              "goldSwing": 286,
+              "minor": true
+            },
+            {
+              "minute": 12,
+              "type": "DRAGON",
+              "team": "red",
+              "detail": "DRX secure the drake uncontested",
+              "goldSwing": 420
+            },
+            {
+              "minute": 14,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Rich solo kills PerfecT",
+              "goldSwing": 268
+            },
+            {
+              "minute": 14,
+              "type": "HERALD",
+              "team": "red",
+              "detail": "DRX bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 15,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "DRX take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 16,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Teddy punishes Peter in the river",
+              "goldSwing": 317
+            },
+            {
+              "minute": 17,
+              "type": "DRAGON",
+              "team": "red",
+              "detail": "DRX win the standoff and take dragon",
+              "goldSwing": 420
+            },
+            {
+              "minute": 17,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "KT take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 18,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Sponge punishes Peter in the river",
+              "goldSwing": 264
+            },
+            {
+              "minute": 19,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "DRX take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 20,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Sponge solo kills PerfecT",
+              "goldSwing": 353
+            },
+            {
+              "minute": 20,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Andil collapses on PerfecT",
+              "goldSwing": 288,
+              "minor": true
+            },
+            {
+              "minute": 20,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Rich collapses on PerfecT",
+              "goldSwing": 338,
+              "minor": true
+            },
+            {
+              "minute": 20,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Ucal solo kills Cuzz",
+              "goldSwing": 273,
+              "minor": true
+            },
+            {
+              "minute": 20,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "KT take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 21,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Ucal punishes Bdd in the river",
+              "goldSwing": 271
+            },
+            {
+              "minute": 21,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "DRX take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 21,
+              "type": "NEXUS",
+              "team": "red",
+              "detail": "DRX end it at 21 minutes",
+              "goldSwing": 0
+            }
+          ],
+          "playerLines": {
+            "oe-perfect-top": {
+              "k": 0,
+              "d": 4,
+              "a": 1,
+              "cs": 122,
+              "dmg": 4999,
+              "rating": 3.58
+            },
+            "oe-cuzz-jgl": {
+              "k": 1,
+              "d": 2,
+              "a": 1,
+              "cs": 106,
+              "dmg": 8169,
+              "rating": 5.25
+            },
+            "oe-bdd-mid": {
+              "k": 1,
+              "d": 1,
+              "a": 0,
+              "cs": 164,
+              "dmg": 12834,
+              "rating": 5.65
+            },
+            "oe-deokdam-adc": {
+              "k": 1,
+              "d": 1,
+              "a": 1,
+              "cs": 168,
+              "dmg": 12212,
+              "rating": 5.98
+            },
+            "oe-peter-sup": {
+              "k": 0,
+              "d": 4,
+              "a": 2,
+              "cs": 19,
+              "dmg": 3434,
+              "rating": 3.84
+            },
+            "oe-rich-top": {
+              "k": 2,
+              "d": 0,
+              "a": 6,
+              "cs": 206,
+              "dmg": 10724,
+              "rating": 8.35
+            },
+            "oe-sponge-jgl": {
+              "k": 4,
+              "d": 2,
+              "a": 7,
+              "cs": 140,
+              "dmg": 8350,
+              "rating": 8.28
+            },
+            "oe-ucal-mid": {
+              "k": 2,
+              "d": 0,
+              "a": 4,
+              "cs": 210,
+              "dmg": 9728,
+              "rating": 7.92
+            },
+            "oe-teddy-adc": {
+              "k": 1,
+              "d": 0,
+              "a": 5,
+              "cs": 211,
+              "dmg": 8380,
+              "rating": 7.61
+            },
+            "oe-andil-sup": {
+              "k": 3,
+              "d": 1,
+              "a": 6,
+              "cs": 26,
+              "dmg": 4810,
+              "rating": 7.87
+            }
+          },
+          "mvpPlayerId": "oe-rich-top",
+          "seed": 1004
+        }
+      },
+      {
+        "id": "fx-10",
+        "week": 2,
+        "blueId": "bro",
+        "redId": "gen",
+        "result": {
+          "blueTeamId": "bro",
+          "redTeamId": "gen",
+          "winner": "red",
+          "durationMin": 22,
+          "goldTimeline": [
+            0,
+            -608,
+            -1116,
+            -952,
+            -1047,
+            -1648,
+            -1131,
+            -1435,
+            -1960,
+            -2893,
+            -3324,
+            -3468,
+            -3570,
+            -3948,
+            -3722,
+            -3914,
+            -4329,
+            -4450,
+            -4896,
+            -4819,
+            -5564,
+            -6110,
+            -6638
+          ],
+          "events": [
+            {
+              "minute": 3,
+              "type": "FIRST_BLOOD",
+              "team": "red",
+              "detail": "First blood — Kiin draws it against Morgan",
+              "goldSwing": 369
+            },
+            {
+              "minute": 6,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "BRO win the standoff and take dragon",
+              "goldSwing": 420
+            },
+            {
+              "minute": 8,
+              "type": "HERALD",
+              "team": "red",
+              "detail": "GEN bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 9,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "GEN take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 11,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Chovy finds Pollu overextended",
+              "goldSwing": 317
+            },
+            {
+              "minute": 11,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "BRO win the standoff and take dragon",
+              "goldSwing": 420
+            },
+            {
+              "minute": 13,
+              "type": "HERALD",
+              "team": "red",
+              "detail": "GEN bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 16,
+              "type": "DRAGON",
+              "team": "red",
+              "detail": "GEN steal the pit tempo — drake down",
+              "goldSwing": 420
+            },
+            {
+              "minute": 16,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "GEN take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 17,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Ruler picks off Hype without vision",
+              "goldSwing": 304
+            },
+            {
+              "minute": 17,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "GEN take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 19,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Canyon solo kills Croco",
+              "goldSwing": 287
+            },
+            {
+              "minute": 19,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Clozer punishes Duro in the river",
+              "goldSwing": 291,
+              "minor": true
+            },
+            {
+              "minute": 19,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Clozer picks off Duro without vision",
+              "goldSwing": 316,
+              "minor": true
+            },
+            {
+              "minute": 19,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "GEN take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 20,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Chovy solo kills Morgan",
+              "goldSwing": 268
+            },
+            {
+              "minute": 20,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "GEN take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 21,
+              "type": "DRAGON",
+              "team": "red",
+              "detail": "GEN secure the drake uncontested",
+              "goldSwing": 420
+            },
+            {
+              "minute": 22,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Canyon picks off Croco without vision",
+              "goldSwing": 326
+            },
+            {
+              "minute": 22,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Canyon collapses on Morgan",
+              "goldSwing": 305,
+              "minor": true
+            },
+            {
+              "minute": 22,
+              "type": "NEXUS",
+              "team": "red",
+              "detail": "GEN end it at 22 minutes",
+              "goldSwing": 0
+            }
+          ],
+          "playerLines": {
+            "oe-morgan-top": {
+              "k": 0,
+              "d": 3,
+              "a": 1,
+              "cs": 139,
+              "dmg": 7221,
+              "rating": 4.33
+            },
+            "oe-croco-jgl": {
+              "k": 0,
+              "d": 2,
+              "a": 2,
+              "cs": 103,
+              "dmg": 6650,
+              "rating": 5.21
+            },
+            "oe-clozer-mid": {
+              "k": 2,
+              "d": 0,
+              "a": 0,
+              "cs": 161,
+              "dmg": 10696,
+              "rating": 6.8
+            },
+            "oe-hype-adc": {
+              "k": 0,
+              "d": 1,
+              "a": 1,
+              "cs": 175,
+              "dmg": 11883,
+              "rating": 5.54
+            },
+            "oe-pollu-sup": {
+              "k": 0,
+              "d": 1,
+              "a": 2,
+              "cs": 20,
+              "dmg": 3373,
+              "rating": 5.37
+            },
+            "oe-kiin-top": {
+              "k": 1,
+              "d": 0,
+              "a": 3,
+              "cs": 219,
+              "dmg": 10858,
+              "rating": 7.44
+            },
+            "oe-canyon-jgl": {
+              "k": 3,
+              "d": 0,
+              "a": 2,
+              "cs": 159,
+              "dmg": 8699,
+              "rating": 7.96
+            },
+            "oe-chovy-mid": {
+              "k": 2,
+              "d": 0,
+              "a": 4,
+              "cs": 258,
+              "dmg": 15257,
+              "rating": 8.35
+            },
+            "oe-ruler-adc": {
+              "k": 1,
+              "d": 0,
+              "a": 4,
+              "cs": 270,
+              "dmg": 15963,
+              "rating": 7.96
+            },
+            "oe-duro-sup": {
+              "k": 0,
+              "d": 2,
+              "a": 5,
+              "cs": 29,
+              "dmg": 4166,
+              "rating": 6.22
+            }
+          },
+          "mvpPlayerId": "oe-chovy-mid",
+          "seed": 1005
+        }
+      },
+      {
+        "id": "fx-12",
+        "week": 2,
+        "blueId": "dns",
+        "redId": "bfx",
+        "result": {
+          "blueTeamId": "dns",
+          "redTeamId": "bfx",
+          "winner": "red",
+          "durationMin": 40,
+          "goldTimeline": [
+            0,
+            594,
+            952,
+            1377,
+            1873,
+            1984,
+            1237,
+            2599,
+            1986,
+            2964,
+            2422,
+            1690,
+            1672,
+            1421,
+            165,
+            741,
+            575,
+            72,
+            -173,
+            -344,
+            199,
+            -2,
+            -711,
+            609,
+            369,
+            718,
+            -1149,
+            -238,
+            51,
+            577,
+            780,
+            1854,
+            1744,
+            1044,
+            373,
+            197,
+            -56,
+            -743,
+            -363,
+            -671,
+            -274
+          ],
+          "events": [
+            {
+              "minute": 1,
+              "type": "FIRST_BLOOD",
+              "team": "blue",
+              "detail": "First blood — DuDu draws it against Clear",
+              "goldSwing": 460
+            },
+            {
+              "minute": 3,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Pyosik collapses on Clear",
+              "goldSwing": 359
+            },
+            {
+              "minute": 4,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "BuLLDoG collapses on Kellin",
+              "goldSwing": 305
+            },
+            {
+              "minute": 6,
+              "type": "DRAGON",
+              "team": "red",
+              "detail": "BFX secure the drake uncontested",
+              "goldSwing": 420
+            },
+            {
+              "minute": 7,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "BuLLDoG collapses on Kellin",
+              "goldSwing": 327
+            },
+            {
+              "minute": 9,
+              "type": "HERALD",
+              "team": "blue",
+              "detail": "DNS bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 13,
+              "type": "DRAGON",
+              "team": "red",
+              "detail": "BFX steal the pit tempo — drake down",
+              "goldSwing": 420
+            },
+            {
+              "minute": 14,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Kellin picks off Berserker without vision",
+              "goldSwing": 295
+            },
+            {
+              "minute": 14,
+              "type": "HERALD",
+              "team": "red",
+              "detail": "BFX bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 15,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "DuDu collapses on Clear",
+              "goldSwing": 263
+            },
+            {
+              "minute": 16,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Diable punishes Berserker in the river",
+              "goldSwing": 351
+            },
+            {
+              "minute": 17,
+              "type": "KILL",
+              "team": "red",
+              "detail": "VicLa solo kills Life",
+              "goldSwing": 360
+            },
+            {
+              "minute": 17,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "DuDu solo kills Kellin",
+              "goldSwing": 326,
+              "minor": true
+            },
+            {
+              "minute": 17,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "BFX take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 18,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Raptor solo kills Pyosik",
+              "goldSwing": 346
+            },
+            {
+              "minute": 19,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Berserker picks off Kellin without vision",
+              "goldSwing": 314
+            },
+            {
+              "minute": 19,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Pyosik collapses on Diable",
+              "goldSwing": 319,
+              "minor": true
+            },
+            {
+              "minute": 19,
+              "type": "DRAGON",
+              "team": "red",
+              "detail": "BFX secure the drake uncontested",
+              "goldSwing": 420
+            },
+            {
+              "minute": 20,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Berserker picks off Raptor without vision",
+              "goldSwing": 305
+            },
+            {
+              "minute": 20,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "BuLLDoG finds Diable overextended",
+              "goldSwing": 296,
+              "minor": true
+            },
+            {
+              "minute": 20,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "BuLLDoG picks off VicLa without vision",
+              "goldSwing": 327,
+              "minor": true
+            },
+            {
+              "minute": 20,
+              "type": "KILL",
+              "team": "red",
+              "detail": "VicLa solo kills Pyosik",
+              "goldSwing": 272,
+              "minor": true
+            },
+            {
+              "minute": 21,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "DuDu collapses on Kellin",
+              "goldSwing": 278
+            },
+            {
+              "minute": 22,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Raptor punishes Berserker in the river",
+              "goldSwing": 285
+            },
+            {
+              "minute": 23,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Berserker punishes Kellin in the river",
+              "goldSwing": 291
+            },
+            {
+              "minute": 24,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "BFX take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 25,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "DNS win the standoff and take dragon",
+              "goldSwing": 420
+            },
+            {
+              "minute": 26,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Raptor punishes DuDu in the river",
+              "goldSwing": 291
+            },
+            {
+              "minute": 26,
+              "type": "BARON",
+              "team": "red",
+              "detail": "BFX STEAL baron over the wall — pandemonium",
+              "goldSwing": 1400
+            },
+            {
+              "minute": 26,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Clear finds Life overextended",
+              "goldSwing": 313,
+              "minor": true
+            },
+            {
+              "minute": 26,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "BFX take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 27,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "DuDu punishes VicLa in the river",
+              "goldSwing": 261
+            },
+            {
+              "minute": 31,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "DNS secure the drake uncontested",
+              "goldSwing": 420
+            },
+            {
+              "minute": 31,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "DNS take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 33,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "BFX take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 34,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Kellin picks off Life without vision",
+              "goldSwing": 318
+            },
+            {
+              "minute": 34,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Kellin finds BuLLDoG overextended",
+              "goldSwing": 353,
+              "minor": true
+            },
+            {
+              "minute": 34,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "BuLLDoG picks off Kellin without vision",
+              "goldSwing": 275,
+              "minor": true
+            },
+            {
+              "minute": 35,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "BFX take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 36,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Clear finds BuLLDoG overextended",
+              "goldSwing": 308
+            },
+            {
+              "minute": 37,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Diable finds Life overextended",
+              "goldSwing": 349
+            },
+            {
+              "minute": 37,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Kellin picks off DuDu without vision",
+              "goldSwing": 338,
+              "minor": true
+            },
+            {
+              "minute": 37,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "DNS take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 38,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Berserker punishes Clear in the river",
+              "goldSwing": 260
+            },
+            {
+              "minute": 38,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Kellin solo kills DuDu",
+              "goldSwing": 261,
+              "minor": true
+            },
+            {
+              "minute": 38,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "DNS secure the drake uncontested",
+              "goldSwing": 420
+            },
+            {
+              "minute": 38,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "BFX take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 39,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Kellin picks off Life without vision",
+              "goldSwing": 315
+            },
+            {
+              "minute": 40,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "BuLLDoG solo kills VicLa",
+              "goldSwing": 325
+            },
+            {
+              "minute": 40,
+              "type": "NEXUS",
+              "team": "red",
+              "detail": "BFX end it at 40 minutes",
+              "goldSwing": 0
+            }
+          ],
+          "playerLines": {
+            "oe-dudu-top": {
+              "k": 5,
+              "d": 3,
+              "a": 8,
+              "cs": 300,
+              "dmg": 15823,
+              "rating": 7.07
+            },
+            "oe-pyosik-jgl": {
+              "k": 2,
+              "d": 2,
+              "a": 10,
+              "cs": 198,
+              "dmg": 9390,
+              "rating": 6.4
+            },
+            "oe-bulldog-mid": {
+              "k": 6,
+              "d": 2,
+              "a": 5,
+              "cs": 359,
+              "dmg": 22069,
+              "rating": 7.68
+            },
+            "oe-berserker-adc": {
+              "k": 4,
+              "d": 3,
+              "a": 8,
+              "cs": 334,
+              "dmg": 15232,
+              "rating": 6.67
+            },
+            "oe-life-sup": {
+              "k": 0,
+              "d": 5,
+              "a": 11,
+              "cs": 41,
+              "dmg": 6142,
+              "rating": 4.41
+            },
+            "oe-clear-top": {
+              "k": 2,
+              "d": 4,
+              "a": 9,
+              "cs": 324,
+              "dmg": 15758,
+              "rating": 6.82
+            },
+            "oe-raptor-jgl": {
+              "k": 3,
+              "d": 1,
+              "a": 11,
+              "cs": 243,
+              "dmg": 16031,
+              "rating": 8.79
+            },
+            "oe-vicla-mid": {
+              "k": 2,
+              "d": 3,
+              "a": 9,
+              "cs": 349,
+              "dmg": 18217,
+              "rating": 7.33
+            },
+            "oe-diable-adc": {
+              "k": 2,
+              "d": 2,
+              "a": 10,
+              "cs": 389,
+              "dmg": 24371,
+              "rating": 8.15
+            },
+            "oe-kellin-sup": {
+              "k": 6,
+              "d": 7,
+              "a": 6,
+              "cs": 49,
+              "dmg": 11622,
+              "rating": 6.41
+            }
+          },
+          "mvpPlayerId": "oe-raptor-jgl",
+          "seed": 1006
+        }
+      },
+      {
+        "id": "fx-14",
+        "week": 2,
+        "blueId": "ns",
+        "redId": "hle",
+        "result": {
+          "blueTeamId": "ns",
+          "redTeamId": "hle",
+          "winner": "red",
+          "durationMin": 19,
+          "goldTimeline": [
+            0,
+            330,
+            260,
+            659,
+            1112,
+            26,
+            -508,
+            -817,
+            -1277,
+            -1316,
+            -1976,
+            -3381,
+            -3228,
+            -3920,
+            -4276,
+            -4509,
+            -5144,
+            -5523,
+            -6884,
+            -8057
+          ],
+          "events": [
+            {
+              "minute": 5,
+              "type": "FIRST_BLOOD",
+              "team": "blue",
+              "detail": "First blood — GIDEON draws it against Delight",
+              "goldSwing": 440
+            },
+            {
+              "minute": 5,
+              "type": "DRAGON",
+              "team": "red",
+              "detail": "HLE win the standoff and take dragon",
+              "goldSwing": 420
+            },
+            {
+              "minute": 8,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Viper finds Lehends overextended",
+              "goldSwing": 267
+            },
+            {
+              "minute": 8,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Viper finds Kingen overextended",
+              "goldSwing": 318,
+              "minor": true
+            },
+            {
+              "minute": 9,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Lehends collapses on Delight",
+              "goldSwing": 302
+            },
+            {
+              "minute": 9,
+              "type": "HERALD",
+              "team": "red",
+              "detail": "HLE bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 10,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "HLE take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 11,
+              "type": "DRAGON",
+              "team": "red",
+              "detail": "HLE steal the pit tempo — drake down",
+              "goldSwing": 420
+            },
+            {
+              "minute": 11,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "HLE take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 12,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "HLE take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 14,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Zeus punishes GIDEON in the river",
+              "goldSwing": 280
+            },
+            {
+              "minute": 14,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Zeka picks off Kingen without vision",
+              "goldSwing": 293,
+              "minor": true
+            },
+            {
+              "minute": 15,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Viper punishes Lehends in the river",
+              "goldSwing": 345
+            },
+            {
+              "minute": 15,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Zeus punishes GIDEON in the river",
+              "goldSwing": 287,
+              "minor": true
+            },
+            {
+              "minute": 15,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Zeus collapses on Calix",
+              "goldSwing": 296,
+              "minor": true
+            },
+            {
+              "minute": 15,
+              "type": "HERALD",
+              "team": "blue",
+              "detail": "NS bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 16,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Zeka solo kills GIDEON",
+              "goldSwing": 325
+            },
+            {
+              "minute": 16,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Jiwoo punishes Zeka in the river",
+              "goldSwing": 316,
+              "minor": true
+            },
+            {
+              "minute": 16,
+              "type": "DRAGON",
+              "team": "red",
+              "detail": "HLE win the standoff and take dragon",
+              "goldSwing": 420
+            },
+            {
+              "minute": 16,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "HLE take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 18,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Viper collapses on GIDEON",
+              "goldSwing": 307
+            },
+            {
+              "minute": 18,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "HLE take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 19,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Zeus finds GIDEON overextended",
+              "goldSwing": 285
+            },
+            {
+              "minute": 19,
+              "type": "NEXUS",
+              "team": "red",
+              "detail": "HLE end it at 19 minutes",
+              "goldSwing": 0
+            }
+          ],
+          "playerLines": {
+            "oe-kingen-top": {
+              "k": 0,
+              "d": 2,
+              "a": 2,
+              "cs": 132,
+              "dmg": 9084,
+              "rating": 5.38
+            },
+            "oe-gideon-jgl": {
+              "k": 1,
+              "d": 5,
+              "a": 0,
+              "cs": 77,
+              "dmg": 3749,
+              "rating": 3.39
+            },
+            "oe-calix-mid": {
+              "k": 0,
+              "d": 1,
+              "a": 1,
+              "cs": 123,
+              "dmg": 6017,
+              "rating": 5.1
+            },
+            "oe-jiwoo-adc": {
+              "k": 1,
+              "d": 0,
+              "a": 2,
+              "cs": 131,
+              "dmg": 7212,
+              "rating": 6.61
+            },
+            "oe-lehends-sup": {
+              "k": 1,
+              "d": 2,
+              "a": 0,
+              "cs": 18,
+              "dmg": 3914,
+              "rating": 4.66
+            },
+            "oe-zeus-top": {
+              "k": 4,
+              "d": 0,
+              "a": 3,
+              "cs": 187,
+              "dmg": 9935,
+              "rating": 8.56
+            },
+            "oe-peanut-jgl": {
+              "k": 0,
+              "d": 0,
+              "a": 4,
+              "cs": 123,
+              "dmg": 4860,
+              "rating": 6.8
+            },
+            "oe-zeka-mid": {
+              "k": 2,
+              "d": 1,
+              "a": 6,
+              "cs": 217,
+              "dmg": 11907,
+              "rating": 8.04
+            },
+            "oe-viper-adc": {
+              "k": 4,
+              "d": 0,
+              "a": 4,
+              "cs": 247,
+              "dmg": 15760,
+              "rating": 9.15
+            },
+            "oe-delight-sup": {
+              "k": 0,
+              "d": 2,
+              "a": 6,
+              "cs": 26,
+              "dmg": 3941,
+              "rating": 6.27
+            }
+          },
+          "mvpPlayerId": "oe-viper-adc",
+          "seed": 1007
+        }
+      },
+      {
+        "id": "fx-16",
+        "week": 2,
+        "blueId": "t1",
+        "redId": "drx",
+        "result": {
+          "blueTeamId": "t1",
+          "redTeamId": "drx",
+          "winner": "blue",
+          "durationMin": 25,
+          "goldTimeline": [
+            0,
+            357,
+            586,
+            932,
+            1180,
+            2221,
+            2741,
+            2439,
+            2833,
+            2901,
+            2298,
+            2603,
+            2372,
+            1671,
+            1700,
+            1604,
+            1576,
+            2358,
+            2760,
+            3502,
+            3741,
+            5540,
+            5487,
+            4952,
+            5399,
+            6819
+          ],
+          "events": [
+            {
+              "minute": 1,
+              "type": "FIRST_BLOOD",
+              "team": "blue",
+              "detail": "First blood — Oner draws it against Sponge",
+              "goldSwing": 395
+            },
+            {
+              "minute": 4,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Doran punishes Andil in the river",
+              "goldSwing": 354
+            },
+            {
+              "minute": 5,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Keria punishes Teddy in the river",
+              "goldSwing": 316
+            },
+            {
+              "minute": 5,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "T1 steal the pit tempo — drake down",
+              "goldSwing": 420
+            },
+            {
+              "minute": 6,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Gumayusi finds Rich overextended",
+              "goldSwing": 313
+            },
+            {
+              "minute": 9,
+              "type": "HERALD",
+              "team": "blue",
+              "detail": "T1 bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 11,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "T1 secure the drake uncontested",
+              "goldSwing": 420
+            },
+            {
+              "minute": 11,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "T1 take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 12,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Teddy solo kills Doran",
+              "goldSwing": 276
+            },
+            {
+              "minute": 13,
+              "type": "HERALD",
+              "team": "red",
+              "detail": "DRX bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 14,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Oner finds Rich overextended",
+              "goldSwing": 270
+            },
+            {
+              "minute": 14,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Ucal solo kills Faker",
+              "goldSwing": 303,
+              "minor": true
+            },
+            {
+              "minute": 15,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "DRX take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 16,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Sponge picks off Gumayusi without vision",
+              "goldSwing": 291
+            },
+            {
+              "minute": 16,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "DRX take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 17,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "T1 take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 18,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Oner finds Sponge overextended",
+              "goldSwing": 305
+            },
+            {
+              "minute": 18,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "T1 secure the drake uncontested",
+              "goldSwing": 420
+            },
+            {
+              "minute": 19,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "T1 take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 21,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Doran punishes Andil in the river",
+              "goldSwing": 282
+            },
+            {
+              "minute": 21,
+              "type": "BARON",
+              "team": "blue",
+              "detail": "T1 burn baron down and reset with the buff",
+              "goldSwing": 1400
+            },
+            {
+              "minute": 22,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Keria finds Sponge overextended",
+              "goldSwing": 270
+            },
+            {
+              "minute": 22,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Oner picks off Teddy without vision",
+              "goldSwing": 335,
+              "minor": true
+            },
+            {
+              "minute": 24,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Oner solo kills Teddy",
+              "goldSwing": 338
+            },
+            {
+              "minute": 25,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "T1 complete the Dragon Soul — the map shrinks",
+              "goldSwing": 900
+            },
+            {
+              "minute": 25,
+              "type": "NEXUS",
+              "team": "blue",
+              "detail": "T1 end it at 25 minutes",
+              "goldSwing": 0
+            }
+          ],
+          "playerLines": {
+            "oe-doran-top": {
+              "k": 2,
+              "d": 1,
+              "a": 4,
+              "cs": 242,
+              "dmg": 11738,
+              "rating": 7.49
+            },
+            "oe-oner-jgl": {
+              "k": 5,
+              "d": 0,
+              "a": 2,
+              "cs": 192,
+              "dmg": 12796,
+              "rating": 8.79
+            },
+            "oe-faker-mid": {
+              "k": 0,
+              "d": 1,
+              "a": 3,
+              "cs": 260,
+              "dmg": 10828,
+              "rating": 6.45
+            },
+            "oe-gumayusi-adc": {
+              "k": 1,
+              "d": 1,
+              "a": 6,
+              "cs": 289,
+              "dmg": 15315,
+              "rating": 7.67
+            },
+            "oe-keria-sup": {
+              "k": 2,
+              "d": 0,
+              "a": 2,
+              "cs": 38,
+              "dmg": 7043,
+              "rating": 7.27
+            },
+            "oe-rich-top": {
+              "k": 0,
+              "d": 2,
+              "a": 2,
+              "cs": 171,
+              "dmg": 10825,
+              "rating": 5.19
+            },
+            "oe-sponge-jgl": {
+              "k": 1,
+              "d": 3,
+              "a": 0,
+              "cs": 126,
+              "dmg": 9338,
+              "rating": 4.5
+            },
+            "oe-ucal-mid": {
+              "k": 1,
+              "d": 0,
+              "a": 0,
+              "cs": 175,
+              "dmg": 10347,
+              "rating": 5.83
+            },
+            "oe-teddy-adc": {
+              "k": 1,
+              "d": 3,
+              "a": 2,
+              "cs": 181,
+              "dmg": 10333,
+              "rating": 5.32
+            },
+            "oe-andil-sup": {
+              "k": 0,
+              "d": 2,
+              "a": 2,
+              "cs": 22,
+              "dmg": 3651,
+              "rating": 4.68
+            }
+          },
+          "mvpPlayerId": "oe-oner-jgl",
+          "seed": 1008
+        }
+      },
+      {
+        "id": "fx-18",
+        "week": 2,
+        "blueId": "kt",
+        "redId": "dk",
+        "result": {
+          "blueTeamId": "kt",
+          "redTeamId": "dk",
+          "winner": "red",
+          "durationMin": 22,
+          "goldTimeline": [
+            0,
+            -132,
+            -592,
+            -918,
+            -1265,
+            -1133,
+            -984,
+            -317,
+            -335,
+            -1271,
+            -1889,
+            -2903,
+            -3397,
+            -3191,
+            -3153,
+            -3300,
+            -4018,
+            -3819,
+            -3593,
+            -3108,
+            -4281,
+            -4398,
+            -7079
+          ],
+          "events": [
+            {
+              "minute": 1,
+              "type": "FIRST_BLOOD",
+              "team": "red",
+              "detail": "First blood — ShowMaker draws it against deokdam",
+              "goldSwing": 428
+            },
+            {
+              "minute": 1,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Cuzz collapses on Lucid",
+              "goldSwing": 346,
+              "minor": true
+            },
+            {
+              "minute": 2,
+              "type": "KILL",
+              "team": "red",
+              "detail": "ShowMaker collapses on Peter",
+              "goldSwing": 350
+            },
+            {
+              "minute": 5,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Bdd finds BeryL overextended",
+              "goldSwing": 283
+            },
+            {
+              "minute": 6,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "KT steal the pit tempo — drake down",
+              "goldSwing": 420
+            },
+            {
+              "minute": 9,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "Cuzz solo kills Siwoo",
+              "goldSwing": 272
+            },
+            {
+              "minute": 9,
+              "type": "HERALD",
+              "team": "red",
+              "detail": "DK bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 9,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "DK take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 10,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "DK take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 11,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Lucid punishes Peter in the river",
+              "goldSwing": 288
+            },
+            {
+              "minute": 11,
+              "type": "KILL",
+              "team": "red",
+              "detail": "ShowMaker punishes PerfecT in the river",
+              "goldSwing": 279,
+              "minor": true
+            },
+            {
+              "minute": 11,
+              "type": "KILL",
+              "team": "red",
+              "detail": "ShowMaker finds Bdd overextended",
+              "goldSwing": 356,
+              "minor": true
+            },
+            {
+              "minute": 11,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "DK take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 12,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Siwoo finds PerfecT overextended",
+              "goldSwing": 283
+            },
+            {
+              "minute": 12,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "DK take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 13,
+              "type": "DRAGON",
+              "team": "blue",
+              "detail": "KT steal the pit tempo — drake down",
+              "goldSwing": 420
+            },
+            {
+              "minute": 13,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "DK take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 14,
+              "type": "HERALD",
+              "team": "red",
+              "detail": "DK bank the Rift Herald and cash it mid",
+              "goldSwing": 550
+            },
+            {
+              "minute": 15,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Lucid punishes deokdam in the river",
+              "goldSwing": 342
+            },
+            {
+              "minute": 16,
+              "type": "KILL",
+              "team": "red",
+              "detail": "Lucid picks off Bdd without vision",
+              "goldSwing": 262
+            },
+            {
+              "minute": 17,
+              "type": "TOWER",
+              "team": "red",
+              "detail": "DK take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 18,
+              "type": "TOWER",
+              "team": "blue",
+              "detail": "KT take a tower and open the map",
+              "goldSwing": 300
+            },
+            {
+              "minute": 19,
+              "type": "KILL",
+              "team": "red",
+              "detail": "ShowMaker solo kills PerfecT",
+              "goldSwing": 295
+            },
+            {
+              "minute": 20,
+              "type": "DRAGON",
+              "team": "red",
+              "detail": "DK steal the pit tempo — drake down",
+              "goldSwing": 420
+            },
+            {
+              "minute": 21,
+              "type": "KILL",
+              "team": "blue",
+              "detail": "PerfecT picks off Siwoo without vision",
+              "goldSwing": 268
+            },
+            {
+              "minute": 21,
+              "type": "KILL",
+              "team": "red",
+              "detail": "ShowMaker finds PerfecT overextended",
+              "goldSwing": 357,
+              "minor": true
+            },
+            {
+              "minute": 22,
+              "type": "BARON",
+              "team": "red",
+              "detail": "DK burn baron down and reset with the buff",
+              "goldSwing": 1400
+            },
+            {
+              "minute": 22,
+              "type": "NEXUS",
+              "team": "red",
+              "detail": "DK end it at 22 minutes",
+              "goldSwing": 0
+            }
+          ],
+          "playerLines": {
+            "oe-perfect-top": {
+              "k": 1,
+              "d": 4,
+              "a": 2,
+              "cs": 127,
+              "dmg": 5633,
+              "rating": 4.39
+            },
+            "oe-cuzz-jgl": {
+              "k": 2,
+              "d": 0,
+              "a": 0,
+              "cs": 107,
+              "dmg": 7814,
+              "rating": 6.14
+            },
+            "oe-bdd-mid": {
+              "k": 1,
+              "d": 2,
+              "a": 0,
+              "cs": 169,
+              "dmg": 12496,
+              "rating": 5.14
+            },
+            "oe-deokdam-adc": {
+              "k": 0,
+              "d": 2,
+              "a": 2,
+              "cs": 177,
+              "dmg": 12607,
+              "rating": 5.25
+            },
+            "oe-peter-sup": {
+              "k": 0,
+              "d": 2,
+              "a": 1,
+              "cs": 19,
+              "dmg": 3156,
+              "rating": 4.21
+            },
+            "oe-siwoo-top": {
+              "k": 1,
+              "d": 2,
+              "a": 5,
+              "cs": 210,
+              "dmg": 9854,
+              "rating": 6.83
+            },
+            "oe-lucid-jgl": {
+              "k": 3,
+              "d": 1,
+              "a": 3,
+              "cs": 151,
+              "dmg": 8509,
+              "rating": 7.59
+            },
+            "oe-showmaker-mid": {
+              "k": 6,
+              "d": 0,
+              "a": 2,
+              "cs": 233,
+              "dmg": 12944,
+              "rating": 9.3
+            },
+            "oe-aiming-adc": {
+              "k": 0,
+              "d": 0,
+              "a": 4,
+              "cs": 265,
+              "dmg": 14436,
+              "rating": 7.37
+            },
+            "oe-beryl-sup": {
+              "k": 0,
+              "d": 1,
+              "a": 5,
+              "cs": 32,
+              "dmg": 4891,
+              "rating": 6.54
+            }
+          },
+          "mvpPlayerId": "oe-showmaker-mid",
+          "seed": 1009
+        }
+      },
+      {
+        "id": "fx-20",
+        "week": 3,
+        "blueId": "gen",
+        "redId": "bfx"
+      },
+      {
+        "id": "fx-22",
+        "week": 3,
+        "blueId": "ns",
+        "redId": "bro"
+      },
+      {
+        "id": "fx-24",
+        "week": 3,
+        "blueId": "dns",
+        "redId": "drx"
+      },
+      {
+        "id": "fx-26",
+        "week": 3,
+        "blueId": "kt",
+        "redId": "hle"
+      },
+      {
+        "id": "fx-28",
+        "week": 3,
+        "blueId": "t1",
+        "redId": "dk"
+      },
+      {
+        "id": "fx-30",
+        "week": 4,
+        "blueId": "ns",
+        "redId": "gen"
+      },
+      {
+        "id": "fx-32",
+        "week": 4,
+        "blueId": "bfx",
+        "redId": "drx"
+      },
+      {
+        "id": "fx-34",
+        "week": 4,
+        "blueId": "kt",
+        "redId": "bro"
+      },
+      {
+        "id": "fx-36",
+        "week": 4,
+        "blueId": "dns",
+        "redId": "dk"
+      },
+      {
+        "id": "fx-38",
+        "week": 4,
+        "blueId": "t1",
+        "redId": "hle"
+      },
+      {
+        "id": "fx-40",
+        "week": 5,
+        "blueId": "gen",
+        "redId": "drx"
+      },
+      {
+        "id": "fx-42",
+        "week": 5,
+        "blueId": "kt",
+        "redId": "ns"
+      },
+      {
+        "id": "fx-44",
+        "week": 5,
+        "blueId": "bfx",
+        "redId": "dk"
+      },
+      {
+        "id": "fx-46",
+        "week": 5,
+        "blueId": "t1",
+        "redId": "bro"
+      },
+      {
+        "id": "fx-48",
+        "week": 5,
+        "blueId": "dns",
+        "redId": "hle"
+      },
+      {
+        "id": "fx-50",
+        "week": 6,
+        "blueId": "kt",
+        "redId": "gen"
+      },
+      {
+        "id": "fx-52",
+        "week": 6,
+        "blueId": "drx",
+        "redId": "dk"
+      },
+      {
+        "id": "fx-54",
+        "week": 6,
+        "blueId": "t1",
+        "redId": "ns"
+      },
+      {
+        "id": "fx-56",
+        "week": 6,
+        "blueId": "bfx",
+        "redId": "hle"
+      },
+      {
+        "id": "fx-58",
+        "week": 6,
+        "blueId": "dns",
+        "redId": "bro"
+      },
+      {
+        "id": "fx-60",
+        "week": 7,
+        "blueId": "gen",
+        "redId": "dk"
+      },
+      {
+        "id": "fx-62",
+        "week": 7,
+        "blueId": "t1",
+        "redId": "kt"
+      },
+      {
+        "id": "fx-64",
+        "week": 7,
+        "blueId": "drx",
+        "redId": "hle"
+      },
+      {
+        "id": "fx-66",
+        "week": 7,
+        "blueId": "dns",
+        "redId": "ns"
+      },
+      {
+        "id": "fx-68",
+        "week": 7,
+        "blueId": "bfx",
+        "redId": "bro"
+      },
+      {
+        "id": "fx-70",
+        "week": 8,
+        "blueId": "t1",
+        "redId": "gen"
+      },
+      {
+        "id": "fx-72",
+        "week": 8,
+        "blueId": "dk",
+        "redId": "hle"
+      },
+      {
+        "id": "fx-74",
+        "week": 8,
+        "blueId": "dns",
+        "redId": "kt"
+      },
+      {
+        "id": "fx-76",
+        "week": 8,
+        "blueId": "drx",
+        "redId": "bro"
+      },
+      {
+        "id": "fx-78",
+        "week": 8,
+        "blueId": "bfx",
+        "redId": "ns"
+      },
+      {
+        "id": "fx-80",
+        "week": 9,
+        "blueId": "gen",
+        "redId": "hle"
+      },
+      {
+        "id": "fx-82",
+        "week": 9,
+        "blueId": "dns",
+        "redId": "t1"
+      },
+      {
+        "id": "fx-84",
+        "week": 9,
+        "blueId": "dk",
+        "redId": "bro"
+      },
+      {
+        "id": "fx-86",
+        "week": 9,
+        "blueId": "bfx",
+        "redId": "kt"
+      },
+      {
+        "id": "fx-88",
+        "week": 9,
+        "blueId": "drx",
+        "redId": "ns"
+      },
+      {
+        "id": "fx-1",
+        "week": 10,
+        "blueId": "dns",
+        "redId": "gen"
+      },
+      {
+        "id": "fx-3",
+        "week": 10,
+        "blueId": "hle",
+        "redId": "bro"
+      },
+      {
+        "id": "fx-5",
+        "week": 10,
+        "blueId": "bfx",
+        "redId": "t1"
+      },
+      {
+        "id": "fx-7",
+        "week": 10,
+        "blueId": "dk",
+        "redId": "ns"
+      },
+      {
+        "id": "fx-9",
+        "week": 10,
+        "blueId": "drx",
+        "redId": "kt"
+      },
+      {
+        "id": "fx-11",
+        "week": 11,
+        "blueId": "gen",
+        "redId": "bro"
+      },
+      {
+        "id": "fx-13",
+        "week": 11,
+        "blueId": "bfx",
+        "redId": "dns"
+      },
+      {
+        "id": "fx-15",
+        "week": 11,
+        "blueId": "hle",
+        "redId": "ns"
+      },
+      {
+        "id": "fx-17",
+        "week": 11,
+        "blueId": "drx",
+        "redId": "t1"
+      },
+      {
+        "id": "fx-19",
+        "week": 11,
+        "blueId": "dk",
+        "redId": "kt"
+      },
+      {
+        "id": "fx-21",
+        "week": 12,
+        "blueId": "bfx",
+        "redId": "gen"
+      },
+      {
+        "id": "fx-23",
+        "week": 12,
+        "blueId": "bro",
+        "redId": "ns"
+      },
+      {
+        "id": "fx-25",
+        "week": 12,
+        "blueId": "drx",
+        "redId": "dns"
+      },
+      {
+        "id": "fx-27",
+        "week": 12,
+        "blueId": "hle",
+        "redId": "kt"
+      },
+      {
+        "id": "fx-29",
+        "week": 12,
+        "blueId": "dk",
+        "redId": "t1"
+      },
+      {
+        "id": "fx-31",
+        "week": 13,
+        "blueId": "gen",
+        "redId": "ns"
+      },
+      {
+        "id": "fx-33",
+        "week": 13,
+        "blueId": "drx",
+        "redId": "bfx"
+      },
+      {
+        "id": "fx-35",
+        "week": 13,
+        "blueId": "bro",
+        "redId": "kt"
+      },
+      {
+        "id": "fx-37",
+        "week": 13,
+        "blueId": "dk",
+        "redId": "dns"
+      },
+      {
+        "id": "fx-39",
+        "week": 13,
+        "blueId": "hle",
+        "redId": "t1"
+      },
+      {
+        "id": "fx-41",
+        "week": 14,
+        "blueId": "drx",
+        "redId": "gen"
+      },
+      {
+        "id": "fx-43",
+        "week": 14,
+        "blueId": "ns",
+        "redId": "kt"
+      },
+      {
+        "id": "fx-45",
+        "week": 14,
+        "blueId": "dk",
+        "redId": "bfx"
+      },
+      {
+        "id": "fx-47",
+        "week": 14,
+        "blueId": "bro",
+        "redId": "t1"
+      },
+      {
+        "id": "fx-49",
+        "week": 14,
+        "blueId": "hle",
+        "redId": "dns"
+      },
+      {
+        "id": "fx-51",
+        "week": 15,
+        "blueId": "gen",
+        "redId": "kt"
+      },
+      {
+        "id": "fx-53",
+        "week": 15,
+        "blueId": "dk",
+        "redId": "drx"
+      },
+      {
+        "id": "fx-55",
+        "week": 15,
+        "blueId": "ns",
+        "redId": "t1"
+      },
+      {
+        "id": "fx-57",
+        "week": 15,
+        "blueId": "hle",
+        "redId": "bfx"
+      },
+      {
+        "id": "fx-59",
+        "week": 15,
+        "blueId": "bro",
+        "redId": "dns"
+      },
+      {
+        "id": "fx-61",
+        "week": 16,
+        "blueId": "dk",
+        "redId": "gen"
+      },
+      {
+        "id": "fx-63",
+        "week": 16,
+        "blueId": "kt",
+        "redId": "t1"
+      },
+      {
+        "id": "fx-65",
+        "week": 16,
+        "blueId": "hle",
+        "redId": "drx"
+      },
+      {
+        "id": "fx-67",
+        "week": 16,
+        "blueId": "ns",
+        "redId": "dns"
+      },
+      {
+        "id": "fx-69",
+        "week": 16,
+        "blueId": "bro",
+        "redId": "bfx"
+      },
+      {
+        "id": "fx-71",
+        "week": 17,
+        "blueId": "gen",
+        "redId": "t1"
+      },
+      {
+        "id": "fx-73",
+        "week": 17,
+        "blueId": "hle",
+        "redId": "dk"
+      },
+      {
+        "id": "fx-75",
+        "week": 17,
+        "blueId": "kt",
+        "redId": "dns"
+      },
+      {
+        "id": "fx-77",
+        "week": 17,
+        "blueId": "bro",
+        "redId": "drx"
+      },
+      {
+        "id": "fx-79",
+        "week": 17,
+        "blueId": "ns",
+        "redId": "bfx"
+      },
+      {
+        "id": "fx-81",
+        "week": 18,
+        "blueId": "hle",
+        "redId": "gen"
+      },
+      {
+        "id": "fx-83",
+        "week": 18,
+        "blueId": "t1",
+        "redId": "dns"
+      },
+      {
+        "id": "fx-85",
+        "week": 18,
+        "blueId": "bro",
+        "redId": "dk"
+      },
+      {
+        "id": "fx-87",
+        "week": 18,
+        "blueId": "kt",
+        "redId": "bfx"
+      },
+      {
+        "id": "fx-89",
+        "week": 18,
+        "blueId": "ns",
+        "redId": "drx"
+      }
+    ],
+    "playoffs": [],
+    "inbox": [
+      {
+        "id": "msg-1",
+        "week": 1,
+        "season": 1,
+        "title": "Welcome to T1",
+        "body": "Preseason rank #1. The board expects a top-2 finish.",
+        "tone": "info",
+        "read": true
+      }
+    ],
+    "scouting": {
+      "t1": 5,
+      "gen": 2
+    },
+    "trainingFocus": {},
+    "scoutTargetId": "gen",
+    "board": {
+      "expectedFinish": 2,
+      "confidence": 52,
+      "strikes": 0,
+      "fired": false
+    },
+    "history": [],
+    "baseSeed": 123456789,
+    "seedCounter": 10,
+    "usingSampleData": false,
+    "pendingTactics": {
+      "playstyle": "BALANCED",
+      "objective": "DRAGON",
+      "archetype": "TEAMFIGHT"
+    },
+    "lastMatch": null,
+    "jobOffers": [],
+    "freeAgents": [
+      "fa-haru",
+      "fa-bitmap",
+      "fa-cricket",
+      "fa-dawnfall",
+      "fa-ember",
+      "fa-fjord",
+      "fa-glacier",
+      "fa-halcyon",
+      "fa-ion",
+      "fa-juniper"
+    ],
+    "offseason": {
+      "agingApplied": false,
+      "newsSent": false
+    },
+    "prospectCounter": 0,
+    "userPlayedThisWeek": false,
+    "msgCounter": 1
+  }
+}

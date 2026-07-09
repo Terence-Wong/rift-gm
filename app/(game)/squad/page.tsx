@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { Term } from "@/components/Term";
 import { fmtMoney } from "@/lib/format";
 import { useGameStore } from "@/lib/store";
 import type { Player, Role } from "@/lib/types";
@@ -41,6 +42,9 @@ export default function SquadPage() {
   const playersMap = useGameStore((s) => s.players);
   const playerTeamId = useGameStore((s) => s.playerTeamId);
   const setStarter = useGameStore((s) => s.setStarter);
+  const confirmingLineup = useGameStore(
+    (s) => s.tutorial.active && s.tutorial.step === "SQUAD",
+  );
   const team = teams[playerTeamId];
 
   const [sortKey, setSortKey] = useState<SortKey>("role");
@@ -145,10 +149,23 @@ export default function SquadPage() {
                   </td>
                   <td className="py-2 pr-3 text-right">
                     {isStarter ? (
-                      <span className="eyebrow text-cyan">Starting</span>
+                      confirmingLineup ? (
+                        // Tutorial: a 5-man roster has nothing to swap, so
+                        // confirming the incumbent is the "set your starters" action.
+                        <button
+                          onClick={() => setStarter(p.role, p.id)}
+                          data-tut="starter"
+                          className="eyebrow border border-hairline px-2 py-1 text-cyan hover:bg-fog-700"
+                        >
+                          Confirm starter
+                        </button>
+                      ) : (
+                        <span className="eyebrow text-cyan">Starting</span>
+                      )
                     ) : (
                       <button
                         onClick={() => setStarter(p.role, p.id)}
+                        data-tut="starter"
                         className="eyebrow border border-hairline px-2 py-1 hover:bg-fog-700 hover:text-ink"
                       >
                         Start
@@ -162,9 +179,13 @@ export default function SquadPage() {
         </table>
       </div>
 
-      <p className="text-xs text-ink-muted">
-        Resting a starter for a week clears fatigue faster. Hidden attributes (consistency,
-        clutch, potential) never show exact values — see a player&apos;s page for estimates.
+      <p className="flex flex-wrap items-baseline gap-x-3 text-xs text-ink-muted">
+        Resting a starter for a week clears fatigue faster. Hidden attributes never show exact
+        values — see a player&apos;s page for estimates.
+        <Term k="ovr">OVR</Term>
+        <Term k="form">Form</Term>
+        <Term k="fatigue">Fatigue</Term>
+        <Term k="morale">Morale</Term>
       </p>
     </div>
   );
