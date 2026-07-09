@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { LANE_PATHS, TURRETS, pathPoint } from "../lib/engine/mapLayout";
+import { LANE_PATHS, TURRETS, laneFront, pathPoint } from "../lib/engine/mapLayout";
 import {
   TICKS_PER_MINUTE,
   respawnTicks,
@@ -144,6 +144,78 @@ describe("spatial simulation", () => {
       (_, i) => Math.hypot(later.x[i] - first.x[i], later.y[i] - first.y[i]) > 10,
     );
     expect(moved.length).toBeGreaterThanOrEqual(6);
+  });
+
+  it("laners rotate: the bot duo doesn't camp one spot all game", () => {
+    // In most games the ADC should, at some mid-game point, be far from the
+    // bot-lane front (rotation, recall, or objective setup).
+    let rotatedGames = 0;
+    const seeds = 20;
+    for (let seed = 200; seed < 200 + seeds; seed++) {
+      const { result, log } = simulateSpatialMatch(blue, red, seed);
+      const adcIdx = log.roles.findIndex((r, i) => r === "ADC" && i < 5);
+      let rotated = false;
+      const from = 8 * TICKS_PER_MINUTE;
+      const to = Math.min(log.frames.length, 24 * TICKS_PER_MINUTE);
+      for (let t = from; t < to; t += 10) {
+        const frame = log.frames[t];
+        if (frame.state[adcIdx] === "dead") continue;
+        const minute = Math.floor(t / TICKS_PER_MINUTE);
+        const gold = result.goldTimeline[Math.min(minute, result.goldTimeline.length - 1)];
+        const front = laneFront("bot", Math.max(-1, Math.min(1, gold / 12000)));
+        if (Math.hypot(frame.x[adcIdx] - front.x, frame.y[adcIdx] - front.y) > 18) {
+          rotated = true;
+          break;
+        }
+      }
+      if (rotated) rotatedGames++;
+    }
+    expect(rotatedGames).toBeGreaterThanOrEqual(seeds * 0.6);
+  });
+
+  it("higher team MACRO puts more bodies at objective fights", () => {
+    const sharpe = syntheticTeam("sharpe", 13, { macro: 17 });
+    const loose = syntheticTeam("loose", 13, { macro: 7 });
+    let sharpeAttendance = 0;
+    let looseAttendance = 0;
+    let contests = 0;
+    for (let seed = 0; seed < 40; seed++) {
+      const { log } = simulateSpatialMatch(sharpe, loose, seed);
+      for (const tag of log.tags) {
+        if (tag.kind !== "dragon" && tag.kind !== "baron" && tag.kind !== "herald") continue;
+        const frame = log.frames[Math.min(tag.tick + 2, log.frames.length - 1)];
+        for (let i = 0; i < 10; i++) {
+          if (frame.state[i] === "dead") continue;
+          const near = Math.hypot(frame.x[i] - tag.x, frame.y[i] - tag.y) <= 16;
+          if (!near) continue;
+          if (i < 5) sharpeAttendance++;
+          else looseAttendance++;
+        }
+        contests++;
+      }
+    }
+    expect(contests).toBeGreaterThan(50);
+    expect(sharpeAttendance).toBeGreaterThan(looseAttendance * 1.15);
+  });
+
+  it("the losing side falls back to defend its nexus at the end", () => {
+    let defendedGames = 0;
+    const seeds = 20;
+    for (let seed = 500; seed < 500 + seeds; seed++) {
+      const { result, log } = simulateSpatialMatch(blue, red, seed);
+      const losingOffset = result.winner === "blue" ? 5 : 0;
+      const base = result.winner === "blue" ? { x: 92, y: 8 } : { x: 8, y: 92 };
+      const lastFrame = log.frames[log.frames.length - 1];
+      let home = 0;
+      let aliveCount = 0;
+      for (let i = losingOffset; i < losingOffset + 5; i++) {
+        if (lastFrame.state[i] === "dead") continue;
+        aliveCount++;
+        if (Math.hypot(lastFrame.x[i] - base.x, lastFrame.y[i] - base.y) <= 30) home++;
+      }
+      if (aliveCount === 0 || home >= Math.min(2, aliveCount)) defendedGames++;
+    }
+    expect(defendedGames).toBeGreaterThanOrEqual(seeds * 0.7);
   });
 
   it("CS accrues from time spent farming (carries > supports)", () => {

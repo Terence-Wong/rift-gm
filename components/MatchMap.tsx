@@ -13,6 +13,7 @@ import {
   BASES,
   DRAGON_PIT,
   LANE_PATHS,
+  pathPoint,
   RIVER_PATH,
   TURRETS,
   type Pt,
@@ -136,11 +137,66 @@ function drawTurrets(
     );
     ctx.save();
     ctx.translate(t.pos.x * k, t.pos.y * k);
-    ctx.rotate(Math.PI / 4);
-    const s = 1.7 * k;
-    ctx.fillStyle = fallen ? "rgba(138,148,166,0.25)" : C.gold;
-    ctx.fillRect(-s / 2, -s / 2, s, s);
+    if (fallen) {
+      // Rubble: a dim hollow diamond where the turret stood.
+      ctx.rotate(Math.PI / 4);
+      const s = 1.8 * k;
+      ctx.strokeStyle = "rgba(138,148,166,0.35)";
+      ctx.lineWidth = 1;
+      ctx.strokeRect(-s / 2, -s / 2, s, s);
+    } else {
+      // Standing turret: gold body with a side-tinted cap, sized to read.
+      const w = 1.9 * k;
+      const h = 2.6 * k;
+      ctx.fillStyle = C.gold;
+      ctx.fillRect(-w / 2, -h / 2 + 0.5 * k, w, h - 0.5 * k);
+      ctx.beginPath();
+      ctx.arc(0, -h / 2 + 0.5 * k, 0.85 * k, 0, Math.PI * 2);
+      ctx.fillStyle = t.side === "blue" ? C.cyan : C.ember;
+      ctx.fill();
+      ctx.strokeStyle = C.void;
+      ctx.lineWidth = 0.6;
+      ctx.stroke();
+    }
     ctx.restore();
+  }
+}
+
+/**
+ * Decorative minion waves: pure function of the tick, marching from each
+ * base toward the lane front (which shifts with the gold lead). No engine
+ * state — the war of attrition is scenery, not simulation.
+ */
+function drawMinions(
+  ctx: CanvasRenderingContext2D,
+  size: number,
+  tick: number,
+  goldAtTick: number,
+) {
+  const k = size / 100;
+  const WAVE_PERIOD = 15; // a wave every 30 in-game seconds
+  const WAVE_SPEED = 0.011; // path fraction per tick
+  const pressure = Math.max(-1, Math.min(1, goldAtTick / 12000));
+  const frontT = 0.5 + Math.max(-0.24, Math.min(0.24, pressure * 0.22));
+
+  for (const lane of Object.values(LANE_PATHS)) {
+    for (const side of ["blue", "red"] as const) {
+      for (let w = 0; w < 5; w++) {
+        const spawnTick = (Math.floor(tick / WAVE_PERIOD) - w) * WAVE_PERIOD;
+        if (spawnTick < 0) continue;
+        const travelled = (tick - spawnTick) * WAVE_SPEED;
+        const t = side === "blue" ? Math.min(frontT - 0.015, travelled) : Math.max(frontT + 0.015, 1 - travelled);
+        // Waves that have reached the front are "fighting" there; older ones are gone.
+        const atFront = side === "blue" ? travelled >= frontT : 1 - travelled <= frontT;
+        if (atFront && w > 1) continue;
+        const p = pathPoint(lane, t);
+        ctx.fillStyle = side === "blue" ? "rgba(45,212,191,0.5)" : "rgba(255,70,85,0.5)";
+        for (let m = 0; m < 3; m++) {
+          const off = ((m - 1) * 0.7 + (w % 2) * 0.3) * k;
+          ctx.fillRect(p.x * k + off - 0.3 * k, p.y * k + ((m % 2) - 0.5) * 0.8 * k, 0.6 * k, 0.6 * k);
+        }
+      }
+    }
   }
 }
 
@@ -148,12 +204,15 @@ export function MatchMap({
   log,
   tick,
   userIsBlue,
+  goldTimeline,
   className,
 }: {
   log: SpatialLog;
   /** Float tick into the log (0 … durationTicks). */
   tick: number;
   userIsBlue: boolean | null;
+  /** Per-minute gold diff — drives the decorative minion-wave fronts. */
+  goldTimeline?: number[];
   className?: string;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -222,6 +281,10 @@ export function MatchMap({
     ctx.drawImage(terrainRef.current, 0, 0);
 
     const k = size / 100;
+    if (goldTimeline) {
+      const minuteIdx = Math.max(0, Math.min(goldTimeline.length - 1, Math.floor(tick / log.ticksPerMinute)));
+      drawMinions(ctx, size, tick, goldTimeline[minuteIdx]);
+    }
     const fallen = log.tags
       .filter((t) => t.kind === "tower" && t.tick <= tick)
       .map((t) => ({ x: t.x, y: t.y }));
@@ -302,7 +365,7 @@ export function MatchMap({
         ctx.fillText(label, x, y - 5.3 * k);
       }
     }
-  }, [cssSize, frame, frameIndex, hovered, log, tick]);
+  }, [cssSize, frame, frameIndex, goldTimeline, hovered, log, tick]);
 
   const blueLabel = userIsBlue === true ? "your team" : "";
   const redLabel = userIsBlue === false ? "your team" : "";

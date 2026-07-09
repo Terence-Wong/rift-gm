@@ -45,8 +45,8 @@ export const TICKS_PER_MINUTE = 30; // 1 tick = 2 in-game seconds
 const SPEED = { laning: 2.4, rotating: 3.0, basing: 3.0 };
 /** Units within this radius of a fight are "present". */
 const FIGHT_RADIUS = 14;
-/** CS-rate compensation: laners only farm ~78% of the game in this model. */
-const CS_LANING_COMPENSATION = 1.26;
+/** CS-rate compensation, calibrated so spatial CS matches quick-sim CS on average. */
+const CS_LANING_COMPENSATION = 1.52;
 
 export type UnitState = "laning" | "rotating" | "fighting" | "dead" | "basing";
 
@@ -128,11 +128,20 @@ interface UnitRt {
   state: UnitState;
   /** Where this unit is trying to be right now. */
   target: Pt;
+  /** This minute's default station (lane front / camp / group point). */
+  anchor: Pt;
   respawnAt: number; // tick when a dead unit revives
   fightUntil: number; // tick until which the unit holds "fighting"
   campCursor: number;
   csTicks: number;
   speedJitter: number;
+  /** Macro rotation: play this lane (instead of the role's) until rotUntilMin. */
+  rotLane: LaneId | null;
+  rotUntilMin: number;
+  /** Scheduled recall tick for this minute (-1 = none). */
+  recallAt: number;
+  /** Ticks to idle in base after a recall before walking back out. */
+  dwellUntil: number;
 }
 
 interface PlannedFight {
@@ -181,11 +190,16 @@ export function generateSpatialLog(outcome: StrategicOutcome): {
       pos: { ...BASES[side] },
       state: "rotating" as UnitState,
       target: { ...BASES[side] },
+      anchor: { ...BASES[side] },
       respawnAt: -1,
       fightUntil: -1,
       campCursor: rng.int(0, JUNGLE_CAMPS[side].length - 1),
       csTicks: 0,
       speedJitter: 0.9 + rng.next() * 0.2,
+      rotLane: null,
+      rotUntilMin: -1,
+      recallAt: -1,
+      dwellUntil: -1,
     };
   });
   const sideUnits = (s: SideKey) => (s === "blue" ? units.slice(0, 5) : units.slice(5, 10));
@@ -208,15 +222,18 @@ export function generateSpatialLog(outcome: StrategicOutcome): {
     type === "DRAGON" ? DRAGON_PIT : BARON_PIT; // herald + baron share the top pit
 
   /** Choose which remaining turret a TOWER event knocks down. */
-  const pickTower = (losingSide: SideKey, pressure: number): { lane: LaneId | "nexus"; pos: Pt } => {
+  const pickTower = (
+    losingSide: SideKey,
+    pressure: number,
+  ): { lane: LaneId | "nexus"; tier: number; pos: Pt } => {
     const lanes = (["top", "mid", "bot"] as LaneId[]).filter((l) => towersLeft[losingSide][l] > 0);
     if (lanes.length === 0) {
       if (towersLeft[losingSide].nexus > 0) {
         towersLeft[losingSide].nexus--;
         const spot = TURRETS.find((t) => t.side === losingSide && t.lane === "nexus");
-        return { lane: "nexus", pos: spot?.pos ?? BASES[losingSide] };
+        return { lane: "nexus", tier: 4, pos: spot?.pos ?? BASES[losingSide] };
       }
-      return { lane: "nexus", pos: BASES[losingSide] };
+      return { lane: "nexus", tier: 4, pos: BASES[losingSide] };
     }
     // Prefer the lane where the winner has pressure; mid slightly favored.
     const weights = lanes.map((l) => (l === "mid" ? 1.3 : 1) + Math.abs(pressure));
@@ -224,7 +241,7 @@ export function generateSpatialLog(outcome: StrategicOutcome): {
     const tier = (4 - towersLeft[losingSide][lane]) as 1 | 2 | 3;
     towersLeft[losingSide][lane]--;
     const spot = TURRETS.find((t) => t.side === losingSide && t.lane === lane && t.tier === tier);
-    return { lane, pos: spot?.pos ?? laneFront(lane, 0) };
+    return { lane, tier, pos: spot?.pos ?? laneFront(lane, 0) };
   };
 
   /* ── Main loop: plan each minute, then execute its 30 ticks ─── */
@@ -251,30 +268,100 @@ export function generateSpatialLog(outcome: StrategicOutcome): {
     );
     const throwEvent = minuteEvents.find((e) => e.type === "THROW");
 
+    const macroOf = (s: SideKey) => outcome.sides[s].macroAvg;
+
+    /* Macro rotations: smart teams move laners around the map mid-game
+       instead of letting bot lane sit in one spot for 30 minutes. Higher
+       team MACRO → more (and better-timed) rotations. */
+    if (minute >= 7 && phase !== "late") {
+      for (const s of ["blue", "red"] as SideKey[]) {
+        const p = Math.min(0.5, Math.max(0.06, 0.1 + 0.035 * (macroOf(s) - 10)));
+        if (!rng.chance(p)) continue;
+        const laners = sideUnits(s).filter(
+          (u) => alive(u) && LANE_OF_ROLE[u.role] && u.rotUntilMin < minute,
+        );
+        if (laners.length === 0) continue;
+        const pattern = rng.int(0, 2);
+        const until = minute + rng.int(1, 2);
+        if (pattern === 0) {
+          // Bot duo swaps to mid; mid takes the bot wave.
+          for (const u of laners) {
+            if (u.role === "ADC" || u.role === "SUP") {
+              u.rotLane = "mid";
+              u.rotUntilMin = until;
+            } else if (u.role === "MID") {
+              u.rotLane = "bot";
+              u.rotUntilMin = until;
+            }
+          }
+        } else if (pattern === 1) {
+          // Mid rotates to a side lane to stack pressure.
+          const mid = laners.find((u) => u.role === "MID");
+          if (mid) {
+            mid.rotLane = rng.chance(0.5) ? "top" : "bot";
+            mid.rotUntilMin = until;
+          }
+        } else {
+          // Top swaps down / roams mid.
+          const top = laners.find((u) => u.role === "TOP");
+          if (top) {
+            top.rotLane = "mid";
+            top.rotUntilMin = until;
+          }
+        }
+      }
+    }
+
     /* Default intents for the minute. */
     for (const u of units) {
       if (u.state === "dead") continue;
-      u.state = u.state === "basing" ? "rotating" : u.state;
-      const lane = LANE_OF_ROLE[u.role];
+      u.recallAt = -1;
+      if (u.rotUntilMin < minute) u.rotLane = null;
+      const lane = u.rotLane ?? LANE_OF_ROLE[u.role];
+      let laneState: UnitState;
       if (phase === "late") {
-        // Teams group around the strongest front; trailing side sits deeper.
+        // Teams group around the strongest front; the trailing side sits
+        // deeper, guarding its own half of the map.
         const grouped = laneFront("mid", pressure);
-        const back = (u.side === "blue" ? pressure < 0 : pressure > 0) ? 7 : 2;
-        const anchor = towardBase(u.side, grouped, back + rng.next() * 4);
-        u.target = anchor;
-        u.state = "rotating";
+        const trailing = u.side === "blue" ? pressure < 0 : pressure > 0;
+        const back = trailing ? 10 : 2;
+        u.anchor = towardBase(u.side, grouped, back + rng.next() * 5);
+        laneState = "rotating";
       } else if (lane) {
         const facing = u.side === "blue" ? -0.025 : 0.025;
         const t = 0.5 + Math.max(-0.24, Math.min(0.24, pressure * 0.22)) + facing;
-        const spread = u.role === "SUP" ? 2.5 : 0;
         const p = pathPoint(LANE_PATHS[lane], t);
-        u.target = { x: p.x + rng.normal(0, 1) + spread, y: p.y + rng.normal(0, 1) };
-        u.state = "laning";
+        u.anchor = { x: p.x + rng.normal(0, 1), y: p.y + rng.normal(0, 1) };
+        laneState = "laning";
       } else {
         // Jungler roams camps.
         const camps = JUNGLE_CAMPS[u.side];
-        u.target = camps[u.campCursor % camps.length];
-        u.state = "laning";
+        u.anchor = camps[u.campCursor % camps.length];
+        laneState = "laning";
+      }
+      // Units mid-recall keep walking home; everyone else takes station.
+      if (u.state !== "basing") {
+        u.target = { ...u.anchor };
+        u.state = laneState;
+      }
+    }
+    // Supports shadow their ADC wherever the duo is stationed.
+    for (const s of ["blue", "red"] as SideKey[]) {
+      const sup = sideUnits(s).find((u) => u.role === "SUP");
+      const adc = sideUnits(s).find((u) => u.role === "ADC");
+      if (sup && adc && alive(sup) && alive(adc) && phase !== "late") {
+        sup.anchor = { x: adc.anchor.x + rng.normal(0, 2), y: adc.anchor.y + rng.normal(0, 2) };
+        if (sup.state !== "basing") sup.target = { ...sup.anchor };
+        sup.rotLane = adc.rotLane;
+        sup.rotUntilMin = adc.rotUntilMin;
+      }
+    }
+
+    /* Recalls: laners periodically base and walk back out (map life). */
+    if (phase !== "late") {
+      for (const u of units) {
+        if (!alive(u) || u.state === "basing" || u.role === "JGL") continue;
+        if (rng.chance(0.06)) u.recallAt = minuteStart + rng.int(2, 8);
       }
     }
 
@@ -289,12 +376,21 @@ export function generateSpatialLog(outcome: StrategicOutcome): {
       objectiveLoc = pitOf(objective.type);
       objectiveTick = minuteStart + rng.int(14, 20);
       for (const s of ["blue", "red"] as SideKey[]) {
-        const contesters = sideUnits(s).filter(alive);
-        const count = phase === "early" ? 3 : 5;
-        for (const u of contesters.slice(0, count)) {
-          const off = { x: rng.normal(0, 2.5), y: rng.normal(0, 2.5) };
-          const standoff = objective.team === s ? 1.5 : 7;
-          u.target = towardBase(s, { x: objectiveLoc.x + off.x, y: objectiveLoc.y + off.y }, standoff - 1.5);
+        // MACRO decides how many bodies show up and how tight the setup is:
+        // disciplined teams collapse in numbers, loose ones send a skeleton
+        // crew. Attendees are the NEAREST units, so dragon pulls the bot
+        // side and baron pulls the top side — readable intent.
+        const macroCount = Math.round(2.6 + (macroOf(s) - 8) * 0.32);
+        const count = Math.max(2, Math.min(5, phase === "early" ? Math.min(3, macroCount) : macroCount));
+        const contesters = sideUnits(s)
+          .filter(alive)
+          .sort((a, b) => dist(a.pos, objectiveLoc!) - dist(b.pos, objectiveLoc!))
+          .slice(0, count);
+        const tight = Math.max(1.5, 8 - macroOf(s) * 0.35);
+        for (const u of contesters) {
+          const off = { x: rng.normal(0, tight), y: rng.normal(0, tight) };
+          const standoff = objective.team === s ? 0 : 5.5;
+          u.target = towardBase(s, { x: objectiveLoc.x + off.x, y: objectiveLoc.y + off.y }, standoff);
           u.state = "rotating";
         }
       }
@@ -396,6 +492,20 @@ export function generateSpatialLog(outcome: StrategicOutcome): {
         u.target = { x: tower.pos.x + rng.normal(0, 2), y: tower.pos.y + rng.normal(0, 2) };
         u.state = "rotating";
       }
+      // Deep towers get defended: the nearest defenders collapse home.
+      if (tower.tier >= 3) {
+        const defenders = sideUnits(losing)
+          .filter(alive)
+          .sort((a, b) => dist(a.pos, tower.pos) - dist(b.pos, tower.pos))
+          .slice(0, 3);
+        for (const u of defenders) {
+          u.target = towardBase(losing, {
+            x: tower.pos.x + rng.normal(0, 2),
+            y: tower.pos.y + rng.normal(0, 2),
+          }, 3);
+          u.state = "rotating";
+        }
+      }
     }
 
     // Objective / throw / nexus tags.
@@ -419,6 +529,21 @@ export function generateSpatialLog(outcome: StrategicOutcome): {
         text: "THROW",
       });
     }
+    // The side about to lose falls back and defends its nexus — a base race
+    // ends with bodies in the base, not an empty walk-in.
+    if (minute >= outcome.duration - 1) {
+      const losingSide: SideKey = outcome.winner === "blue" ? "red" : "blue";
+      const base = BASES[losingSide];
+      for (const u of sideUnits(losingSide).filter(alive)) {
+        u.anchor = { x: base.x + rng.normal(0, 4), y: base.y + rng.normal(0, 4) };
+        u.recallAt = -1;
+        if (u.state !== "basing") {
+          u.target = { ...u.anchor };
+          u.state = "rotating";
+        }
+      }
+    }
+
     const nexusEvent = minuteEvents.find((e) => e.type === "NEXUS");
     if (nexusEvent) {
       const losingBase = BASES[nexusEvent.team === "blue" ? "red" : "blue"];
@@ -439,13 +564,20 @@ export function generateSpatialLog(outcome: StrategicOutcome): {
     /* Execute the minute tick by tick. */
     let fightCursor = 0;
     for (let tick = minuteStart; tick < minuteStart + TICKS_PER_MINUTE; tick++) {
-      // Respawns.
+      // Respawns, recalls, fight cooldowns.
       for (const u of units) {
         if (u.state === "dead" && tick >= u.respawnAt) {
           u.pos = { ...BASES[u.side] };
           u.state = "basing";
+          u.target = { ...u.anchor };
+          u.dwellUntil = -1;
         }
         if (u.state === "fighting" && tick >= u.fightUntil) u.state = "rotating";
+        if (u.recallAt === tick && u.state !== "dead" && u.state !== "fighting") {
+          u.state = "basing";
+          u.target = { ...BASES[u.side] };
+          u.dwellUntil = -1;
+        }
       }
 
       // Resolve fights scheduled for this tick.
@@ -562,11 +694,18 @@ export function generateSpatialLog(outcome: StrategicOutcome): {
             u.target = camps[u.campCursor % camps.length];
           }
         } else if (u.state === "basing") {
-          u.state = "rotating";
+          // Shopping trip: idle a couple of ticks, then walk back out.
+          if (u.dwellUntil < 0) u.dwellUntil = tick + rng.int(2, 4);
+          if (tick >= u.dwellUntil) {
+            u.dwellUntil = -1;
+            u.state = "rotating";
+            u.target = { ...u.anchor };
+          }
         }
         u.pos.x = Math.min(97, Math.max(3, u.pos.x));
         u.pos.y = Math.min(97, Math.max(3, u.pos.y));
-        if (u.state === "laning") u.csTicks++;
+        if (u.state === "laning") u.csTicks += 1;
+        else if (u.state === "rotating") u.csTicks += 0.45; // waves caught on the move
       }
 
       frames.push({

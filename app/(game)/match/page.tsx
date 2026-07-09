@@ -21,8 +21,8 @@ import { ROLES } from "@/lib/types";
 
 type Stage = "prep" | "live" | "post";
 
-/** ×1 pacing: ~8 real seconds per game minute → a 35-min game plays in ~4½ min. */
-const X1_SECONDS_PER_GAME_MINUTE = 8;
+/** ×1 pacing: ~6 real seconds per game minute → a 35-min game plays in ~3½ min. */
+const X1_SECONDS_PER_GAME_MINUTE = 6;
 /** "Instant sim": the v1 pace — the whole game draws in ~8 seconds. */
 const INSTANT_TOTAL_SECONDS = 8;
 
@@ -341,7 +341,7 @@ function AnimatedMatch({
           {tutorialLive ? <CoachCallout result={result} minute={minute} /> : null}
           {log ? (
             <div className="panel mx-auto w-full max-w-[min(100%,60vh)] p-2" data-tut="map">
-              <MatchMap log={log} tick={tick} userIsBlue={userIsBlue} />
+              <MatchMap log={log} tick={tick} userIsBlue={userIsBlue} goldTimeline={result.goldTimeline} />
             </div>
           ) : (
             <p className="panel p-4 text-center text-xs text-ink-muted">
@@ -626,7 +626,7 @@ function SnapshotViewer({
       />
       {log ? (
         <div className="panel mx-auto w-full max-w-[min(100%,60vh)] p-2">
-          <MatchMap log={log} tick={tick} userIsBlue={userIsBlue} />
+          <MatchMap log={log} tick={tick} userIsBlue={userIsBlue} goldTimeline={result.goldTimeline} />
         </div>
       ) : null}
       <div className="panel p-2">
