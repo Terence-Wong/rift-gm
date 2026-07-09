@@ -1,0 +1,262 @@
+[
+  {
+    "id": "gen",
+    "name": "Gen.G",
+    "shortName": "GEN",
+    "region": "LCK",
+    "color": "#AA8B56",
+    "roster": [
+      "oe-kiin-top",
+      "oe-canyon-jgl",
+      "oe-chovy-mid",
+      "oe-ruler-adc",
+      "oe-duro-sup"
+    ],
+    "starters": {
+      "TOP": "oe-kiin-top",
+      "JGL": "oe-canyon-jgl",
+      "MID": "oe-chovy-mid",
+      "ADC": "oe-ruler-adc",
+      "SUP": "oe-duro-sup"
+    },
+    "budget": 7200,
+    "record": {
+      "wins": 0,
+      "losses": 0
+    }
+  },
+  {
+    "id": "hle",
+    "name": "Hanwha Life Esports",
+    "shortName": "HLE",
+    "region": "LCK",
+    "color": "#F07C28",
+    "roster": [
+      "oe-zeus-top",
+      "oe-peanut-jgl",
+      "oe-zeka-mid",
+      "oe-viper-adc",
+      "oe-delight-sup"
+    ],
+    "starters": {
+      "TOP": "oe-zeus-top",
+      "JGL": "oe-peanut-jgl",
+      "MID": "oe-zeka-mid",
+      "ADC": "oe-viper-adc",
+      "SUP": "oe-delight-sup"
+    },
+    "budget": 7000,
+    "record": {
+      "wins": 0,
+      "losses": 0
+    }
+  },
+  {
+    "id": "t1",
+    "name": "T1",
+    "shortName": "T1",
+    "region": "LCK",
+    "color": "#E2012D",
+    "roster": [
+      "oe-doran-top",
+      "oe-oner-jgl",
+      "oe-faker-mid",
+      "oe-gumayusi-adc",
+      "oe-keria-sup"
+    ],
+    "starters": {
+      "TOP": "oe-doran-top",
+      "JGL": "oe-oner-jgl",
+      "MID": "oe-faker-mid",
+      "ADC": "oe-gumayusi-adc",
+      "SUP": "oe-keria-sup"
+    },
+    "budget": 7400,
+    "record": {
+      "wins": 0,
+      "losses": 0
+    }
+  },
+  {
+    "id": "dk",
+    "name": "Dplus KIA",
+    "shortName": "DK",
+    "region": "LCK",
+    "color": "#00E5BE",
+    "roster": [
+      "oe-siwoo-top",
+      "oe-lucid-jgl",
+      "oe-showmaker-mid",
+      "oe-aiming-adc",
+      "oe-beryl-sup"
+    ],
+    "starters": {
+      "TOP": "oe-siwoo-top",
+      "JGL": "oe-lucid-jgl",
+      "MID": "oe-showmaker-mid",
+      "ADC": "oe-aiming-adc",
+      "SUP": "oe-beryl-sup"
+    },
+    "budget": 6200,
+    "record": {
+      "wins": 0,
+      "losses": 0
+    }
+  },
+  {
+    "id": "kt",
+    "name": "KT Rolster",
+    "shortName": "KT",
+    "region": "LCK",
+    "color": "#FF0A07",
+    "roster": [
+      "oe-perfect-top",
+      "oe-cuzz-jgl",
+      "oe-bdd-mid",
+      "oe-deokdam-adc",
+      "oe-peter-sup"
+    ],
+    "starters": {
+      "TOP": "oe-perfect-top",
+      "JGL": "oe-cuzz-jgl",
+      "MID": "oe-bdd-mid",
+      "ADC": "oe-deokdam-adc",
+      "SUP": "oe-peter-sup"
+    },
+    "budget": 5800,
+    "record": {
+      "wins": 0,
+      "losses": 0
+    }
+  },
+  {
+    "id": "drx",
+    "name": "DRX",
+    "shortName": "DRX",
+    "region": "LCK",
+    "color": "#5A8DFF",
+    "roster": [
+      "oe-rich-top",
+      "oe-sponge-jgl",
+      "oe-ucal-mid",
+      "oe-teddy-adc",
+      "oe-andil-sup"
+    ],
+    "starters": {
+      "TOP": "oe-rich-top",
+      "JGL": "oe-sponge-jgl",
+      "MID": "oe-ucal-mid",
+      "ADC": "oe-teddy-adc",
+      "SUP": "oe-andil-sup"
+    },
+    "budget": 5200,
+    "record": {
+      "wins": 0,
+      "losses": 0
+    }
+  },
+  {
+    "id": "ns",
+    "name": "Nongshim RedForce",
+    "shortName": "NS",
+    "region": "LCK",
+    "color": "#DE2027",
+    "roster": [
+      "oe-kingen-top",
+      "oe-gideon-jgl",
+      "oe-calix-mid",
+      "oe-jiwoo-adc",
+      "oe-lehends-sup"
+    ],
+    "starters": {
+      "TOP": "oe-kingen-top",
+      "JGL": "oe-gideon-jgl",
+      "MID": "oe-calix-mid",
+      "ADC": "oe-jiwoo-adc",
+      "SUP": "oe-lehends-sup"
+    },
+    "budget": 5400,
+    "record": {
+      "wins": 0,
+      "losses": 0
+    }
+  },
+  {
+    "id": "bfx",
+    "name": "BNK FEARX",
+    "shortName": "BFX",
+    "region": "LCK",
+    "color": "#FFC900",
+    "roster": [
+      "oe-clear-top",
+      "oe-raptor-jgl",
+      "oe-vicla-mid",
+      "oe-diable-adc",
+      "oe-kellin-sup"
+    ],
+    "starters": {
+      "TOP": "oe-clear-top",
+      "JGL": "oe-raptor-jgl",
+      "MID": "oe-vicla-mid",
+      "ADC": "oe-diable-adc",
+      "SUP": "oe-kellin-sup"
+    },
+    "budget": 4800,
+    "record": {
+      "wins": 0,
+      "losses": 0
+    }
+  },
+  {
+    "id": "bro",
+    "name": "HANJIN BRION",
+    "shortName": "BRO",
+    "region": "LCK",
+    "color": "#2FBF71",
+    "roster": [
+      "oe-morgan-top",
+      "oe-croco-jgl",
+      "oe-clozer-mid",
+      "oe-hype-adc",
+      "oe-pollu-sup"
+    ],
+    "starters": {
+      "TOP": "oe-morgan-top",
+      "JGL": "oe-croco-jgl",
+      "MID": "oe-clozer-mid",
+      "ADC": "oe-hype-adc",
+      "SUP": "oe-pollu-sup"
+    },
+    "budget": 4600,
+    "record": {
+      "wins": 0,
+      "losses": 0
+    }
+  },
+  {
+    "id": "dns",
+    "name": "DN SOOPers",
+    "shortName": "DNS",
+    "region": "LCK",
+    "color": "#4C6EF5",
+    "roster": [
+      "oe-dudu-top",
+      "oe-pyosik-jgl",
+      "oe-bulldog-mid",
+      "oe-berserker-adc",
+      "oe-life-sup"
+    ],
+    "starters": {
+      "TOP": "oe-dudu-top",
+      "JGL": "oe-pyosik-jgl",
+      "MID": "oe-bulldog-mid",
+      "ADC": "oe-berserker-adc",
+      "SUP": "oe-life-sup"
+    },
+    "budget": 4600,
+    "record": {
+      "wins": 0,
+      "losses": 0
+    }
+  }
+]

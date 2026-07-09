@@ -1,0 +1,2564 @@
+{
+  "players": [
+    {
+      "id": "gen-kiin",
+      "handle": "Kiin",
+      "role": "TOP",
+      "age": 26,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 17,
+        "mechanics": 16,
+        "macro": 17,
+        "teamfight": 16,
+        "aggression": 12,
+        "consistency": 17,
+        "clutch": 16,
+        "potential": 12
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 16.2,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 1100
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "gen-canyon",
+      "handle": "Canyon",
+      "role": "JGL",
+      "age": 24,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 15,
+        "mechanics": 18,
+        "macro": 19,
+        "teamfight": 18,
+        "aggression": 15,
+        "consistency": 17,
+        "clutch": 17,
+        "potential": 14
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 17.4,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 1400
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "gen-chovy",
+      "handle": "Chovy",
+      "role": "MID",
+      "age": 24,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 20,
+        "mechanics": 19,
+        "macro": 17,
+        "teamfight": 16,
+        "aggression": 11,
+        "consistency": 19,
+        "clutch": 14,
+        "potential": 14
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 17.5,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 3,
+        "salary": 1500
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "gen-ruler",
+      "handle": "Ruler",
+      "role": "ADC",
+      "age": 26,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 18,
+        "mechanics": 19,
+        "macro": 16,
+        "teamfight": 19,
+        "aggression": 12,
+        "consistency": 18,
+        "clutch": 18,
+        "potential": 11
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 17.9,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 1400
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "gen-duro",
+      "handle": "Duro",
+      "role": "SUP",
+      "age": 21,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 13,
+        "mechanics": 14,
+        "macro": 14,
+        "teamfight": 15,
+        "aggression": 14,
+        "consistency": 12,
+        "clutch": 12,
+        "potential": 16
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 14.2,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 350
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "hle-zeus",
+      "handle": "Zeus",
+      "role": "TOP",
+      "age": 21,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 18,
+        "mechanics": 19,
+        "macro": 14,
+        "teamfight": 17,
+        "aggression": 16,
+        "consistency": 14,
+        "clutch": 15,
+        "potential": 18
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 17.1,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 1300
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "hle-peanut",
+      "handle": "Peanut",
+      "role": "JGL",
+      "age": 27,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 13,
+        "mechanics": 15,
+        "macro": 18,
+        "teamfight": 16,
+        "aggression": 14,
+        "consistency": 16,
+        "clutch": 15,
+        "potential": 10
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 15.8,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 1,
+        "salary": 900
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "hle-zeka",
+      "handle": "Zeka",
+      "role": "MID",
+      "age": 24,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 16,
+        "mechanics": 18,
+        "macro": 15,
+        "teamfight": 18,
+        "aggression": 15,
+        "consistency": 14,
+        "clutch": 19,
+        "potential": 13
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 16.7,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 1200
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "hle-viper",
+      "handle": "Viper",
+      "role": "ADC",
+      "age": 24,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 18,
+        "mechanics": 19,
+        "macro": 16,
+        "teamfight": 19,
+        "aggression": 13,
+        "consistency": 18,
+        "clutch": 17,
+        "potential": 13
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 17.9,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 3,
+        "salary": 1400
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "hle-delight",
+      "handle": "Delight",
+      "role": "SUP",
+      "age": 24,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 12,
+        "mechanics": 13,
+        "macro": 16,
+        "teamfight": 16,
+        "aggression": 13,
+        "consistency": 15,
+        "clutch": 13,
+        "potential": 12
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 14.7,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 500
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "t1-doran",
+      "handle": "Doran",
+      "role": "TOP",
+      "age": 25,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 15,
+        "mechanics": 15,
+        "macro": 14,
+        "teamfight": 15,
+        "aggression": 14,
+        "consistency": 11,
+        "clutch": 14,
+        "potential": 12
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 14.7,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 1,
+        "salary": 800
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "t1-oner",
+      "handle": "Oner",
+      "role": "JGL",
+      "age": 22,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 14,
+        "mechanics": 17,
+        "macro": 17,
+        "teamfight": 17,
+        "aggression": 16,
+        "consistency": 15,
+        "clutch": 17,
+        "potential": 15
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 16.5,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 1100
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "t1-faker",
+      "handle": "Faker",
+      "role": "MID",
+      "age": 29,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 15,
+        "mechanics": 16,
+        "macro": 20,
+        "teamfight": 18,
+        "aggression": 10,
+        "consistency": 17,
+        "clutch": 20,
+        "potential": 8
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 16.6,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 3,
+        "salary": 1500
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "t1-gumayusi",
+      "handle": "Gumayusi",
+      "role": "ADC",
+      "age": 23,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 17,
+        "mechanics": 18,
+        "macro": 15,
+        "teamfight": 17,
+        "aggression": 12,
+        "consistency": 15,
+        "clutch": 17,
+        "potential": 14
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 16.7,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 1100
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "t1-keria",
+      "handle": "Keria",
+      "role": "SUP",
+      "age": 23,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 14,
+        "mechanics": 18,
+        "macro": 19,
+        "teamfight": 18,
+        "aggression": 16,
+        "consistency": 15,
+        "clutch": 18,
+        "potential": 15
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 17.6,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 1300
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "dk-siwoo",
+      "handle": "Siwoo",
+      "role": "TOP",
+      "age": 19,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 14,
+        "mechanics": 15,
+        "macro": 11,
+        "teamfight": 13,
+        "aggression": 15,
+        "consistency": 10,
+        "clutch": 11,
+        "potential": 18
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 13.5,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 3,
+        "salary": 300
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "dk-lucid",
+      "handle": "Lucid",
+      "role": "JGL",
+      "age": 20,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 13,
+        "mechanics": 15,
+        "macro": 15,
+        "teamfight": 15,
+        "aggression": 13,
+        "consistency": 13,
+        "clutch": 12,
+        "potential": 17
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 14.4,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 3,
+        "salary": 500
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "dk-showmaker",
+      "handle": "ShowMaker",
+      "role": "MID",
+      "age": 25,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 15,
+        "mechanics": 16,
+        "macro": 17,
+        "teamfight": 16,
+        "aggression": 11,
+        "consistency": 15,
+        "clutch": 15,
+        "potential": 11
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 15.6,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 1000
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "dk-aiming",
+      "handle": "Aiming",
+      "role": "ADC",
+      "age": 25,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 15,
+        "mechanics": 17,
+        "macro": 13,
+        "teamfight": 16,
+        "aggression": 14,
+        "consistency": 12,
+        "clutch": 13,
+        "potential": 11
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 15.6,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 1,
+        "salary": 800
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "dk-beryl",
+      "handle": "BeryL",
+      "role": "SUP",
+      "age": 28,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 10,
+        "mechanics": 12,
+        "macro": 18,
+        "teamfight": 15,
+        "aggression": 12,
+        "consistency": 14,
+        "clutch": 15,
+        "potential": 8
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 14.6,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 1,
+        "salary": 700
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "kt-perfect",
+      "handle": "PerfecT",
+      "role": "TOP",
+      "age": 21,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 14,
+        "mechanics": 15,
+        "macro": 13,
+        "teamfight": 14,
+        "aggression": 13,
+        "consistency": 12,
+        "clutch": 12,
+        "potential": 16
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 14,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 400
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "kt-cuzz",
+      "handle": "Cuzz",
+      "role": "JGL",
+      "age": 26,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 13,
+        "mechanics": 14,
+        "macro": 16,
+        "teamfight": 15,
+        "aggression": 12,
+        "consistency": 14,
+        "clutch": 12,
+        "potential": 10
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 14.3,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 1,
+        "salary": 700
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "kt-bdd",
+      "handle": "Bdd",
+      "role": "MID",
+      "age": 26,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 16,
+        "mechanics": 16,
+        "macro": 16,
+        "teamfight": 16,
+        "aggression": 10,
+        "consistency": 16,
+        "clutch": 14,
+        "potential": 10
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 15.5,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 900
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "kt-deokdam",
+      "handle": "deokdam",
+      "role": "ADC",
+      "age": 25,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 14,
+        "mechanics": 15,
+        "macro": 13,
+        "teamfight": 15,
+        "aggression": 12,
+        "consistency": 13,
+        "clutch": 12,
+        "potential": 11
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 14.3,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 1,
+        "salary": 600
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "kt-way",
+      "handle": "Way",
+      "role": "SUP",
+      "age": 22,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 11,
+        "mechanics": 12,
+        "macro": 13,
+        "teamfight": 13,
+        "aggression": 12,
+        "consistency": 11,
+        "clutch": 11,
+        "potential": 14
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 12.5,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 250
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "drx-rich",
+      "handle": "Rich",
+      "role": "TOP",
+      "age": 27,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 12,
+        "mechanics": 13,
+        "macro": 13,
+        "teamfight": 13,
+        "aggression": 12,
+        "consistency": 12,
+        "clutch": 12,
+        "potential": 9
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 12.6,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 1,
+        "salary": 450
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "drx-sponge",
+      "handle": "Sponge",
+      "role": "JGL",
+      "age": 21,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 12,
+        "mechanics": 13,
+        "macro": 13,
+        "teamfight": 13,
+        "aggression": 14,
+        "consistency": 11,
+        "clutch": 11,
+        "potential": 15
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 13.1,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 300
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "drx-ucal",
+      "handle": "Ucal",
+      "role": "MID",
+      "age": 25,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 14,
+        "mechanics": 14,
+        "macro": 13,
+        "teamfight": 14,
+        "aggression": 12,
+        "consistency": 11,
+        "clutch": 12,
+        "potential": 10
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 13.6,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 1,
+        "salary": 500
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "drx-teddy",
+      "handle": "Teddy",
+      "role": "ADC",
+      "age": 27,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 14,
+        "mechanics": 15,
+        "macro": 12,
+        "teamfight": 14,
+        "aggression": 10,
+        "consistency": 14,
+        "clutch": 13,
+        "potential": 9
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 13.7,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 1,
+        "salary": 600
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "drx-andil",
+      "handle": "Andil",
+      "role": "SUP",
+      "age": 22,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 10,
+        "mechanics": 12,
+        "macro": 12,
+        "teamfight": 13,
+        "aggression": 13,
+        "consistency": 10,
+        "clutch": 11,
+        "potential": 14
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 12.2,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 250
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "ns-kingen",
+      "handle": "Kingen",
+      "role": "TOP",
+      "age": 25,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 13,
+        "mechanics": 14,
+        "macro": 13,
+        "teamfight": 15,
+        "aggression": 12,
+        "consistency": 12,
+        "clutch": 16,
+        "potential": 10
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 13.6,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 1,
+        "salary": 550
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "ns-gideon",
+      "handle": "GIDEON",
+      "role": "JGL",
+      "age": 22,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 12,
+        "mechanics": 14,
+        "macro": 13,
+        "teamfight": 14,
+        "aggression": 15,
+        "consistency": 11,
+        "clutch": 12,
+        "potential": 15
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 13.7,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 350
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "ns-fisher",
+      "handle": "Fisher",
+      "role": "MID",
+      "age": 21,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 13,
+        "mechanics": 15,
+        "macro": 12,
+        "teamfight": 13,
+        "aggression": 14,
+        "consistency": 10,
+        "clutch": 11,
+        "potential": 16
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 13.4,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 300
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "ns-jiwoo",
+      "handle": "Jiwoo",
+      "role": "ADC",
+      "age": 21,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 14,
+        "mechanics": 16,
+        "macro": 12,
+        "teamfight": 15,
+        "aggression": 14,
+        "consistency": 12,
+        "clutch": 12,
+        "potential": 16
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 14.6,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 450
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "ns-lehends",
+      "handle": "Lehends",
+      "role": "SUP",
+      "age": 27,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 11,
+        "mechanics": 13,
+        "macro": 17,
+        "teamfight": 16,
+        "aggression": 14,
+        "consistency": 14,
+        "clutch": 14,
+        "potential": 9
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 15.1,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 1,
+        "salary": 700
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "bfx-clear",
+      "handle": "Clear",
+      "role": "TOP",
+      "age": 22,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 12,
+        "mechanics": 13,
+        "macro": 12,
+        "teamfight": 13,
+        "aggression": 12,
+        "consistency": 11,
+        "clutch": 11,
+        "potential": 14
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 12.4,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 250
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "bfx-raptor",
+      "handle": "Raptor",
+      "role": "JGL",
+      "age": 23,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 12,
+        "mechanics": 13,
+        "macro": 13,
+        "teamfight": 13,
+        "aggression": 14,
+        "consistency": 11,
+        "clutch": 11,
+        "potential": 13
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 13.1,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 1,
+        "salary": 250
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "bfx-vicla",
+      "handle": "VicLa",
+      "role": "MID",
+      "age": 23,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 13,
+        "mechanics": 14,
+        "macro": 13,
+        "teamfight": 13,
+        "aggression": 13,
+        "consistency": 11,
+        "clutch": 12,
+        "potential": 13
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 13.3,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 1,
+        "salary": 400
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "bfx-diable",
+      "handle": "Diable",
+      "role": "ADC",
+      "age": 21,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 12,
+        "mechanics": 14,
+        "macro": 11,
+        "teamfight": 13,
+        "aggression": 13,
+        "consistency": 10,
+        "clutch": 11,
+        "potential": 15
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 12.8,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 2,
+        "salary": 250
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "bfx-kellin",
+      "handle": "Kellin",
+      "role": "SUP",
+      "age": 25,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 11,
+        "mechanics": 12,
+        "macro": 14,
+        "teamfight": 14,
+        "aggression": 11,
+        "consistency": 13,
+        "clutch": 12,
+        "potential": 10
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 12.9,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 1,
+        "salary": 300
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "fa-haru",
+      "handle": "Haru",
+      "role": "TOP",
+      "age": 17,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 8.5,
+        "mechanics": 11.2,
+        "macro": 11,
+        "teamfight": 8.6,
+        "aggression": 12.2,
+        "consistency": 9.6,
+        "clutch": 9.2,
+        "potential": 16.8
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 10,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 0,
+        "salary": 137
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "fa-bitmap",
+      "handle": "Bitmap",
+      "role": "JGL",
+      "age": 19,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 11.2,
+        "mechanics": 8.9,
+        "macro": 10.4,
+        "teamfight": 12.3,
+        "aggression": 12.1,
+        "consistency": 9.7,
+        "clutch": 10.9,
+        "potential": 16.6
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 11,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 0,
+        "salary": 216
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "fa-cricket",
+      "handle": "Cricket",
+      "role": "MID",
+      "age": 18,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 8.3,
+        "mechanics": 12.8,
+        "macro": 9.9,
+        "teamfight": 10.1,
+        "aggression": 8.8,
+        "consistency": 11.2,
+        "clutch": 8.3,
+        "potential": 15.9
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 10.3,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 0,
+        "salary": 214
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "fa-dawnfall",
+      "handle": "Dawnfall",
+      "role": "ADC",
+      "age": 19,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 12,
+        "mechanics": 9.6,
+        "macro": 11.5,
+        "teamfight": 12.5,
+        "aggression": 9.2,
+        "consistency": 11,
+        "clutch": 9.6,
+        "potential": 15.6
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 11.1,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 0,
+        "salary": 173
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "fa-ember",
+      "handle": "Ember",
+      "role": "SUP",
+      "age": 18,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 8.8,
+        "mechanics": 10.8,
+        "macro": 12.9,
+        "teamfight": 9.3,
+        "aggression": 9.7,
+        "consistency": 8.2,
+        "clutch": 9.1,
+        "potential": 16
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 10.7,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 0,
+        "salary": 212
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "fa-fjord",
+      "handle": "Fjord",
+      "role": "TOP",
+      "age": 17,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 8.4,
+        "mechanics": 12.9,
+        "macro": 9.4,
+        "teamfight": 10.3,
+        "aggression": 8.3,
+        "consistency": 11.4,
+        "clutch": 11.1,
+        "potential": 12.9
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 10.1,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 0,
+        "salary": 187
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "fa-glacier",
+      "handle": "Glacier",
+      "role": "JGL",
+      "age": 19,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 12,
+        "mechanics": 9.3,
+        "macro": 10.8,
+        "teamfight": 8.1,
+        "aggression": 12.7,
+        "consistency": 9.2,
+        "clutch": 8.2,
+        "potential": 16.4
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 10.5,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 0,
+        "salary": 190
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "fa-halcyon",
+      "handle": "Halcyon",
+      "role": "MID",
+      "age": 19,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 10.2,
+        "mechanics": 13,
+        "macro": 8.4,
+        "teamfight": 12.1,
+        "aggression": 9.2,
+        "consistency": 10.5,
+        "clutch": 11.5,
+        "potential": 14.6
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 10.9,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 0,
+        "salary": 170
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "fa-ion",
+      "handle": "Ion",
+      "role": "ADC",
+      "age": 18,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 12.4,
+        "mechanics": 10,
+        "macro": 12.2,
+        "teamfight": 12.3,
+        "aggression": 9.5,
+        "consistency": 11.7,
+        "clutch": 11.1,
+        "potential": 17.7
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 11.4,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 0,
+        "salary": 131
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    },
+    {
+      "id": "fa-juniper",
+      "handle": "Juniper",
+      "role": "SUP",
+      "age": 18,
+      "nationality": "KR",
+      "attributes": {
+        "laning": 11.2,
+        "mechanics": 11.5,
+        "macro": 8.4,
+        "teamfight": 10,
+        "aggression": 8.3,
+        "consistency": 9.6,
+        "clutch": 7.8,
+        "potential": 17.1
+      },
+      "provenance": {
+        "laning": "modeled",
+        "mechanics": "modeled",
+        "macro": "modeled",
+        "teamfight": "modeled",
+        "aggression": "modeled",
+        "consistency": "modeled",
+        "clutch": "modeled",
+        "potential": "modeled"
+      },
+      "ovr": 9.5,
+      "form": 0,
+      "morale": 60,
+      "fatigue": 0,
+      "contract": {
+        "years": 0,
+        "salary": 237
+      },
+      "seasonStats": {
+        "games": 0,
+        "wins": 0,
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0,
+        "cs": 0,
+        "damage": 0,
+        "mvps": 0,
+        "ratingSum": 0
+      },
+      "careerHistory": []
+    }
+  ],
+  "teams": [
+    {
+      "id": "gen",
+      "name": "Gen.G",
+      "shortName": "GEN",
+      "region": "LCK",
+      "color": "#AA8B56",
+      "roster": [
+        "gen-kiin",
+        "gen-canyon",
+        "gen-chovy",
+        "gen-ruler",
+        "gen-duro"
+      ],
+      "starters": {
+        "TOP": "gen-kiin",
+        "JGL": "gen-canyon",
+        "MID": "gen-chovy",
+        "ADC": "gen-ruler",
+        "SUP": "gen-duro"
+      },
+      "budget": 7200,
+      "record": {
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    {
+      "id": "hle",
+      "name": "Hanwha Life Esports",
+      "shortName": "HLE",
+      "region": "LCK",
+      "color": "#F07C28",
+      "roster": [
+        "hle-zeus",
+        "hle-peanut",
+        "hle-zeka",
+        "hle-viper",
+        "hle-delight"
+      ],
+      "starters": {
+        "TOP": "hle-zeus",
+        "JGL": "hle-peanut",
+        "MID": "hle-zeka",
+        "ADC": "hle-viper",
+        "SUP": "hle-delight"
+      },
+      "budget": 7000,
+      "record": {
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    {
+      "id": "t1",
+      "name": "T1",
+      "shortName": "T1",
+      "region": "LCK",
+      "color": "#E2012D",
+      "roster": [
+        "t1-doran",
+        "t1-oner",
+        "t1-faker",
+        "t1-gumayusi",
+        "t1-keria"
+      ],
+      "starters": {
+        "TOP": "t1-doran",
+        "JGL": "t1-oner",
+        "MID": "t1-faker",
+        "ADC": "t1-gumayusi",
+        "SUP": "t1-keria"
+      },
+      "budget": 7400,
+      "record": {
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    {
+      "id": "dk",
+      "name": "Dplus KIA",
+      "shortName": "DK",
+      "region": "LCK",
+      "color": "#00E5BE",
+      "roster": [
+        "dk-siwoo",
+        "dk-lucid",
+        "dk-showmaker",
+        "dk-aiming",
+        "dk-beryl"
+      ],
+      "starters": {
+        "TOP": "dk-siwoo",
+        "JGL": "dk-lucid",
+        "MID": "dk-showmaker",
+        "ADC": "dk-aiming",
+        "SUP": "dk-beryl"
+      },
+      "budget": 6200,
+      "record": {
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    {
+      "id": "kt",
+      "name": "KT Rolster",
+      "shortName": "KT",
+      "region": "LCK",
+      "color": "#FF0A07",
+      "roster": [
+        "kt-perfect",
+        "kt-cuzz",
+        "kt-bdd",
+        "kt-deokdam",
+        "kt-way"
+      ],
+      "starters": {
+        "TOP": "kt-perfect",
+        "JGL": "kt-cuzz",
+        "MID": "kt-bdd",
+        "ADC": "kt-deokdam",
+        "SUP": "kt-way"
+      },
+      "budget": 5800,
+      "record": {
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    {
+      "id": "drx",
+      "name": "DRX",
+      "shortName": "DRX",
+      "region": "LCK",
+      "color": "#5A8DFF",
+      "roster": [
+        "drx-rich",
+        "drx-sponge",
+        "drx-ucal",
+        "drx-teddy",
+        "drx-andil"
+      ],
+      "starters": {
+        "TOP": "drx-rich",
+        "JGL": "drx-sponge",
+        "MID": "drx-ucal",
+        "ADC": "drx-teddy",
+        "SUP": "drx-andil"
+      },
+      "budget": 5200,
+      "record": {
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    {
+      "id": "ns",
+      "name": "Nongshim RedForce",
+      "shortName": "NS",
+      "region": "LCK",
+      "color": "#DE2027",
+      "roster": [
+        "ns-kingen",
+        "ns-gideon",
+        "ns-fisher",
+        "ns-jiwoo",
+        "ns-lehends"
+      ],
+      "starters": {
+        "TOP": "ns-kingen",
+        "JGL": "ns-gideon",
+        "MID": "ns-fisher",
+        "ADC": "ns-jiwoo",
+        "SUP": "ns-lehends"
+      },
+      "budget": 5400,
+      "record": {
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    {
+      "id": "bfx",
+      "name": "BNK FEARX",
+      "shortName": "BFX",
+      "region": "LCK",
+      "color": "#FFC900",
+      "roster": [
+        "bfx-clear",
+        "bfx-raptor",
+        "bfx-vicla",
+        "bfx-diable",
+        "bfx-kellin"
+      ],
+      "starters": {
+        "TOP": "bfx-clear",
+        "JGL": "bfx-raptor",
+        "MID": "bfx-vicla",
+        "ADC": "bfx-diable",
+        "SUP": "bfx-kellin"
+      },
+      "budget": 4800,
+      "record": {
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,3372 @@
+[
+  {
+    "id": "oe-morgan-top",
+    "handle": "Morgan",
+    "role": "TOP",
+    "age": 22,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 11.5,
+      "mechanics": 10.2,
+      "macro": 13.2,
+      "teamfight": 11.9,
+      "aggression": 7.5,
+      "consistency": 12.7,
+      "clutch": 6,
+      "potential": 16
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 101,
+      "csd15": -2,
+      "gd15": -70.2,
+      "xpd15": -42.8,
+      "dpm": 566.8,
+      "dmgShare": 23,
+      "kda": 4.3,
+      "kp": 56.9,
+      "vspm": 1.1
+    },
+    "ovr": 11.3,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 335
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-clozer-mid",
+    "handle": "Clozer",
+    "role": "MID",
+    "age": 23,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 16.4,
+      "mechanics": 11.5,
+      "macro": 11.2,
+      "teamfight": 13.4,
+      "aggression": 11.2,
+      "consistency": 12.6,
+      "clutch": 13.1,
+      "potential": 16
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 101,
+      "csd15": 2.1,
+      "gd15": 37.7,
+      "xpd15": 10,
+      "dpm": 635.8,
+      "dmgShare": 25.7,
+      "kda": 5.8,
+      "kp": 69.4,
+      "vspm": 1
+    },
+    "ovr": 12.9,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 558
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-hype-adc",
+    "handle": "Hype",
+    "role": "ADC",
+    "age": 22,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 9.1,
+      "mechanics": 11.5,
+      "macro": 11.9,
+      "teamfight": 12.6,
+      "aggression": 9.5,
+      "consistency": 6,
+      "clutch": 9.2,
+      "potential": 13.4
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 90,
+      "csd15": -6.6,
+      "gd15": -226.9,
+      "xpd15": -43.1,
+      "dpm": 678.9,
+      "dmgShare": 26.9,
+      "kda": 6.3,
+      "kp": 69.3,
+      "vspm": 1.2
+    },
+    "ovr": 11.2,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 324
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-pollu-sup",
+    "handle": "Pollu",
+    "role": "SUP",
+    "age": 23,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 7.4,
+      "mechanics": 10.2,
+      "macro": 9.1,
+      "teamfight": 11.3,
+      "aggression": 12.5,
+      "consistency": 10.9,
+      "clutch": 7.4,
+      "potential": 13.1
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 101,
+      "csd15": -2.1,
+      "gd15": -119.5,
+      "xpd15": -212.3,
+      "dpm": 193.8,
+      "dmgShare": 7.9,
+      "kda": 3.9,
+      "kp": 74.1,
+      "vspm": 3.5
+    },
+    "ovr": 10.2,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 232
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-rich-top",
+    "handle": "Rich",
+    "role": "TOP",
+    "age": 27,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 6.2,
+      "mechanics": 13.2,
+      "macro": 13.6,
+      "teamfight": 14,
+      "aggression": 8.6,
+      "consistency": 14,
+      "clutch": 13.1,
+      "potential": 9.8
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 97,
+      "csd15": -7.2,
+      "gd15": -275.4,
+      "xpd15": -263.8,
+      "dpm": 597.2,
+      "dmgShare": 24,
+      "kda": 4,
+      "kp": 57.4,
+      "vspm": 1.1
+    },
+    "ovr": 11.1,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 313
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-sponge-jgl",
+    "handle": "Sponge",
+    "role": "JGL",
+    "age": 21,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 9.8,
+      "mechanics": 13,
+      "macro": 12.6,
+      "teamfight": 14.5,
+      "aggression": 13.5,
+      "consistency": 13.5,
+      "clutch": 13.3,
+      "potential": 16.1
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 97,
+      "csd15": -0.9,
+      "gd15": -68.9,
+      "xpd15": -117.7,
+      "dpm": 441.1,
+      "dmgShare": 17.6,
+      "kda": 4.5,
+      "kp": 74.8,
+      "vspm": 1.6
+    },
+    "ovr": 13.1,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 592
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-ucal-mid",
+    "handle": "Ucal",
+    "role": "MID",
+    "age": 25,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 11.5,
+      "mechanics": 9.1,
+      "macro": 8.8,
+      "teamfight": 11.9,
+      "aggression": 15.6,
+      "consistency": 6.7,
+      "clutch": 9.8,
+      "potential": 11.5
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 58,
+      "csd15": -0.4,
+      "gd15": -93.4,
+      "xpd15": -65.6,
+      "dpm": 611.6,
+      "dmgShare": 25,
+      "kda": 4.5,
+      "kp": 64.5,
+      "vspm": 1
+    },
+    "ovr": 10.6,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 265
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-andil-sup",
+    "handle": "Andil",
+    "role": "SUP",
+    "age": 22,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 11.3,
+      "mechanics": 9.8,
+      "macro": 7.4,
+      "teamfight": 11.7,
+      "aggression": 12.9,
+      "consistency": 15.7,
+      "clutch": 7.7,
+      "potential": 14.8
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 87,
+      "csd15": 1.4,
+      "gd15": -83.5,
+      "xpd15": -16.3,
+      "dpm": 197.9,
+      "dmgShare": 7.9,
+      "kda": 3.4,
+      "kp": 70.8,
+      "vspm": 3.2
+    },
+    "ovr": 10.2,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 232
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-dudu-top",
+    "handle": "DuDu",
+    "role": "TOP",
+    "age": 22,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 15.4,
+      "mechanics": 9.8,
+      "macro": 9,
+      "teamfight": 11.5,
+      "aggression": 7.9,
+      "consistency": 9,
+      "clutch": 8.4,
+      "potential": 13.1
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 88,
+      "csd15": 3.1,
+      "gd15": 22.1,
+      "xpd15": 84.5,
+      "dpm": 575,
+      "dmgShare": 23.5,
+      "kda": 3.4,
+      "kp": 55.9,
+      "vspm": 0.9
+    },
+    "ovr": 11.4,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 347
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-pyosik-jgl",
+    "handle": "Pyosik",
+    "role": "JGL",
+    "age": 25,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 7,
+      "mechanics": 6.6,
+      "macro": 12.1,
+      "teamfight": 10.3,
+      "aggression": 7.7,
+      "consistency": 7,
+      "clutch": 6.4,
+      "potential": 11.9
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 85,
+      "csd15": -5.1,
+      "gd15": -171,
+      "xpd15": -219.1,
+      "dpm": 356.9,
+      "dmgShare": 14.6,
+      "kda": 4.5,
+      "kp": 76.8,
+      "vspm": 1.6
+    },
+    "ovr": 9.4,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 183
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-bulldog-mid",
+    "handle": "BuLLDoG",
+    "role": "MID",
+    "age": 22,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 14.1,
+      "mechanics": 13.4,
+      "macro": 13.4,
+      "teamfight": 13.7,
+      "aggression": 8.5,
+      "consistency": 16,
+      "clutch": 12.4,
+      "potential": 14.5
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 76,
+      "csd15": -0.1,
+      "gd15": -78.3,
+      "xpd15": 51.5,
+      "dpm": 683,
+      "dmgShare": 27.7,
+      "kda": 3.8,
+      "kp": 68.6,
+      "vspm": 1.2
+    },
+    "ovr": 13.2,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 610
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-berserker-adc",
+    "handle": "Berserker",
+    "role": "ADC",
+    "age": 22,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 11.2,
+      "mechanics": 9.1,
+      "macro": 8.8,
+      "teamfight": 9.1,
+      "aggression": 8,
+      "consistency": 7.6,
+      "clutch": 9.7,
+      "potential": 16.1
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 88,
+      "csd15": 2,
+      "gd15": -0.2,
+      "xpd15": -72.1,
+      "dpm": 650.9,
+      "dmgShare": 26.4,
+      "kda": 5.1,
+      "kp": 69,
+      "vspm": 1.1
+    },
+    "ovr": 9.4,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 183
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-life-sup",
+    "handle": "Life",
+    "role": "SUP",
+    "age": 22,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 12.1,
+      "mechanics": 8.4,
+      "macro": 10.9,
+      "teamfight": 10.6,
+      "aggression": 8.7,
+      "consistency": 6.8,
+      "clutch": 12.2,
+      "potential": 14.5
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 80,
+      "csd15": 0.4,
+      "gd15": -18,
+      "xpd15": 0.7,
+      "dpm": 183.4,
+      "dmgShare": 7.7,
+      "kda": 3.6,
+      "kp": 75.3,
+      "vspm": 3.5
+    },
+    "ovr": 10.2,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 232
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-kingen-top",
+    "handle": "Kingen",
+    "role": "TOP",
+    "age": 25,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 16.3,
+      "mechanics": 15.8,
+      "macro": 11.5,
+      "teamfight": 11.9,
+      "aggression": 13.2,
+      "consistency": 11.5,
+      "clutch": 7.4,
+      "potential": 10.5
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 117,
+      "csd15": 1.7,
+      "gd15": 135.8,
+      "xpd15": 134.8,
+      "dpm": 641.7,
+      "dmgShare": 25,
+      "kda": 3.8,
+      "kp": 54.9,
+      "vspm": 1
+    },
+    "ovr": 14.1,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 783
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-gideon-jgl",
+    "handle": "GIDEON",
+    "role": "JGL",
+    "age": 22,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 12.6,
+      "mechanics": 8.5,
+      "macro": 11.2,
+      "teamfight": 9,
+      "aggression": 12.1,
+      "consistency": 8.1,
+      "clutch": 6,
+      "potential": 13
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 117,
+      "csd15": 0.3,
+      "gd15": -26.2,
+      "xpd15": 2.3,
+      "dpm": 394.6,
+      "dmgShare": 15.3,
+      "kda": 4.8,
+      "kp": 73.1,
+      "vspm": 1.6
+    },
+    "ovr": 10.6,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 265
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-jiwoo-adc",
+    "handle": "Jiwoo",
+    "role": "ADC",
+    "age": 21,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 11.2,
+      "mechanics": 10.2,
+      "macro": 6.7,
+      "teamfight": 9.5,
+      "aggression": 14.1,
+      "consistency": 9.5,
+      "clutch": 7.4,
+      "potential": 19.4
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 109,
+      "csd15": -3.4,
+      "gd15": -187.6,
+      "xpd15": 59.9,
+      "dpm": 687.5,
+      "dmgShare": 26.4,
+      "kda": 4.8,
+      "kp": 65.7,
+      "vspm": 1.1
+    },
+    "ovr": 10.1,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 225
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-lehends-sup",
+    "handle": "Lehends",
+    "role": "SUP",
+    "age": 27,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 13.3,
+      "mechanics": 13.3,
+      "macro": 9.1,
+      "teamfight": 11.7,
+      "aggression": 15.3,
+      "consistency": 7.7,
+      "clutch": 9.2,
+      "potential": 7.4
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 117,
+      "csd15": 0.8,
+      "gd15": -33,
+      "xpd15": 77.9,
+      "dpm": 228.9,
+      "dmgShare": 8.9,
+      "kda": 3.3,
+      "kp": 66.6,
+      "vspm": 3.4
+    },
+    "ovr": 11.8,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 395
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-clear-top",
+    "handle": "Clear",
+    "role": "TOP",
+    "age": 22,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 11.5,
+      "mechanics": 11.5,
+      "macro": 8.3,
+      "teamfight": 6.5,
+      "aggression": 9.4,
+      "consistency": 6.9,
+      "clutch": 19.5,
+      "potential": 12.7
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 95,
+      "csd15": -1.9,
+      "gd15": -87.3,
+      "xpd15": -13.7,
+      "dpm": 589.1,
+      "dmgShare": 21.7,
+      "kda": 4.7,
+      "kp": 52.2,
+      "vspm": 0.9
+    },
+    "ovr": 9.7,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 199
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-raptor-jgl",
+    "handle": "Raptor",
+    "role": "JGL",
+    "age": 23,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 7.7,
+      "mechanics": 14.5,
+      "macro": 9.8,
+      "teamfight": 13,
+      "aggression": 16.9,
+      "consistency": 15,
+      "clutch": 19.5,
+      "potential": 11.6
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 105,
+      "csd15": -5.3,
+      "gd15": -96.1,
+      "xpd15": -190.1,
+      "dpm": 472,
+      "dmgShare": 17.3,
+      "kda": 5.4,
+      "kp": 73.6,
+      "vspm": 1.5
+    },
+    "ovr": 12.7,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 526
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-vicla-mid",
+    "handle": "VicLa",
+    "role": "MID",
+    "age": 23,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 8.2,
+      "mechanics": 10.8,
+      "macro": 9.5,
+      "teamfight": 10.2,
+      "aggression": 13.4,
+      "consistency": 10.5,
+      "clutch": 19.5,
+      "potential": 12.9
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 97,
+      "csd15": -3.6,
+      "gd15": -169.6,
+      "xpd15": -94.7,
+      "dpm": 680.4,
+      "dmgShare": 25,
+      "kda": 4.6,
+      "kp": 65.6,
+      "vspm": 1.1
+    },
+    "ovr": 10,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 218
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-diable-adc",
+    "handle": "Diable",
+    "role": "ADC",
+    "age": 21,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 16.4,
+      "mechanics": 14.8,
+      "macro": 15.6,
+      "teamfight": 17.1,
+      "aggression": 14.1,
+      "consistency": 11.5,
+      "clutch": 19.5,
+      "potential": 15.5
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 105,
+      "csd15": 4,
+      "gd15": 150.3,
+      "xpd15": 228.5,
+      "dpm": 759.5,
+      "dmgShare": 27.7,
+      "kda": 6.6,
+      "kp": 72.7,
+      "vspm": 1.2
+    },
+    "ovr": 15.8,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 1184
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-kellin-sup",
+    "handle": "Kellin",
+    "role": "SUP",
+    "age": 25,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 7.7,
+      "mechanics": 14.5,
+      "macro": 14.1,
+      "teamfight": 14.1,
+      "aggression": 13.3,
+      "consistency": 12.1,
+      "clutch": 19.5,
+      "potential": 10.9
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 105,
+      "csd15": -2.5,
+      "gd15": -69.3,
+      "xpd15": -293.5,
+      "dpm": 222.8,
+      "dmgShare": 8.3,
+      "kda": 5,
+      "kp": 77,
+      "vspm": 3.6
+    },
+    "ovr": 13.4,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 646
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-perfect-top",
+    "handle": "PerfecT",
+    "role": "TOP",
+    "age": 21,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 7.9,
+      "mechanics": 7.5,
+      "macro": 8.6,
+      "teamfight": 7.9,
+      "aggression": 11,
+      "consistency": 10.2,
+      "clutch": 13.1,
+      "potential": 16
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 95,
+      "csd15": -4.6,
+      "gd15": -245.9,
+      "xpd15": -154.2,
+      "dpm": 512,
+      "dmgShare": 20.4,
+      "kda": 4.2,
+      "kp": 49.6,
+      "vspm": 1.1
+    },
+    "ovr": 8.2,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 151
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-cuzz-jgl",
+    "handle": "Cuzz",
+    "role": "JGL",
+    "age": 26,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 15,
+      "mechanics": 15.9,
+      "macro": 15.9,
+      "teamfight": 15.9,
+      "aggression": 13.5,
+      "consistency": 10.7,
+      "clutch": 15.2,
+      "potential": 9.9
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 114,
+      "csd15": 2.4,
+      "gd15": 74.9,
+      "xpd15": 35,
+      "dpm": 443.8,
+      "dmgShare": 17.5,
+      "kda": 6.4,
+      "kp": 74.4,
+      "vspm": 1.7
+    },
+    "ovr": 15.3,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 1056
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-bdd-mid",
+    "handle": "Bdd",
+    "role": "MID",
+    "age": 26,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 14.5,
+      "mechanics": 13.7,
+      "macro": 16.4,
+      "teamfight": 16.4,
+      "aggression": 16.4,
+      "consistency": 11.5,
+      "clutch": 17.3,
+      "potential": 8.7
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 114,
+      "csd15": 0.1,
+      "gd15": 42.9,
+      "xpd15": -68.4,
+      "dpm": 653.3,
+      "dmgShare": 26.1,
+      "kda": 6.3,
+      "kp": 70.9,
+      "vspm": 1.1
+    },
+    "ovr": 15.2,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 1031
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-deokdam-adc",
+    "handle": "deokdam",
+    "role": "ADC",
+    "age": 25,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 7.3,
+      "mechanics": 14.8,
+      "macro": 11.2,
+      "teamfight": 14.5,
+      "aggression": 15.2,
+      "consistency": 6.7,
+      "clutch": 17.3,
+      "potential": 9.7
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 106,
+      "csd15": -8.1,
+      "gd15": -232.8,
+      "xpd15": -204.7,
+      "dpm": 703.8,
+      "dmgShare": 28.1,
+      "kda": 6.6,
+      "kp": 71.4,
+      "vspm": 1.1
+    },
+    "ovr": 12.7,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 526
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-siwoo-top",
+    "handle": "Siwoo",
+    "role": "TOP",
+    "age": 19,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 10.6,
+      "mechanics": 12.7,
+      "macro": 12.3,
+      "teamfight": 13.6,
+      "aggression": 11.9,
+      "consistency": 16.7,
+      "clutch": 15.2,
+      "potential": 19.4
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 131,
+      "csd15": -1.8,
+      "gd15": -87,
+      "xpd15": -162.5,
+      "dpm": 597.8,
+      "dmgShare": 22.7,
+      "kda": 4.4,
+      "kp": 55.3,
+      "vspm": 1
+    },
+    "ovr": 12.1,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 436
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-lucid-jgl",
+    "handle": "Lucid",
+    "role": "JGL",
+    "age": 20,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 18,
+      "mechanics": 13,
+      "macro": 14.5,
+      "teamfight": 15,
+      "aggression": 7.7,
+      "consistency": 12.1,
+      "clutch": 7.4,
+      "potential": 15.9
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 131,
+      "csd15": 3.7,
+      "gd15": 97.8,
+      "xpd15": 139.9,
+      "dpm": 421.1,
+      "dmgShare": 15.9,
+      "kda": 6.5,
+      "kp": 74.7,
+      "vspm": 1.7
+    },
+    "ovr": 13.2,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 610
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-showmaker-mid",
+    "handle": "ShowMaker",
+    "role": "MID",
+    "age": 25,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 13,
+      "mechanics": 12.3,
+      "macro": 15.6,
+      "teamfight": 12.6,
+      "aggression": 10.8,
+      "consistency": 9.5,
+      "clutch": 6,
+      "potential": 9.5
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 131,
+      "csd15": -1.7,
+      "gd15": 7.3,
+      "xpd15": 0.4,
+      "dpm": 640.6,
+      "dmgShare": 24.5,
+      "kda": 6.9,
+      "kp": 68.4,
+      "vspm": 1.2
+    },
+    "ovr": 13.1,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 592
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-aiming-adc",
+    "handle": "Aiming",
+    "role": "ADC",
+    "age": 25,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 13.4,
+      "mechanics": 17.1,
+      "macro": 16.4,
+      "teamfight": 16.4,
+      "aggression": 6.7,
+      "consistency": 13.7,
+      "clutch": 6,
+      "potential": 11.9
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 131,
+      "csd15": 4,
+      "gd15": 124.4,
+      "xpd15": 0.5,
+      "dpm": 742.4,
+      "dmgShare": 28.1,
+      "kda": 8.3,
+      "kp": 72.9,
+      "vspm": 1.2
+    },
+    "ovr": 15.2,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 1031
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-beryl-sup",
+    "handle": "BeryL",
+    "role": "SUP",
+    "age": 28,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 17.8,
+      "mechanics": 15.3,
+      "macro": 10.9,
+      "teamfight": 10,
+      "aggression": 9.1,
+      "consistency": 8.7,
+      "clutch": 6,
+      "potential": 7.1
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 131,
+      "csd15": 2.3,
+      "gd15": 50.4,
+      "xpd15": 292.9,
+      "dpm": 229.3,
+      "dmgShare": 8.8,
+      "kda": 4.6,
+      "kp": 71,
+      "vspm": 3.4
+    },
+    "ovr": 11.6,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 370
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-doran-top",
+    "handle": "Doran",
+    "role": "TOP",
+    "age": 25,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 16.7,
+      "mechanics": 13.6,
+      "macro": 17.2,
+      "teamfight": 13.2,
+      "aggression": 16.7,
+      "consistency": 15.4,
+      "clutch": 17.3,
+      "potential": 10.2
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 115,
+      "csd15": 2.6,
+      "gd15": 172.1,
+      "xpd15": 87.4,
+      "dpm": 629.1,
+      "dmgShare": 22.5,
+      "kda": 4.5,
+      "kp": 57.6,
+      "vspm": 1.1
+    },
+    "ovr": 15.4,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 1081
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-oner-jgl",
+    "handle": "Oner",
+    "role": "JGL",
+    "age": 22,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 18.5,
+      "mechanics": 18,
+      "macro": 13.5,
+      "teamfight": 15.9,
+      "aggression": 14.5,
+      "consistency": 19.5,
+      "clutch": 17.3,
+      "potential": 14.2
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 115,
+      "csd15": 3.2,
+      "gd15": 137.1,
+      "xpd15": 163.9,
+      "dpm": 495.9,
+      "dmgShare": 17.5,
+      "kda": 7,
+      "kp": 74,
+      "vspm": 1.5
+    },
+    "ovr": 15.4,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 1081
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-faker-mid",
+    "handle": "Faker",
+    "role": "MID",
+    "age": 29,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 8.8,
+      "mechanics": 12.3,
+      "macro": 9.1,
+      "teamfight": 8.5,
+      "aggression": 10.5,
+      "consistency": 14.8,
+      "clutch": 9.2,
+      "potential": 6.6
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 115,
+      "csd15": -3.2,
+      "gd15": -126.5,
+      "xpd15": -112.1,
+      "dpm": 679.3,
+      "dmgShare": 24.3,
+      "kda": 6.8,
+      "kp": 61,
+      "vspm": 1
+    },
+    "ovr": 9.9,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 211
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-gumayusi-adc",
+    "handle": "Gumayusi",
+    "role": "ADC",
+    "age": 23,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 17.1,
+      "mechanics": 15.6,
+      "macro": 13.4,
+      "teamfight": 14.1,
+      "aggression": 11.5,
+      "consistency": 10.5,
+      "clutch": 15.2,
+      "potential": 12.6
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 91,
+      "csd15": 6.5,
+      "gd15": 184.1,
+      "xpd15": 67.1,
+      "dpm": 769.6,
+      "dmgShare": 27.2,
+      "kda": 7.7,
+      "kp": 69.8,
+      "vspm": 1.2
+    },
+    "ovr": 14.9,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 959
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-keria-sup",
+    "handle": "Keria",
+    "role": "SUP",
+    "age": 23,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 15.3,
+      "mechanics": 18.2,
+      "macro": 16.5,
+      "teamfight": 16.5,
+      "aggression": 13.7,
+      "consistency": 18.2,
+      "clutch": 17.3,
+      "potential": 12.3
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 115,
+      "csd15": 0,
+      "gd15": 87,
+      "xpd15": 105.2,
+      "dpm": 248.2,
+      "dmgShare": 8.9,
+      "kda": 6.6,
+      "kp": 75.6,
+      "vspm": 3.8
+    },
+    "ovr": 16.1,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 1265
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-kiin-top",
+    "handle": "Kiin",
+    "role": "TOP",
+    "age": 26,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 15.8,
+      "mechanics": 14.9,
+      "macro": 18.6,
+      "teamfight": 14,
+      "aggression": 11,
+      "consistency": 19.5,
+      "clutch": 11.1,
+      "potential": 8.3
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 121,
+      "csd15": 3.6,
+      "gd15": 69.9,
+      "xpd15": 44.7,
+      "dpm": 634.5,
+      "dmgShare": 22.2,
+      "kda": 5.8,
+      "kp": 59.5,
+      "vspm": 1.1
+    },
+    "ovr": 15.4,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 1081
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-canyon-jgl",
+    "handle": "Canyon",
+    "role": "JGL",
+    "age": 24,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 17.5,
+      "mechanics": 15.4,
+      "macro": 11.6,
+      "teamfight": 8.5,
+      "aggression": 9,
+      "consistency": 18,
+      "clutch": 9.2,
+      "potential": 10.3
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 121,
+      "csd15": 2.8,
+      "gd15": 96.9,
+      "xpd15": 205.8,
+      "dpm": 456.6,
+      "dmgShare": 15.7,
+      "kda": 7.4,
+      "kp": 69.6,
+      "vspm": 1.6
+    },
+    "ovr": 11.4,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 347
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-chovy-mid",
+    "handle": "Chovy",
+    "role": "MID",
+    "age": 24,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 19.5,
+      "mechanics": 18.7,
+      "macro": 17.5,
+      "teamfight": 16,
+      "aggression": 11.2,
+      "consistency": 18.3,
+      "clutch": 7.4,
+      "potential": 11.6
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 121,
+      "csd15": 9.6,
+      "gd15": 327.8,
+      "xpd15": 353,
+      "dpm": 775.2,
+      "dmgShare": 27.3,
+      "kda": 7.8,
+      "kp": 68,
+      "vspm": 1.3
+    },
+    "ovr": 17.5,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 1684
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-ruler-adc",
+    "handle": "Ruler",
+    "role": "ADC",
+    "age": 26,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 17.9,
+      "mechanics": 17.5,
+      "macro": 17.5,
+      "teamfight": 16.4,
+      "aggression": 12.4,
+      "consistency": 18.3,
+      "clutch": 13.1,
+      "potential": 8.8
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 121,
+      "csd15": 4.7,
+      "gd15": 252.2,
+      "xpd15": 116.6,
+      "dpm": 787.6,
+      "dmgShare": 27.7,
+      "kda": 7.9,
+      "kp": 70.2,
+      "vspm": 1.4
+    },
+    "ovr": 16.9,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 1497
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-duro-sup",
+    "handle": "Duro",
+    "role": "SUP",
+    "age": 21,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 9.1,
+      "mechanics": 12.1,
+      "macro": 14.1,
+      "teamfight": 11.7,
+      "aggression": 10.2,
+      "consistency": 19.5,
+      "clutch": 11.1,
+      "potential": 15.7
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 121,
+      "csd15": -5.5,
+      "gd15": 19.8,
+      "xpd15": -84.9,
+      "dpm": 203.5,
+      "dmgShare": 7.1,
+      "kda": 6.8,
+      "kp": 74.9,
+      "vspm": 3.6
+    },
+    "ovr": 12,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 422
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-zeus-top",
+    "handle": "Zeus",
+    "role": "TOP",
+    "age": 21,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 19.5,
+      "mechanics": 14.5,
+      "macro": 15.4,
+      "teamfight": 15.8,
+      "aggression": 16.3,
+      "consistency": 18.1,
+      "clutch": 9.2,
+      "potential": 16.2
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 121,
+      "csd15": 5.8,
+      "gd15": 299.9,
+      "xpd15": 269.7,
+      "dpm": 630,
+      "dmgShare": 23.2,
+      "kda": 4.4,
+      "kp": 58.9,
+      "vspm": 1
+    },
+    "ovr": 16.5,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 1378
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-peanut-jgl",
+    "handle": "Peanut",
+    "role": "JGL",
+    "age": 27,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 10.3,
+      "mechanics": 9.8,
+      "macro": 11.6,
+      "teamfight": 8.5,
+      "aggression": 15.4,
+      "consistency": 16.4,
+      "clutch": 13.1,
+      "potential": 7.7
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 121,
+      "csd15": -1.8,
+      "gd15": -53.9,
+      "xpd15": -76.4,
+      "dpm": 414,
+      "dmgShare": 15.3,
+      "kda": 6.2,
+      "kp": 70.6,
+      "vspm": 1.6
+    },
+    "ovr": 11.4,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 347
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-zeka-mid",
+    "handle": "Zeka",
+    "role": "MID",
+    "age": 24,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 14.5,
+      "mechanics": 14.1,
+      "macro": 14.8,
+      "teamfight": 13,
+      "aggression": 13.4,
+      "consistency": 17.1,
+      "clutch": 15.2,
+      "potential": 15.1
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 121,
+      "csd15": -0.4,
+      "gd15": 66.1,
+      "xpd15": -31.5,
+      "dpm": 682.3,
+      "dmgShare": 25.3,
+      "kda": 6.5,
+      "kp": 64.2,
+      "vspm": 1.2
+    },
+    "ovr": 14.1,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 783
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-viper-adc",
+    "handle": "Viper",
+    "role": "ADC",
+    "age": 24,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 12.6,
+      "mechanics": 18.7,
+      "macro": 14.8,
+      "teamfight": 16,
+      "aggression": 12.3,
+      "consistency": 12.6,
+      "clutch": 11.1,
+      "potential": 14.1
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 121,
+      "csd15": 0.5,
+      "gd15": 52,
+      "xpd15": 55.6,
+      "dpm": 778.2,
+      "dmgShare": 28.7,
+      "kda": 8,
+      "kp": 69.8,
+      "vspm": 1.3
+    },
+    "ovr": 15.6,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 1132
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-delight-sup",
+    "handle": "Delight",
+    "role": "SUP",
+    "age": 24,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 18.2,
+      "mechanics": 12.5,
+      "macro": 16.5,
+      "teamfight": 10.9,
+      "aggression": 12.5,
+      "consistency": 16.9,
+      "clutch": 15.2,
+      "potential": 12.8
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 121,
+      "csd15": 4.6,
+      "gd15": 108.2,
+      "xpd15": 90.6,
+      "dpm": 205.6,
+      "dmgShare": 7.6,
+      "kda": 6.4,
+      "kp": 75.9,
+      "vspm": 3.6
+    },
+    "ovr": 14,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 2,
+      "salary": 762
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-teddy-adc",
+    "handle": "Teddy",
+    "role": "ADC",
+    "age": 27,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 9.8,
+      "mechanics": 9.5,
+      "macro": 15.2,
+      "teamfight": 11.5,
+      "aggression": 14.1,
+      "consistency": 8.5,
+      "clutch": 10,
+      "potential": 6.3
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 62,
+      "csd15": -3,
+      "gd15": -65,
+      "xpd15": -166,
+      "dpm": 667.3,
+      "dmgShare": 25.7,
+      "kda": 5.2,
+      "kp": 71.3,
+      "vspm": 1.2
+    },
+    "ovr": 11.2,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 3,
+      "salary": 324
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-peter-sup",
+    "handle": "Peter",
+    "role": "SUP",
+    "age": 26,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 11.7,
+      "mechanics": 10.6,
+      "macro": 14.1,
+      "teamfight": 11.3,
+      "aggression": 12.9,
+      "consistency": 9.8,
+      "clutch": 13.1,
+      "potential": 8
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 92,
+      "csd15": 0.5,
+      "gd15": 25.5,
+      "xpd15": -88.9,
+      "dpm": 195.5,
+      "dmgShare": 7.7,
+      "kda": 5,
+      "kp": 74.1,
+      "vspm": 3.7
+    },
+    "ovr": 12.5,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 494
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-calix-mid",
+    "handle": "Calix",
+    "role": "MID",
+    "age": 26,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 14.1,
+      "mechanics": 7,
+      "macro": 10.8,
+      "teamfight": 6.7,
+      "aggression": 12.3,
+      "consistency": 7.6,
+      "clutch": 11.1,
+      "potential": 10.3
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 77,
+      "csd15": -0.5,
+      "gd15": -62.3,
+      "xpd15": 54.2,
+      "dpm": 590.5,
+      "dmgShare": 23,
+      "kda": 4.3,
+      "kp": 59.7,
+      "vspm": 1.1
+    },
+    "ovr": 9.8,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 205
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "oe-croco-jgl",
+    "handle": "Croco",
+    "role": "JGL",
+    "age": 21,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 13,
+      "mechanics": 12.6,
+      "macro": 13,
+      "teamfight": 15.4,
+      "aggression": 13.5,
+      "consistency": 6,
+      "clutch": 11.1,
+      "potential": 15.7
+    },
+    "provenance": {
+      "laning": "derived",
+      "mechanics": "derived",
+      "macro": "derived",
+      "teamfight": "derived",
+      "aggression": "derived",
+      "consistency": "derived",
+      "clutch": "derived",
+      "potential": "modeled"
+    },
+    "rawMetrics": {
+      "games": 64,
+      "csd15": 0.8,
+      "gd15": -51.8,
+      "xpd15": 15,
+      "dpm": 440.3,
+      "dmgShare": 17.2,
+      "kda": 5.5,
+      "kp": 76.4,
+      "vspm": 1.4
+    },
+    "ovr": 13.6,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 1,
+      "salary": 683
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "fa-haru",
+    "handle": "Haru",
+    "role": "TOP",
+    "age": 17,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 8.5,
+      "mechanics": 11.2,
+      "macro": 11,
+      "teamfight": 8.6,
+      "aggression": 12.2,
+      "consistency": 9.6,
+      "clutch": 9.2,
+      "potential": 16.8
+    },
+    "provenance": {
+      "laning": "modeled",
+      "mechanics": "modeled",
+      "macro": "modeled",
+      "teamfight": "modeled",
+      "aggression": "modeled",
+      "consistency": "modeled",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "ovr": 10,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 0,
+      "salary": 137
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "fa-bitmap",
+    "handle": "Bitmap",
+    "role": "JGL",
+    "age": 19,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 11.2,
+      "mechanics": 8.9,
+      "macro": 10.4,
+      "teamfight": 12.3,
+      "aggression": 12.1,
+      "consistency": 9.7,
+      "clutch": 10.9,
+      "potential": 16.6
+    },
+    "provenance": {
+      "laning": "modeled",
+      "mechanics": "modeled",
+      "macro": "modeled",
+      "teamfight": "modeled",
+      "aggression": "modeled",
+      "consistency": "modeled",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "ovr": 11,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 0,
+      "salary": 216
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "fa-cricket",
+    "handle": "Cricket",
+    "role": "MID",
+    "age": 18,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 8.3,
+      "mechanics": 12.8,
+      "macro": 9.9,
+      "teamfight": 10.1,
+      "aggression": 8.8,
+      "consistency": 11.2,
+      "clutch": 8.3,
+      "potential": 15.9
+    },
+    "provenance": {
+      "laning": "modeled",
+      "mechanics": "modeled",
+      "macro": "modeled",
+      "teamfight": "modeled",
+      "aggression": "modeled",
+      "consistency": "modeled",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "ovr": 10.3,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 0,
+      "salary": 214
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "fa-dawnfall",
+    "handle": "Dawnfall",
+    "role": "ADC",
+    "age": 19,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 12,
+      "mechanics": 9.6,
+      "macro": 11.5,
+      "teamfight": 12.5,
+      "aggression": 9.2,
+      "consistency": 11,
+      "clutch": 9.6,
+      "potential": 15.6
+    },
+    "provenance": {
+      "laning": "modeled",
+      "mechanics": "modeled",
+      "macro": "modeled",
+      "teamfight": "modeled",
+      "aggression": "modeled",
+      "consistency": "modeled",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "ovr": 11.1,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 0,
+      "salary": 173
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "fa-ember",
+    "handle": "Ember",
+    "role": "SUP",
+    "age": 18,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 8.8,
+      "mechanics": 10.8,
+      "macro": 12.9,
+      "teamfight": 9.3,
+      "aggression": 9.7,
+      "consistency": 8.2,
+      "clutch": 9.1,
+      "potential": 16
+    },
+    "provenance": {
+      "laning": "modeled",
+      "mechanics": "modeled",
+      "macro": "modeled",
+      "teamfight": "modeled",
+      "aggression": "modeled",
+      "consistency": "modeled",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "ovr": 10.7,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 0,
+      "salary": 212
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "fa-fjord",
+    "handle": "Fjord",
+    "role": "TOP",
+    "age": 17,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 8.4,
+      "mechanics": 12.9,
+      "macro": 9.4,
+      "teamfight": 10.3,
+      "aggression": 8.3,
+      "consistency": 11.4,
+      "clutch": 11.1,
+      "potential": 12.9
+    },
+    "provenance": {
+      "laning": "modeled",
+      "mechanics": "modeled",
+      "macro": "modeled",
+      "teamfight": "modeled",
+      "aggression": "modeled",
+      "consistency": "modeled",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "ovr": 10.1,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 0,
+      "salary": 187
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "fa-glacier",
+    "handle": "Glacier",
+    "role": "JGL",
+    "age": 19,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 12,
+      "mechanics": 9.3,
+      "macro": 10.8,
+      "teamfight": 8.1,
+      "aggression": 12.7,
+      "consistency": 9.2,
+      "clutch": 8.2,
+      "potential": 16.4
+    },
+    "provenance": {
+      "laning": "modeled",
+      "mechanics": "modeled",
+      "macro": "modeled",
+      "teamfight": "modeled",
+      "aggression": "modeled",
+      "consistency": "modeled",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "ovr": 10.5,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 0,
+      "salary": 190
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "fa-halcyon",
+    "handle": "Halcyon",
+    "role": "MID",
+    "age": 19,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 10.2,
+      "mechanics": 13,
+      "macro": 8.4,
+      "teamfight": 12.1,
+      "aggression": 9.2,
+      "consistency": 10.5,
+      "clutch": 11.5,
+      "potential": 14.6
+    },
+    "provenance": {
+      "laning": "modeled",
+      "mechanics": "modeled",
+      "macro": "modeled",
+      "teamfight": "modeled",
+      "aggression": "modeled",
+      "consistency": "modeled",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "ovr": 10.9,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 0,
+      "salary": 170
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "fa-ion",
+    "handle": "Ion",
+    "role": "ADC",
+    "age": 18,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 12.4,
+      "mechanics": 10,
+      "macro": 12.2,
+      "teamfight": 12.3,
+      "aggression": 9.5,
+      "consistency": 11.7,
+      "clutch": 11.1,
+      "potential": 17.7
+    },
+    "provenance": {
+      "laning": "modeled",
+      "mechanics": "modeled",
+      "macro": "modeled",
+      "teamfight": "modeled",
+      "aggression": "modeled",
+      "consistency": "modeled",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "ovr": 11.4,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 0,
+      "salary": 131
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  },
+  {
+    "id": "fa-juniper",
+    "handle": "Juniper",
+    "role": "SUP",
+    "age": 18,
+    "nationality": "KR",
+    "attributes": {
+      "laning": 11.2,
+      "mechanics": 11.5,
+      "macro": 8.4,
+      "teamfight": 10,
+      "aggression": 8.3,
+      "consistency": 9.6,
+      "clutch": 7.8,
+      "potential": 17.1
+    },
+    "provenance": {
+      "laning": "modeled",
+      "mechanics": "modeled",
+      "macro": "modeled",
+      "teamfight": "modeled",
+      "aggression": "modeled",
+      "consistency": "modeled",
+      "clutch": "modeled",
+      "potential": "modeled"
+    },
+    "ovr": 9.5,
+    "form": 0,
+    "morale": 60,
+    "fatigue": 0,
+    "contract": {
+      "years": 0,
+      "salary": 237
+    },
+    "seasonStats": {
+      "games": 0,
+      "wins": 0,
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "cs": 0,
+      "damage": 0,
+      "mvps": 0,
+      "ratingSum": 0
+    },
+    "careerHistory": []
+  }
+]

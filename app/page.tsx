@@ -1,65 +1,132 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useRouter } from "next/navigation";
+import { useMemo, useState } from "react";
+import { TeamCrest } from "@/components/TeamCrest";
+import { DATA_META, listPlayers, listTeams } from "@/lib/data";
+import { useGameStore } from "@/lib/store";
+import { ROLES } from "@/lib/types";
+
+export default function NewGamePage() {
+  const router = useRouter();
+  const hydrated = useGameStore((s) => s._hasHydrated);
+  const initialized = useGameStore((s) => s.initialized);
+  const activeTeam = useGameStore((s) => s.teams[s.playerTeamId]);
+  const activeSeason = useGameStore((s) => s.season);
+  const newGame = useGameStore((s) => s.newGame);
+
+  const [selected, setSelected] = useState<string | null>(null);
+  const [coachName, setCoachName] = useState("");
+
+  const teams = useMemo(() => {
+    const players = new Map(listPlayers().map((p) => [p.id, p]));
+    return listTeams()
+      .map((t) => {
+        const ovr =
+          ROLES.reduce((sum, r) => sum + (players.get(t.starters[r])?.ovr ?? 0), 0) / 5;
+        return { ...t, avgOvr: ovr };
+      })
+      .sort((a, b) => b.avgOvr - a.avgOvr);
+  }, []);
+
+  const start = () => {
+    if (!selected) return;
+    newGame(selected, coachName.trim() || "Head Coach");
+    router.push("/dashboard");
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="mx-auto flex min-h-dvh max-w-5xl flex-col gap-8 px-4 py-10 md:py-16">
+      <header>
+        <p className="eyebrow text-gold">Rift GM · {DATA_META.seasonLabel}</p>
+        <h1 className="display mt-1 text-4xl font-bold text-ink md:text-5xl">
+          Take the desk.
+        </h1>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-ink-muted">
+          Run a pro League of Legends organization: read scouting reports, counter-draft,
+          manage form and fatigue, survive the board. Player ratings are{" "}
+          {DATA_META.usingSampleData ? "approximate sample data" : "derived from real match data"} —
+          check Data &amp; Attribution in Settings.
+        </p>
+        {DATA_META.usingSampleData ? (
+          <p className="mt-2 text-xs text-gold">
+            Using sample data — live stats couldn&apos;t be loaded. Attributes are approximate.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        ) : null}
+      </header>
+
+      {hydrated && initialized && activeTeam ? (
+        <section className="panel flex flex-wrap items-center gap-4 p-4">
+          <TeamCrest shortName={activeTeam.shortName} color={activeTeam.color} size={40} />
+          <div className="min-w-0 flex-1">
+            <p className="display text-sm font-bold">Career in progress</p>
+            <p className="text-xs text-ink-muted">
+              {activeTeam.name} · Season {activeSeason} ·{" "}
+              <span className="num">
+                {activeTeam.record.wins}–{activeTeam.record.losses}
+              </span>
+            </p>
+          </div>
+          <button
+            onClick={() => router.push("/dashboard")}
+            className="hex-clip display bg-gold px-5 py-2.5 text-sm font-bold text-void hover:brightness-110"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            Continue
+          </button>
+        </section>
+      ) : null}
+
+      <section aria-labelledby="pick-team">
+        <h2 id="pick-team" className="eyebrow mb-3">
+          Choose your organization — starting a new game overwrites unsaved progress
+        </h2>
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {teams.map((t, i) => (
+            <button
+              key={t.id}
+              onClick={() => setSelected(t.id)}
+              aria-pressed={selected === t.id}
+              className={`panel flex items-center gap-3 p-3 text-left transition-colors hover:bg-fog-800 ${
+                selected === t.id ? "outline-2 outline-cyan" : ""
+              }`}
+            >
+              <TeamCrest shortName={t.shortName} color={t.color} size={38} />
+              <span className="min-w-0 flex-1">
+                <span className="display block truncate text-sm font-bold">{t.name}</span>
+                <span className="eyebrow">Preseason #{i + 1}</span>
+              </span>
+              <span className="num text-lg font-semibold text-cyan">{t.avgOvr.toFixed(1)}</span>
+            </button>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="flex flex-wrap items-end gap-3">
+        <label className="flex flex-col gap-1">
+          <span className="eyebrow">Coach name</span>
+          <input
+            value={coachName}
+            onChange={(e) => setCoachName(e.target.value)}
+            placeholder="Head Coach"
+            className="panel num w-56 px-3 py-2 text-sm text-ink placeholder:text-ink-muted"
+          />
+        </label>
+        <button
+          onClick={start}
+          disabled={!selected}
+          className="hex-clip display bg-gold px-6 py-2.5 text-sm font-bold text-void enabled:hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          {selected
+            ? `Start with ${teams.find((t) => t.id === selected)?.shortName}`
+            : "Pick a team to start"}
+        </button>
+      </section>
+
+      <footer className="mt-auto border-t border-hairline pt-4 text-xs leading-5 text-ink-muted">
+        This is an unofficial fan project. Not affiliated with or endorsed by Riot Games. Player
+        data © their respective sources — Oracle&apos;s Elixir, Leaguepedia (CC BY-SA), Riot Data
+        Dragon. See Settings → Data &amp; Attribution.
+      </footer>
+    </main>
   );
 }

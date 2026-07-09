@@ -1,0 +1,25 @@
+{
+  "dataVersion": "1.0.0",
+  "fetchedAt": "2026-07-09T07:47:21.265Z",
+  "league": "LCK",
+  "seasonLabel": "LCK 2025",
+  "sources": [
+    {
+      "name": "Oracle's Elixir",
+      "url": "https://oracleselixir.com/tools/downloads",
+      "license": "Free for non-commercial use with attribution"
+    },
+    {
+      "name": "Leaguepedia",
+      "url": "https://lol.fandom.com",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "name": "Riot Data Dragon",
+      "url": "https://developer.riotgames.com/docs/lol#data-dragon",
+      "license": "Riot Games developer assets"
+    }
+  ],
+  "usingSampleData": false,
+  "notes": "Attributes derived from Oracle's Elixir 2025 LCK match data (role-normalized percentiles). Consistency is derived from game-to-game variance; Clutch and Potential are modeled."
+}
