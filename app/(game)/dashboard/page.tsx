@@ -162,8 +162,44 @@ export default function DashboardPage() {
         <StandingsTable standings={standings} teams={s.teams} highlightId={s.playerTeamId} compact />
       </section>
 
+      {/* Training report — visible deltas every advance */}
+      <section className="panel p-4" aria-labelledby="training-recap-head">
+        <div className="mb-2 flex items-baseline justify-between">
+          <h2 id="training-recap-head" className="eyebrow">Training report</h2>
+          <Link href="/training" className="eyebrow text-cyan hover:underline">
+            Set focus →
+          </Link>
+        </div>
+        {!s.trainingRecap || s.trainingRecap.entries.length === 0 ? (
+          <p className="text-sm text-ink-muted">
+            {s.trainingRecap
+              ? "No measurable gains this week — veterans at their ceiling move slowly."
+              : "Gains land when the week advances. Assign focuses in Training."}
+          </p>
+        ) : (
+          <ul className="flex flex-col gap-1">
+            {s.trainingRecap.entries.slice(0, 8).map((e) => (
+              <li key={`${e.playerId}-${e.attr}`} className="flex items-baseline gap-2 text-sm">
+                <span
+                  className="num w-7 shrink-0"
+                  style={{ color: "var(--blue-cyan)" }}
+                  aria-label={`up ${e.delta.toFixed(2)}`}
+                >
+                  {e.delta >= 0.12 ? "▲▲" : "▲"}
+                </span>
+                <Link href={`/players/${e.playerId}`} className="font-semibold hover:text-cyan">
+                  {e.handle}
+                </Link>
+                <span className="text-xs uppercase text-ink-muted">{e.attr}</span>
+                <span className="num ml-auto text-xs text-cyan">+{e.delta.toFixed(2)}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
       {/* Inbox */}
-      <section className="panel p-4 lg:col-span-2" aria-labelledby="inbox-head">
+      <section className="panel p-4" aria-labelledby="inbox-head">
         <div className="mb-2 flex items-baseline justify-between">
           <h2 id="inbox-head" className="eyebrow">Inbox</h2>
           <button onClick={() => s.markInboxRead()} className="eyebrow text-cyan hover:underline">

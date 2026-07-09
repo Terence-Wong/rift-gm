@@ -6,6 +6,7 @@
  */
 
 import { Term } from "@/components/Term";
+import type { MatchIntel } from "@/lib/engine/intel";
 import { ARCHETYPES, counterEdge, OBJECTIVES, PLAYSTYLES } from "@/lib/engine/tactics";
 import type {
   CompArchetype,
@@ -27,6 +28,7 @@ export function DraftBoard({
   opponent,
   players,
   likelyOpponentComp,
+  intel,
 }: {
   tactics: TeamTactics;
   onChange: (t: TeamTactics) => void;
@@ -34,8 +36,13 @@ export function DraftBoard({
   players: Record<string, Player>;
   /** Revealed at scout level ≥ 3; undefined = unknown. */
   likelyOpponentComp?: CompArchetype;
+  /** Actionable scouting intel, rendered inline so scouting pays off here. */
+  intel?: MatchIntel;
 }) {
   const set = (patch: Partial<TeamTactics>) => onChange({ ...tactics, ...patch });
+  const intelLines = intel
+    ? [intel.suggestedBanLine, intel.counterLine, intel.weaknessLine].filter(Boolean)
+    : [];
 
   return (
     <section className="panel p-4" aria-labelledby="draft-head" data-tut="draft-board">
@@ -47,6 +54,28 @@ export function DraftBoard({
           </span>
         ) : null}
       </h2>
+
+      {intel ? (
+        <aside
+          className="panel-raised mb-4 border-l-2 p-3"
+          style={{ borderLeftColor: "var(--hextech-gold)" }}
+          aria-label="Scouting intel"
+        >
+          <p className="eyebrow mb-1 text-gold">From scouting · level {intel.level}/5</p>
+          {intelLines.length === 0 ? (
+            <p className="text-xs leading-5 text-ink-muted">
+              Thin file — nothing actionable yet. Set {opponent.shortName} as your scouting
+              target to unlock ban and comp reads.
+            </p>
+          ) : (
+            <ul className="flex flex-col gap-0.5 text-xs leading-5">
+              {intelLines.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          )}
+        </aside>
+      ) : null}
 
       {/* Comp archetype — champ-select style row */}
       <fieldset className="mb-4 border-0 p-0">
@@ -140,18 +169,23 @@ export function DraftBoard({
             const p = players[opponent.starters[role]];
             if (!p) return null;
             const active = tactics.targetBan === p.id;
+            const suggested = intel?.suggestedBanId === p.id;
             return (
               <button
                 key={p.id}
                 onClick={() => set({ targetBan: active ? undefined : p.id })}
                 aria-pressed={active}
+                title={suggested ? "Scouting recommends this ban" : undefined}
                 className={`display border px-3 py-1.5 text-xs font-bold transition-colors ${
                   active
                     ? "border-ember bg-ember/15 text-ember line-through"
-                    : "border-hairline bg-fog-800 text-ink hover:bg-fog-700"
+                    : suggested
+                      ? "border-gold bg-fog-800 text-gold hover:bg-fog-700"
+                      : "border-hairline bg-fog-800 text-ink hover:bg-fog-700"
                 }`}
               >
                 {role} · {p.handle}
+                {suggested && !active ? <span aria-hidden> ◆</span> : null}
               </button>
             );
           })}

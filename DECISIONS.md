@@ -1,6 +1,18 @@
-# DECISIONS.md — v2 autonomous-run decision log
+# DECISIONS.md — autonomous-run decision log
 
-One-line rationale for every judgment call made while executing `docs/V2-BRIEF.md`.
+One-line rationale for every judgment call made while executing `docs/V2-BRIEF.md` (v2) and the post-deploy feedback iteration (v3).
+
+## v3 — feedback iteration
+
+- **×1 pace 8s → 6s per game minute** ("a touch too slow"): a 35-min game now watches in ~3½ minutes; ×2/×4/skip/instant unchanged.
+- **MACRO drives the map, not just the math**: rotation frequency, objective-fight attendance, and setup tightness all scale with team macro — the stat is now legible from movement alone.
+- **Objective attendees are chosen by proximity**, so dragon pulls the bot side and baron the top side (this is also what fixed "bot lane never moves": they now attend every bot-side objective, swap lanes on rotations, and recall).
+- **Nexus defense uses the known result** (losing side falls back over the final two minutes): the strategic layer already decided the winner, so choreographing the defense from it is honest, and a base race now ends with bodies in the base.
+- **Minions are decorative** — waves are a pure function of tick + gold lead, drawn by the renderer with no engine state; simulating them would change nothing the sim resolves.
+- **CS recalibrated** with partial farm-on-the-move credit (0.45×) and a compensation constant tuned to parity with quick-sim CS (measured ratio 1.00).
+- **Research-driven loop picks** (full report: `docs/RESEARCH-loop-addictiveness.md`): shipped training report, draft-screen scouting intel + post-match prep report, Academy Showcase with honest pre-seeded hype, breakout/slump dev events, and offseason transfer rumors. Deferred deadline-week market and knowledge-% scout cards as the next-largest items.
+- **Intake class + dev events are seeded at season start**, not at reveal time — the preview honestly foreshadows a pre-committed outcome and reload-scumming the reveal is pointless.
+- **saveVersion bumped to 3**; pre-v3 saves skip the in-flight season's showcase (it reseeds next season) and default the new fields.
 
 ## Feature 3 — Spatial match simulation
 

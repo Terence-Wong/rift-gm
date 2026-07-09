@@ -9,9 +9,9 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
-import { computeOvr, round1 } from "./attributes";
+import { round1 } from "./attributes";
 import { DATA_META, freshLeague, listPlayers } from "./data";
-import { aiTactics, buildTeamContext, resolveBid, salaryDemand } from "./engine/ai";
+import { aiTactics, buildTeamContext, neediestRole, resolveBid, salaryDemand } from "./engine/ai";
 import {
   applyMatchFatigue,
   applyOffseasonAging,
@@ -20,7 +20,7 @@ import {
   applyWeeklyRecovery,
   updateFormAfterMatch,
 } from "./engine/development";
-import { generateHandle, generateLeague, generatePlayer } from "./engine/generate";
+import { generateLeague, generatePlayer } from "./engine/generate";
 import { matchFatigueCost } from "./engine/personality";
 import { computePowerRankings, type PowerRankEntry } from "./engine/rankings";
 import { createRng, hashSeed } from "./engine/rng";
@@ -41,7 +41,6 @@ import {
 } from "./tutorial";
 import type {
   AttributeKey,
-  Attributes,
   BoardState,
   Fixture,
   InboxMessage,
@@ -58,7 +57,38 @@ import type {
 import { ROLES } from "./types";
 
 /** Save schema version — bump alongside migrateSave. */
-export const SAVE_VERSION = 2;
+export const SAVE_VERSION = 3;
+
+export interface TrainingRecapEntry {
+  playerId: string;
+  handle: string;
+  attr: AttributeKey;
+  delta: number;
+}
+
+/** Last week's training gains for the user's roster — the visible artifact. */
+export interface TrainingRecap {
+  season: number;
+  week: number;
+  entries: TrainingRecapEntry[];
+}
+
+/** The annual Academy Showcase: hyped in advance, revealed on the day. */
+export interface IntakeState {
+  /** 1–5 class strength, seeded at season start so the preview is honest. */
+  quality: number;
+  previewWeek: number;
+  revealWeek: number;
+  previewSent: boolean;
+  done: boolean;
+}
+
+export interface DevEvent {
+  week: number;
+  playerId: string;
+  kind: "breakout" | "slump";
+  fired: boolean;
+}
 
 export interface LastMatch {
   result: MatchResult;
@@ -68,6 +98,9 @@ export interface LastMatch {
   elimination: boolean;
   /** Inputs to regenerate the spatial log deterministically (watched games only). */
   spatial?: SpatialInputs | null;
+  /** Both drafts, so the post-match can attribute your prep decisions. */
+  userTactics?: TeamTactics;
+  oppTactics?: TeamTactics;
 }
 
 export interface OffseasonFlags {
@@ -161,6 +194,11 @@ interface GameData {
   powerRankings: PowerRankEntry[];
   /** Playoff-meeting counts per team pair ("idA|idB", ids sorted). */
   rivalries: Record<string, number>;
+  /** Last advance's training gains (dashboard recap panel). */
+  trainingRecap: TrainingRecap | null;
+  intake: IntakeState;
+  /** Seeded per season for the user's roster: breakouts and slumps. */
+  devEvents: DevEvent[];
   playerTeamId: string;
   season: number;
   week: number;
@@ -253,6 +291,9 @@ export const DATA_KEYS: (keyof GameData)[] = [
   "tutorial",
   "powerRankings",
   "rivalries",
+  "trainingRecap",
+  "intake",
+  "devEvents",
   "playerTeamId",
   "season",
   "week",
@@ -291,6 +332,9 @@ const initialData: GameData = {
   tutorial: { active: false, step: "SQUAD" },
   powerRankings: [],
   rivalries: {},
+  trainingRecap: null,
+  intake: { quality: 3, previewWeek: 5, revealWeek: 8, previewSent: false, done: false },
+  devEvents: [],
   playerTeamId: "",
   season: 1,
   week: 1,
@@ -328,7 +372,6 @@ const initialData: GameData = {
 export function migrateSave(data: Partial<GameData>): Partial<GameData> {
   const d = { ...data };
   if ((d.saveVersion ?? 1) < 2) {
-    d.saveVersion = SAVE_VERSION;
     d.dataMode = d.dataMode ?? "real";
     d.worldSeed = d.worldSeed ?? null;
     d.difficulty = d.difficulty ?? "standard";
@@ -337,6 +380,19 @@ export function migrateSave(data: Partial<GameData>): Partial<GameData> {
     d.powerRankings = d.powerRankings ?? [];
     d.rivalries = d.rivalries ?? {};
   }
+  if ((d.saveVersion ?? 1) < 3) {
+    d.trainingRecap = d.trainingRecap ?? null;
+    d.devEvents = d.devEvents ?? [];
+    // Pre-v3 saves skip the current season's showcase; next season reseeds.
+    d.intake = d.intake ?? {
+      quality: 3,
+      previewWeek: 5,
+      revealWeek: 8,
+      previewSent: true,
+      done: true,
+    };
+  }
+  if ((d.saveVersion ?? 1) < SAVE_VERSION) d.saveVersion = SAVE_VERSION;
   return d;
 }
 
@@ -442,6 +498,8 @@ function applyResultToState(s: GameData, result: MatchResult, isPlayoff: boolean
 interface SimOut {
   result: MatchResult;
   spatial: SpatialInputs | null;
+  blueTactics?: TeamTactics;
+  redTactics?: TeamTactics;
 }
 
 /**
@@ -496,6 +554,8 @@ function simFixture(
     { varianceBoost: rivalryBoost(s, blue.id, red.id) },
     watch,
   );
+  out.blueTactics = blueTactics;
+  out.redTactics = redTactics;
   fixture.result = out.result;
   applyResultToState(s, out.result, false);
   return out;
@@ -537,7 +597,7 @@ function simSeriesGame(
     s.rivalries[key] = (s.rivalries[key] ?? 0) + 1;
   }
   applyResultToState(s, result, true);
-  return { result, spatial };
+  return { result, spatial, blueTactics, redTactics };
 }
 
 export function userSeries(s: Pick<GameData, "playoffs" | "playerTeamId">): PlayoffSeries | null {
@@ -823,9 +883,38 @@ function applyOffseason(s: GameData) {
     `${s.freeAgents.length} players on the market, including ${intake.length} new trainee prospects. Expiring contracts must be renewed or those players walk.`,
     "info",
   );
+
+  // Transfer rumors: name real AI needs so the market threatens to move —
+  // dawdle on a target and the rumor comes true at season roll.
+  const rumors: string[] = [];
+  const claimed = new Set<string>();
+  for (const team of Object.values(s.teams)) {
+    if (team.id === s.playerTeamId || rumors.length >= 3) continue;
+    const need = neediestRole(team, s.players);
+    if (!need) continue;
+    const target = s.freeAgents
+      .map((id) => s.players[id])
+      .filter((p) => p && !p.retired && p.role === need && !claimed.has(p.id))
+      .sort((a, b) => b.ovr - a.ovr)[0];
+    if (!target) continue;
+    claimed.add(target.id);
+    rumors.push(`${team.shortName} are circling ${target.handle} (${need})`);
+  }
+  if (rumors.length > 0) {
+    post(
+      s,
+      "Transfer rumors",
+      `${rumors.join("; ")}. Rumored moves tend to happen when rosters lock — if you want one of these players, don't wait.`,
+      "info",
+    );
+  }
 }
 
-function generateProspects(s: GameData, count: number): Player[] {
+function generateProspects(
+  s: GameData,
+  count: number,
+  opts: { qualityCenter?: number; minPotential?: number } = {},
+): Player[] {
   const rng = createRng(nextSeed(s));
   const created: Player[] = [];
   // Reserve every handle in the save AND every real pro handle, so trainee
@@ -836,48 +925,63 @@ function generateProspects(s: GameData, count: number): Player[] {
   ]);
   for (let i = 0; i < count; i++) {
     s.prospectCounter += 1;
-    const handle = generateHandle(rng, reserved);
-    const role = ROLES[rng.int(0, 4)];
-    const base = () => round1(7 + rng.next() * 6);
-    const attributes: Attributes = {
-      laning: base(),
-      mechanics: base(),
-      macro: base(),
-      teamfight: base(),
-      aggression: base(),
-      consistency: round1(7 + rng.next() * 5),
-      clutch: round1(7 + rng.next() * 5),
-      potential: round1(11 + rng.next() * 8),
-    };
-    const player: Player = {
+    const player = generatePlayer(rng, {
       id: `fa-s${s.season}-${s.prospectCounter}`,
-      handle,
-      role,
+      role: ROLES[rng.int(0, 4)],
+      quality: (opts.qualityCenter ?? 9.5) + rng.normal(0, 0.7),
+      reservedHandles: reserved,
       age: 17 + rng.int(0, 2),
-      nationality: s.dataMode === "fictional" ? "AVL" : "KR",
-      attributes,
-      provenance: {
-        laning: "modeled",
-        mechanics: "modeled",
-        macro: "modeled",
-        teamfight: "modeled",
-        aggression: "modeled",
-        consistency: "modeled",
-        clutch: "modeled",
-        potential: "modeled",
-      },
-      ovr: computeOvr(role, attributes),
-      form: 0,
-      morale: 60,
-      fatigue: 0,
-      contract: { years: 0, salary: 120 + rng.int(0, 120) },
-      seasonStats: { ...ZERO_STATS },
-      careerHistory: [],
-    };
+      minPotential: opts.minPotential ?? 11.5,
+    });
+    if (s.dataMode !== "fictional") player.nationality = "KR";
+    player.contract = { years: 0, salary: 120 + rng.int(0, 120) };
     s.players[player.id] = player;
     created.push(player);
   }
   return created;
+}
+
+/* ── Season narrative: intake hype + development events ────────── */
+
+const INTAKE_PREVIEW_COPY: Record<number, string> = {
+  1: "I watched the academy circuit tapes. Thin year — mostly filler, honestly. Don't clear cap space for it.",
+  2: "The academy class looks workmanlike. A body or two worth a trial, nothing that changes our plans.",
+  3: "Solid academy class this year. One or two names keep coming up in scrim chatter — worth a look on reveal day.",
+  4: "Scouts are genuinely excited about this academy class. Real talent in the group. Keep a roster slot warm.",
+  5: "I'll say it quietly: there are whispers of a golden generation. Best amateur class anyone's seen in years. Be ready on reveal day.",
+};
+
+/** Seed breakout/slump beats for the user's roster — delivered as news later. */
+function seedDevEvents(s: GameData) {
+  const rng = createRng(nextSeed(s));
+  s.devEvents = [];
+  const team = s.teams[s.playerTeamId];
+  if (!team) return;
+  for (const pid of team.roster) {
+    const p = s.players[pid];
+    if (!p || p.retired) continue;
+    const headroom = Math.max(0, p.attributes.potential - p.ovr);
+    const pBreakout = (p.age <= 21 ? 0.16 : 0.05) + headroom * 0.012;
+    if (rng.chance(pBreakout)) {
+      s.devEvents.push({ week: rng.int(2, 15), playerId: pid, kind: "breakout", fired: false });
+    } else if (rng.chance(0.1)) {
+      s.devEvents.push({ week: rng.int(2, 15), playerId: pid, kind: "slump", fired: false });
+    }
+  }
+}
+
+/** Seed the season's pre-committed reveals (honest hype, no save-scumming). */
+function seedSeasonNarrative(s: GameData) {
+  const rng = createRng(nextSeed(s));
+  s.intake = {
+    quality: rng.weightedPick([1, 2, 3, 4, 5], [1, 2, 3, 2, 1]),
+    previewWeek: 5,
+    revealWeek: 8,
+    previewSent: false,
+    done: false,
+  };
+  s.trainingRecap = null;
+  seedDevEvents(s);
 }
 
 /**
@@ -1061,6 +1165,7 @@ export const useGameStore = create<GameStore>()(
             strikes: 0,
             fired: false,
           };
+          seedSeasonNarrative(s);
           const firstFx = userFixtureThisWeek(s);
           const opp = firstFx
             ? s.teams[firstFx.blueId === teamId ? firstFx.redId : firstFx.blueId]
@@ -1127,6 +1232,7 @@ export const useGameStore = create<GameStore>()(
             if (best) team.starters[role] = best.id;
           }
           s.expansionDraft = null;
+          seedDevEvents(s);
           const rank = preseasonRank(s, s.playerTeamId);
           s.board.expectedFinish = expectationFor(rank, Object.keys(s.teams).length);
           post(
@@ -1204,9 +1310,9 @@ export const useGameStore = create<GameStore>()(
           if (s.phase === "REGULAR") {
             const fixture = userFixtureThisWeek(s);
             if (!fixture) return;
-            const { result, spatial } = simFixture(s, fixture, tactics, watch);
-            const opp =
-              fixture.blueId === s.playerTeamId ? s.teams[fixture.redId] : s.teams[fixture.blueId];
+            const userIsBlue = fixture.blueId === s.playerTeamId;
+            const { result, spatial, blueTactics, redTactics } = simFixture(s, fixture, tactics, watch);
+            const opp = userIsBlue ? s.teams[fixture.redId] : s.teams[fixture.blueId];
             s.lastMatch = {
               result,
               label: `Week ${s.week} · vs ${opp.shortName}`,
@@ -1214,6 +1320,8 @@ export const useGameStore = create<GameStore>()(
               weekFinished: false,
               elimination: false,
               spatial,
+              userTactics: userIsBlue ? blueTactics : redTactics,
+              oppTactics: userIsBlue ? redTactics : blueTactics,
             };
             const oppId = fixture.blueId === s.playerTeamId ? fixture.redId : fixture.blueId;
             s.scouting[oppId] = Math.min(5, (s.scouting[oppId] ?? 0) + 1);
@@ -1221,8 +1329,9 @@ export const useGameStore = create<GameStore>()(
           } else if (s.phase === "PLAYOFFS") {
             const series = userSeries(s);
             if (!series) return;
-            const { result, spatial } = simSeriesGame(s, series, tactics, watch);
-            const oppId = series.blueId === s.playerTeamId ? series.redId : series.blueId;
+            const userIsBlue = series.blueId === s.playerTeamId;
+            const { result, spatial, blueTactics, redTactics } = simSeriesGame(s, series, tactics, watch);
+            const oppId = userIsBlue ? series.redId : series.blueId;
             s.lastMatch = {
               result,
               label: `${series.round === "FINAL" ? "Grand Final" : "Semifinal"} · Game ${series.games.length} · vs ${s.teams[oppId].shortName}`,
@@ -1230,6 +1339,8 @@ export const useGameStore = create<GameStore>()(
               weekFinished: false,
               elimination: true,
               spatial,
+              userTactics: userIsBlue ? blueTactics : redTactics,
+              oppTactics: userIsBlue ? redTactics : blueTactics,
             };
             s.scouting[oppId] = Math.min(5, (s.scouting[oppId] ?? 0) + 1);
             s.userPlayedThisWeek = true;
@@ -1430,6 +1541,7 @@ export const useGameStore = create<GameStore>()(
           for (const key of Object.keys(s.scouting)) {
             if (key !== s.playerTeamId) s.scouting[key] = Math.max(0, s.scouting[key] - 3);
           }
+          seedSeasonNarrative(s);
           const rank = preseasonRank(s, s.playerTeamId);
           s.board.expectedFinish = expectationFor(rank, Object.keys(s.teams).length);
           post(
@@ -1500,6 +1612,9 @@ function weeklyUpkeep(s: GameData) {
   const userTeam = s.teams[s.playerTeamId];
 
   // Training: user-team players use assigned focus, AI players train weakest.
+  // The user's gains are captured for the weekly recap — invisible sim ticks
+  // become a visible artifact every advance.
+  const recapEntries: TrainingRecapEntry[] = [];
   for (const team of Object.values(s.teams)) {
     for (const pid of team.roster) {
       const p = s.players[pid];
@@ -1511,10 +1626,69 @@ function weeklyUpkeep(s: GameData) {
           p.attributes[k] < p.attributes[worst] ? k : worst,
         );
       }
-      applyTraining(p, focus, rng);
+      const gain = applyTraining(p, focus, rng);
+      if (team.id === s.playerTeamId && gain > 0) {
+        recapEntries.push({ playerId: pid, handle: p.handle, attr: focus, delta: gain });
+      }
       const isStarter = ROLES.some((r) => team.starters[r] === pid);
       applyWeeklyRecovery(p, !isStarter);
     }
+  }
+  recapEntries.sort((a, b) => b.delta - a.delta);
+  s.trainingRecap = { season: s.season, week: s.week, entries: recapEntries };
+
+  // Development beats: pre-seeded breakouts and slumps land as news.
+  for (const event of s.devEvents) {
+    if (event.fired || event.week > s.week) continue;
+    event.fired = true;
+    const p = s.players[event.playerId];
+    const team = s.teams[s.playerTeamId];
+    if (!p || p.retired || !team.roster.includes(p.id)) continue;
+    if (event.kind === "breakout") {
+      p.attributes.potential = Math.min(20, round1(p.attributes.potential + 1.5));
+      p.form = Math.min(3, p.form + 1);
+      p.morale = Math.min(100, p.morale + 8);
+      post(
+        s,
+        `${p.handle} is leveling up`,
+        `Something clicked for ${p.handle} in scrims — the coaches can't miss it. His ceiling just moved. Feed him training weeks while it's hot.`,
+        "good",
+      );
+    } else {
+      p.form = Math.max(-3, p.form - 1.5);
+      p.morale = Math.max(0, p.morale - 8);
+      post(
+        s,
+        `${p.handle} looks burnt out`,
+        `${p.handle} is off the pace in scrims — sloppy waves, late rotations. Could be fatigue, could be his head. A rest week or a big game might reset him.`,
+        "bad",
+      );
+    }
+  }
+
+  // Academy Showcase: hype at the preview week, reveal on the day.
+  if (!s.intake.previewSent && s.week >= s.intake.previewWeek) {
+    s.intake.previewSent = true;
+    post(s, "Coach — academy preview", INTAKE_PREVIEW_COPY[s.intake.quality] ?? INTAKE_PREVIEW_COPY[3], "info");
+  }
+  if (!s.intake.done && s.week >= s.intake.revealWeek) {
+    s.intake.done = true;
+    const classSize = 4 + (s.intake.quality >= 4 ? 2 : s.intake.quality >= 2 ? 1 : 0);
+    const rookies = generateProspects(s, classSize, {
+      qualityCenter: 7.4 + s.intake.quality * 0.9,
+      minPotential: 10.5 + s.intake.quality * 1.1,
+    });
+    s.freeAgents.push(...rookies.map((p) => p.id));
+    post(
+      s,
+      `Academy Showcase — the class of season ${s.season}`,
+      `${rookies.length} prospects declared: ${rookies
+        .map((p) => `${p.handle} (${p.role})`)
+        .join(", ")}. All are on the free-agent market now — scouting reports are wide open, so trust your eye. ${
+        s.intake.quality >= 4 ? "This is the class everyone will remember. Move fast." : ""
+      }`,
+      s.intake.quality >= 4 ? "good" : "info",
+    );
   }
 
   // Scouting target gains a level.

@@ -11,7 +11,8 @@ import { MatchMap } from "@/components/MatchMap";
 import { ScoutingCard } from "@/components/ScoutingCard";
 import { TeamCrest } from "@/components/TeamCrest";
 import { Term } from "@/components/Term";
-import { aiTactics } from "@/lib/engine/ai";
+import { buildMatchIntel } from "@/lib/engine/intel";
+import { ARCHETYPES, counterEdge } from "@/lib/engine/tactics";
 import { spatialFromInputs, TICKS_PER_MINUTE, type SpatialInputs, type SpatialLog } from "@/lib/engine/spatial";
 import { fmtGoldDiff } from "@/lib/format";
 import { useGameStore, userFixtureThisWeek, userSeries } from "@/lib/store";
@@ -63,11 +64,15 @@ export default function MatchPage() {
         ? `${s.season}-${series.id}-g${series.games.length + 1}`
         : "";
 
-  const likelyComp = useMemo(() => {
+  const intel = useMemo(() => {
     if (!opponent || !seedKey) return undefined;
-    if ((s.scouting[opponent.id] ?? 0) < 3) return undefined;
-    const myTeam = s.teams[s.playerTeamId];
-    return aiTactics(opponent, myTeam, s.players, seedKey).archetype;
+    return buildMatchIntel(
+      opponent,
+      s.teams[s.playerTeamId],
+      s.players,
+      s.scouting[opponent.id] ?? 0,
+      seedKey,
+    );
   }, [opponent, seedKey, s.scouting, s.teams, s.playerTeamId, s.players]);
 
   const lockIn = (playInstant: boolean) => {
@@ -148,7 +153,8 @@ export default function MatchPage() {
               onChange={setTactics}
               opponent={opponent}
               players={s.players}
-              likelyOpponentComp={likelyComp}
+              likelyOpponentComp={intel?.likelyComp}
+              intel={intel}
             />
           </div>
           <div data-tut="scouting">
@@ -193,6 +199,8 @@ export default function MatchPage() {
       redTeam={redTeam}
       label={s.lastMatch.label}
       userTeamId={s.playerTeamId}
+      userTactics={s.lastMatch.userTactics}
+      oppTactics={s.lastMatch.oppTactics}
       onContinue={() => {
         if (!s.lastMatch?.weekFinished) s.finishWeek();
         router.push("/dashboard");
@@ -681,6 +689,8 @@ function PostMatch({
   redTeam,
   label,
   userTeamId,
+  userTactics,
+  oppTactics,
   onContinue,
 }: {
   result: MatchResult;
@@ -688,6 +698,8 @@ function PostMatch({
   redTeam: Team;
   label: string;
   userTeamId: string;
+  userTactics?: TeamTactics;
+  oppTactics?: TeamTactics;
   onContinue: () => void;
 }) {
   const players = useGameStore((s) => s.players);
@@ -696,6 +708,38 @@ function PostMatch({
   const mvp = players[result.mvpPlayerId];
   const finalGold = result.goldTimeline[result.goldTimeline.length - 1];
   const throwEvent = result.events.find((e) => e.type === "THROW");
+
+  // Prep report: attribute the pre-match decisions so scouting and drafting
+  // visibly paid off (or didn't).
+  const prepLines: { text: string; good: boolean | null }[] = [];
+  if (userTactics && oppTactics) {
+    const edge = counterEdge(userTactics.archetype, oppTactics.archetype);
+    const oppLabel = ARCHETYPES[oppTactics.archetype].label;
+    const mineLabel = ARCHETYPES[userTactics.archetype].label;
+    prepLines.push(
+      edge > 0
+        ? { text: `They ran ${oppLabel} — your ${mineLabel} countered it, an edge in every phase.`, good: true }
+        : edge < 0
+          ? { text: `They ran ${oppLabel} and it countered your ${mineLabel}. That draft cost you all game.`, good: false }
+          : { text: `They ran ${oppLabel} into your ${mineLabel} — an even comp matchup.`, good: null },
+    );
+    if (userTactics.targetBan) {
+      const banned = players[userTactics.targetBan];
+      const line = banned ? result.playerLines[banned.id] : null;
+      if (banned && line) {
+        prepLines.push({
+          text: `Your target ban forced ${banned.handle} off his pool — he played ~10% under his level and went ${line.k}/${line.d}/${line.a}.`,
+          good: line.rating < 6,
+        });
+      }
+    }
+    if (oppTactics.targetBan) {
+      const banned = players[oppTactics.targetBan];
+      if (banned) {
+        prepLines.push({ text: `They target-banned ${banned.handle} in return.`, good: null });
+      }
+    }
+  }
 
   const lineRows = (team: Team) =>
     ROLES.map((role) => {
@@ -735,6 +779,23 @@ function PostMatch({
           ) : null}
         </p>
       </section>
+
+      {prepLines.length > 0 ? (
+        <section
+          className="panel-raised border-l-2 p-3"
+          style={{ borderLeftColor: "var(--hextech-gold)" }}
+          aria-labelledby="prep-report-head"
+        >
+          <h2 id="prep-report-head" className="eyebrow mb-1 text-gold">Prep report — did the homework pay?</h2>
+          <ul className="flex flex-col gap-0.5 text-sm leading-6">
+            {prepLines.map((l) => (
+              <li key={l.text} style={{ color: l.good === true ? "var(--blue-cyan)" : l.good === false ? "var(--red-ember)" : undefined }}>
+                {l.text}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       <div className="panel p-3">
         <GoldDiffGraph
