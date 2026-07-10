@@ -95,10 +95,19 @@ Shipped:
 5. **Offseason transfer rumors** naming real AI needs that then come true at
    roster lock — a light slice of rival agency.
 
-Deferred (logged for a future iteration):
-- Full **Signing Deadline Week** with in-season windows, rumor ticker, and
-  rival bids on the user's roster (needs a multi-step offseason).
-- **Scout report cards** with per-player knowledge %, before/after range
-  narrowing, and "upgrade over your starter" verdicts (needs a knowledge
-  stat and market ranges instead of exact FA OVR).
+Shipped in the v4 follow-up:
+- **Deadline market** — the offseason now runs 4 advanceable market weeks:
+  AI deals are pre-committed and *rumored one week before they execute* (so
+  hesitating on a target loses him), rivals table match-or-buyout offers for
+  your players, week 4 is Deadline Week, and unanswered offers cost morale.
+  Starting the season early fast-forwards the market, so the pacing is
+  opt-in.
+- **Scout report cards** — free agents show role-weighted *scouted OVR
+  ranges* instead of exact values; assign your one personal scout to a
+  player and a weekly inbox report shows the range tightening plus an
+  FM-style verdict vs your current starter ("likely upgrade / too close to
+  call / not an upgrade") computed from the range, never the truth.
+
+Still deferred:
+- **In-season transfer windows** (the market currently lives in the offseason).
 - **Named trait unlocks** (badge-style) beyond the v2 personality layer.

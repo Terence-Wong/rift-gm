@@ -46,6 +46,7 @@ export default function PlayerDetailPage({ params }: { params: Promise<{ id: str
   const teams = useGameStore((s) => s.teams);
   const playerTeamId = useGameStore((s) => s.playerTeamId);
   const scouting = useGameStore((s) => s.scouting);
+  const playerScouting = useGameStore((s) => s.playerScouting);
   const fictional = useGameStore((s) => s.dataMode === "fictional");
 
   if (!player) {
@@ -59,7 +60,12 @@ export default function PlayerDetailPage({ params }: { params: Promise<{ id: str
 
   const team = Object.values(teams).find((t) => t.roster.includes(player.id));
   const isMine = team?.id === playerTeamId;
-  const scoutLevel = isMine ? 5 : (team ? (scouting[team.id] ?? 0) : 3);
+  // Free agents use per-player scout knowledge (see Transfers → Scout).
+  const scoutLevel = isMine
+    ? 5
+    : team
+      ? (scouting[team.id] ?? 0)
+      : (playerScouting[player.id] ?? 0);
   const exact = isMine;
   const st = player.seasonStats;
 

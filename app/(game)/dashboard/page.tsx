@@ -54,9 +54,15 @@ export default function DashboardPage() {
         {s.phase === "OFFSEASON" ? (
           <div className="flex flex-wrap items-center gap-4">
             <p className="flex-1 text-sm text-ink-muted">
-              The split is done. Renew contracts, work the market, then lock the roster for
-              Season {s.season + 1}.
+              The split is done. The market runs week by week — rumors land, deals close, rivals
+              come knocking. Work it, then lock the roster for Season {s.season + 1}.
             </p>
+            <button
+              onClick={() => s.finishWeek()}
+              className="hex-clip display border border-hairline bg-fog-800 px-4 py-2 text-sm font-bold text-ink hover:bg-fog-700"
+            >
+              Advance market week
+            </button>
             <Link href="/transfers" className="hex-clip display bg-gold px-5 py-2.5 text-sm font-bold text-void hover:brightness-110">
               Open transfers
             </Link>

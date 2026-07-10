@@ -14,6 +14,17 @@ One-line rationale for every judgment call made while executing `docs/V2-BRIEF.m
 - **Intake class + dev events are seeded at season start**, not at reveal time — the preview honestly foreshadows a pre-committed outcome and reload-scumming the reveal is pointless.
 - **saveVersion bumped to 3**; pre-v3 saves skip the in-flight season's showcase (it reseeds next season) and default the new fields.
 
+## v4 — backlog iteration (deadline market + scout reports)
+
+- **The offseason market is opt-in pacing**: `startNextSeason` still works at any time (fast-forward — remaining AI deals resolve via the existing roster fill), so old flows, tests, and impatient players are untouched; engaging with the 4 market weeks is where the drama lives.
+- **AI signings are pre-committed at market open** (intent = team + player + week), rumored one week before executing — hesitation on a rumored target genuinely loses him, which is the loss-aversion engine from FM's deadline day.
+- **Poach "buyout" pays into budget** (+50% of the offered salary) even though budget is an annual cap, not cash — a deliberate simplification to make selling a real option; matching costs the rival's number against your cap, and stalling costs morale.
+- **Failed match attempts don't resolve the offer** (budget-blocked matches can be retried after clearing salary) — a blocked click shouldn't silently burn the decision.
+- **Free agents now show scouted OVR ranges, never exact values** — computed by role-weighting the existing per-attribute fuzzy ranges, so the market finally honors the imperfect-information pillar; the expansion draft keeps exact values (a one-time curated event where the asking price already carries the signal).
+- **Upgrade verdicts are computed from the range, not the truth** ("likely upgrade" only when the whole range clears your starter) — a thin file gives a hedged answer, which is the point.
+- **One personal scout assignment at a time** (+2 knowledge/week, report each week, auto-clears at 5/5) — scarcity makes the assignment a decision instead of a checkbox; it works in-season and through market weeks.
+- **saveVersion bumped to 4**; old saves mid-offseason mark the market as already closed (it reseeds next offseason).
+
 ## Feature 3 — Spatial match simulation
 
 - **Strategic/attribution RNG split.** Kill *attribution* (who killed/died/assisted) moved to a dedicated RNG stream, so the strategic outcome (winner, gold timeline, duration) of a seed is byte-identical between quick-sim and spatial-sim — preserves all v1 tuning and makes the equivalence testable directly.

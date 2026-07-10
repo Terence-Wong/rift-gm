@@ -24,6 +24,7 @@ import { generateLeague, generatePlayer } from "./engine/generate";
 import { matchFatigueCost } from "./engine/personality";
 import { computePowerRankings, type PowerRankEntry } from "./engine/rankings";
 import { createRng, hashSeed } from "./engine/rng";
+import { estimatedOvrRange, upgradeVerdict } from "./engine/scouting";
 import {
   computeStandings,
   generateDoubleRoundRobin,
@@ -57,7 +58,31 @@ import type {
 import { ROLES } from "./types";
 
 /** Save schema version — bump alongside migrateSave. */
-export const SAVE_VERSION = 3;
+export const SAVE_VERSION = 4;
+
+/** The offseason market runs this many advanceable weeks; the last is Deadline Week. */
+export const OFFSEASON_WEEKS = 4;
+
+/** A pre-committed AI signing: rumored the week before, executed on its week. */
+export interface SigningIntent {
+  teamId: string;
+  playerId: string;
+  week: number;
+  rumored: boolean;
+  done: boolean;
+}
+
+/** A rival's attempt to poach one of the user's players. */
+export interface PoachOffer {
+  id: string;
+  playerId: string;
+  teamId: string;
+  /** Salary the rival is putting on the table. */
+  salary: number;
+  arrivalWeek: number;
+  arrived: boolean;
+  resolved: boolean;
+}
 
 export interface TrainingRecapEntry {
   playerId: string;
@@ -199,6 +224,14 @@ interface GameData {
   intake: IntakeState;
   /** Seeded per season for the user's roster: breakouts and slumps. */
   devEvents: DevEvent[];
+  /** Offseason market week (0 outside the offseason; 1..OFFSEASON_WEEKS inside). */
+  offseasonWeek: number;
+  signingIntents: SigningIntent[];
+  poachOffers: PoachOffer[];
+  /** Per-player scout knowledge 0–5 (own roster is always exact). */
+  playerScouting: Record<string, number>;
+  /** One player under personal scouting per week (parallel to team scouting). */
+  playerScoutTargetId: string | null;
   playerTeamId: string;
   season: number;
   week: number;
@@ -234,6 +267,8 @@ interface GameActions {
   tutorialEvent(event: TutorialEvent): void;
   skipTutorial(): void;
   startTutorial(): void;
+  setPlayerScoutTarget(playerId: string | null): void;
+  respondPoach(offerId: string, accept: boolean): void;
   resetGame(): void;
   setStarter(role: Role, playerId: string): void;
   setTrainingFocus(playerId: string, attr: AttributeKey): void;
@@ -294,6 +329,11 @@ export const DATA_KEYS: (keyof GameData)[] = [
   "trainingRecap",
   "intake",
   "devEvents",
+  "offseasonWeek",
+  "signingIntents",
+  "poachOffers",
+  "playerScouting",
+  "playerScoutTargetId",
   "playerTeamId",
   "season",
   "week",
@@ -335,6 +375,11 @@ const initialData: GameData = {
   trainingRecap: null,
   intake: { quality: 3, previewWeek: 5, revealWeek: 8, previewSent: false, done: false },
   devEvents: [],
+  offseasonWeek: 0,
+  signingIntents: [],
+  poachOffers: [],
+  playerScouting: {},
+  playerScoutTargetId: null,
   playerTeamId: "",
   season: 1,
   week: 1,
@@ -391,6 +436,14 @@ export function migrateSave(data: Partial<GameData>): Partial<GameData> {
       previewSent: true,
       done: true,
     };
+  }
+  if ((d.saveVersion ?? 1) < 4) {
+    // Old saves mid-offseason skip the market weeks (it reseeds next season).
+    d.offseasonWeek = d.offseasonWeek ?? (d.phase === "OFFSEASON" ? OFFSEASON_WEEKS : 0);
+    d.signingIntents = d.signingIntents ?? [];
+    d.poachOffers = d.poachOffers ?? [];
+    d.playerScouting = d.playerScouting ?? {};
+    d.playerScoutTargetId = d.playerScoutTargetId ?? null;
   }
   if ((d.saveVersion ?? 1) < SAVE_VERSION) d.saveVersion = SAVE_VERSION;
   return d;
@@ -884,12 +937,24 @@ function applyOffseason(s: GameData) {
     "info",
   );
 
-  // Transfer rumors: name real AI needs so the market threatens to move —
-  // dawdle on a target and the rumor comes true at season roll.
-  const rumors: string[] = [];
+  // Open the multi-week market: pre-committed AI deals + poach attempts.
+  seedOffseasonMarket(s);
+}
+
+/**
+ * Seed the offseason market. AI signings are pre-committed to a market week
+ * (rumored the week before, executed on the day), and rivals may table
+ * offers for the user's players. Dawdle on a rumored target and you lose him.
+ */
+function seedOffseasonMarket(s: GameData) {
+  const rng = createRng(nextSeed(s));
+  s.offseasonWeek = 1;
+  s.signingIntents = [];
+  s.poachOffers = [];
+
   const claimed = new Set<string>();
   for (const team of Object.values(s.teams)) {
-    if (team.id === s.playerTeamId || rumors.length >= 3) continue;
+    if (team.id === s.playerTeamId || !rng.chance(0.8)) continue;
     const need = neediestRole(team, s.players);
     if (!need) continue;
     const target = s.freeAgents
@@ -898,13 +963,157 @@ function applyOffseason(s: GameData) {
       .sort((a, b) => b.ovr - a.ovr)[0];
     if (!target) continue;
     claimed.add(target.id);
-    rumors.push(`${team.shortName} are circling ${target.handle} (${need})`);
+    s.signingIntents.push({
+      teamId: team.id,
+      playerId: target.id,
+      week: rng.int(2, OFFSEASON_WEEKS),
+      rumored: false,
+      done: false,
+    });
   }
-  if (rumors.length > 0) {
+
+  // Poach attempts target your best players — expiring contracts especially.
+  const userTeam = s.teams[s.playerTeamId];
+  const candidates = userTeam.roster
+    .map((id) => s.players[id])
+    .filter((p): p is Player => Boolean(p) && !p.retired)
+    .sort(
+      (a, b) =>
+        b.ovr + (b.contract.years === 0 ? 2 : 0) - (a.ovr + (a.contract.years === 0 ? 2 : 0)),
+    );
+  const rivals = Object.values(s.teams).filter((t) => t.id !== s.playerTeamId);
+  const offerCount = rng.chance(0.75) ? (rng.chance(0.35) ? 2 : 1) : 0;
+  for (let i = 0; i < offerCount && i < candidates.length && rivals.length > 0; i++) {
+    const p = candidates[i];
+    s.poachOffers.push({
+      id: `poach-s${s.season}-${i}`,
+      playerId: p.id,
+      teamId: rng.pick(rivals).id,
+      salary: Math.round(salaryDemand(p) * (1.1 + rng.next() * 0.3)),
+      arrivalWeek: rng.int(2, 3),
+      arrived: false,
+      resolved: false,
+    });
+  }
+
+  post(
+    s,
+    "The market is open",
+    `The offseason market runs ${OFFSEASON_WEEKS} weeks — advance them from Transfers to watch it move. Week ${OFFSEASON_WEEKS} is Deadline Week. Rosters lock when you start the season (which you can do at any time).`,
+    "info",
+  );
+  postMarketRumors(s);
+}
+
+/**
+ * One week of personal scouting on the assigned player: knowledge +2 (cap 5)
+ * and a report lands in the inbox showing the range narrowing plus an
+ * upgrade verdict vs your current starter — information you can watch improve.
+ */
+function runPlayerScouting(s: GameData) {
+  const targetId = s.playerScoutTargetId;
+  if (!targetId) return;
+  const p = s.players[targetId];
+  const userTeam = s.teams[s.playerTeamId];
+  if (!p || p.retired || userTeam.roster.includes(targetId)) {
+    s.playerScoutTargetId = null;
+    return;
+  }
+  const before = s.playerScouting[targetId] ?? 0;
+  if (before >= 5) return;
+  const after = Math.min(5, before + 2);
+  const oldRange = estimatedOvrRange(p, before);
+  s.playerScouting[targetId] = after;
+  const newRange = estimatedOvrRange(p, after);
+  const fmtRange = (r: { min: number; max: number }) =>
+    r.min === r.max ? `${r.min}` : `${r.min}–${r.max}`;
+  const starter = s.players[userTeam.starters[p.role]];
+  const verdict = upgradeVerdict(p, after, starter?.ovr ?? null);
+  post(
+    s,
+    `Scout report: ${p.handle}`,
+    `File on ${p.handle} (${p.role}, ${p.age}) updated — knowledge ${before}→${after}/5. Overall read: ${fmtRange(oldRange)} → ${fmtRange(newRange)}.${
+      starter ? ` Verdict vs ${starter.handle}: ${verdict}.` : ""
+    }${after >= 5 ? " That's the full book — nothing more to learn from tape." : " Another week tightens it further."}`,
+    "info",
+  );
+  if (after >= 5) s.playerScoutTargetId = null;
+}
+
+/** Rumor every not-yet-done deal due within the next market week. */
+function postMarketRumors(s: GameData) {
+  for (const intent of s.signingIntents) {
+    if (intent.done || intent.rumored || intent.week > s.offseasonWeek + 1) continue;
+    intent.rumored = true;
+    const p = s.players[intent.playerId];
+    const team = s.teams[intent.teamId];
+    if (!p || !team || !s.freeAgents.includes(p.id)) continue;
     post(
       s,
-      "Transfer rumors",
-      `${rumors.join("; ")}. Rumored moves tend to happen when rosters lock — if you want one of these players, don't wait.`,
+      "Transfer rumor",
+      `Sources: ${team.name} are closing in on ${p.handle} (${p.role}). If he's on your list, move now — rumors like this tend to be a week from real.`,
+      "info",
+    );
+  }
+}
+
+/** One offseason market week: deals close, rumors surface, offers land. */
+function advanceOffseasonWeek(s: GameData) {
+  if (s.offseasonWeek >= OFFSEASON_WEEKS) {
+    post(s, "Market closed", "The window is shut. Lock your roster in Transfers to start the season.", "info");
+    return;
+  }
+  s.offseasonWeek += 1;
+  const week = s.offseasonWeek;
+
+  // Personal scouting keeps working through the market.
+  runPlayerScouting(s);
+
+  // Deals due this week execute — if the target is still available.
+  for (const intent of s.signingIntents) {
+    if (intent.done || intent.week > week) continue;
+    intent.done = true;
+    const p = s.players[intent.playerId];
+    const team = s.teams[intent.teamId];
+    if (!p || p.retired || !team || !s.freeAgents.includes(p.id)) continue;
+    s.freeAgents = s.freeAgents.filter((id) => id !== p.id);
+    team.roster.push(p.id);
+    p.contract = { years: week >= OFFSEASON_WEEKS ? 1 : 2, salary: salaryDemand(p) };
+    const starter = s.players[team.starters[p.role]];
+    if (!starter || starter.retired) team.starters[p.role] = p.id;
+    post(
+      s,
+      "Done deal",
+      `${team.name} sign ${p.handle} (${p.role}) — as rumored. He's off the market.`,
+      "info",
+    );
+  }
+
+  postMarketRumors(s);
+
+  // Poach offers land.
+  for (const offer of s.poachOffers) {
+    if (offer.arrived || offer.arrivalWeek > week) continue;
+    offer.arrived = true;
+    const p = s.players[offer.playerId];
+    const team = s.teams[offer.teamId];
+    if (!p || !team || !s.teams[s.playerTeamId].roster.includes(p.id)) {
+      offer.resolved = true;
+      continue;
+    }
+    post(
+      s,
+      `${team.shortName} want ${p.handle}`,
+      `${team.name} tabled an offer at ${offer.salary}/yr for ${p.handle}. Respond in Transfers — match it to keep him, take the buyout to cash out, or stall and he'll feel dangled.`,
+      "bad",
+    );
+  }
+
+  if (week === OFFSEASON_WEEKS) {
+    post(
+      s,
+      "DEADLINE WEEK",
+      "Last week of the market. Unfinished business gets finished now — or not at all.",
       "info",
     );
   }
@@ -1297,6 +1506,71 @@ export const useGameStore = create<GameStore>()(
         });
       },
 
+      setPlayerScoutTarget(playerId) {
+        set((s) => {
+          if (playerId && !s.players[playerId]) return;
+          s.playerScoutTargetId = playerId;
+        });
+      },
+
+      respondPoach(offerId, accept) {
+        set((s) => {
+          const offer = s.poachOffers.find((o) => o.id === offerId);
+          if (!offer || !offer.arrived || offer.resolved) return;
+          const p = s.players[offer.playerId];
+          const rival = s.teams[offer.teamId];
+          const team = s.teams[s.playerTeamId];
+          if (!p || !rival || !team.roster.includes(p.id)) {
+            offer.resolved = true;
+            return;
+          }
+          if (accept) {
+            offer.resolved = true;
+            const fee = Math.round(offer.salary * 0.5);
+            team.roster = team.roster.filter((id) => id !== p.id);
+            const replacement = team.roster.find((id) => s.players[id]?.role === p.role) ?? "";
+            for (const role of ROLES) {
+              if (team.starters[role] === p.id) team.starters[role] = replacement;
+            }
+            rival.roster.push(p.id);
+            const rivalStarter = s.players[rival.starters[p.role]];
+            if (!rivalStarter || rivalStarter.retired) rival.starters[p.role] = p.id;
+            p.contract = { years: 2, salary: offer.salary };
+            team.budget += fee;
+            post(
+              s,
+              `${p.handle} sold to ${rival.shortName}`,
+              `Buyout accepted — ${p.handle} joins ${rival.name}. The fee adds ${fee} to your budget. Fill the hole before the season starts.`,
+              "info",
+            );
+          } else {
+            // Matching costs real money: pay the rival's number or it's no deal.
+            const payroll = team.roster.reduce(
+              (sum, id) => sum + (s.players[id]?.contract.salary ?? 0),
+              0,
+            );
+            if (payroll - p.contract.salary + offer.salary > team.budget) {
+              post(
+                s,
+                "Can't match",
+                `Matching ${offer.salary}/yr for ${p.handle} busts the budget. Clear salary first or take the buyout.`,
+                "bad",
+              );
+              return;
+            }
+            offer.resolved = true;
+            p.contract = { ...p.contract, salary: offer.salary };
+            p.morale = Math.min(100, p.morale + 6);
+            post(
+              s,
+              `${p.handle} stays`,
+              `You matched ${rival.shortName}'s number — ${p.handle} re-commits at ${offer.salary}/yr and knows he's wanted.`,
+              "good",
+            );
+          }
+        });
+      },
+
       setPendingTactics(tactics) {
         set((s) => {
           s.pendingTactics = tactics;
@@ -1375,6 +1649,8 @@ export const useGameStore = create<GameStore>()(
             weeklyUpkeep(s);
             s.week += 1;
             maybeAdvancePlayoffs(s);
+          } else if (s.phase === "OFFSEASON") {
+            advanceOffseasonWeek(s);
           }
           if (s.lastMatch) s.lastMatch.weekFinished = true;
           s.userPlayedThisWeek = false;
@@ -1492,6 +1768,23 @@ export const useGameStore = create<GameStore>()(
       startNextSeason() {
         set((s) => {
           if (s.phase !== "OFFSEASON" || s.board.fired) return;
+          // Deadline passed: unanswered poach offers lapse — and players notice.
+          for (const offer of s.poachOffers) {
+            if (!offer.arrived || offer.resolved) continue;
+            const p = s.players[offer.playerId];
+            if (p && s.teams[s.playerTeamId].roster.includes(p.id)) {
+              p.morale = Math.max(0, p.morale - 5);
+              post(
+                s,
+                `${p.handle} felt dangled`,
+                `You never answered ${s.teams[offer.teamId]?.shortName ?? "the rival"}'s offer for ${p.handle}. He noticed. Morale dips.`,
+                "bad",
+              );
+            }
+          }
+          s.signingIntents = [];
+          s.poachOffers = [];
+          s.offseasonWeek = 0;
           // Unrenewed expiring players on the user team walk.
           const team = s.teams[s.playerTeamId];
           for (const pid of [...team.roster]) {
@@ -1695,6 +1988,9 @@ function weeklyUpkeep(s: GameData) {
   if (s.scoutTargetId && s.scoutTargetId !== s.playerTeamId) {
     s.scouting[s.scoutTargetId] = Math.min(5, (s.scouting[s.scoutTargetId] ?? 0) + 1);
   }
+
+  // Personal player scouting files a weekly report.
+  runPlayerScouting(s);
 
   // Weekly power rankings (analyst desk). Movement drives the blurbs; big
   // moves for the user's team make the inbox.

@@ -110,7 +110,7 @@ describe("academy showcase + dev events + rumors", () => {
     expect(previewIdx).toBeGreaterThan(revealIdx); // inbox is newest-first
   });
 
-  it("a full season fires all dev events and posts offseason transfer rumors", () => {
+  it("a full season fires all dev events and opens the offseason market", () => {
     newRealGame("FullLoop", "gen");
     let guard = 0;
     while (useGameStore.getState().phase !== "OFFSEASON" && guard < 80) {
@@ -120,7 +120,7 @@ describe("academy showcase + dev events + rumors", () => {
     const s = useGameStore.getState();
     expect(s.phase).toBe("OFFSEASON");
     for (const e of s.devEvents) expect(e.fired).toBe(true);
-    expect(s.inbox.some((m) => m.title === "Transfer rumors")).toBe(true);
+    expect(s.inbox.some((m) => m.title === "The market is open")).toBe(true);
     // Breakout/slump news exists whenever events were seeded.
     if (s.devEvents.length > 0) {
       expect(

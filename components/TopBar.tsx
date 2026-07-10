@@ -1,7 +1,7 @@
 "use client";
 
 import { fmtMoney } from "@/lib/format";
-import { useGameStore } from "@/lib/store";
+import { OFFSEASON_WEEKS, useGameStore } from "@/lib/store";
 import { TeamCrest } from "./TeamCrest";
 
 export function TopBar() {
@@ -9,13 +9,20 @@ export function TopBar() {
   const season = useGameStore((s) => s.season);
   const week = useGameStore((s) => s.week);
   const phase = useGameStore((s) => s.phase);
+  const offseasonWeek = useGameStore((s) => s.offseasonWeek);
   const usingSampleData = useGameStore((s) => s.usingSampleData);
   const unread = useGameStore((s) => s.inbox.filter((m) => !m.read).length);
 
   if (!team) return null;
 
   const phaseLabel =
-    phase === "REGULAR" ? `Week ${week}` : phase === "PLAYOFFS" ? "Playoffs" : "Offseason";
+    phase === "REGULAR"
+      ? `Week ${week}`
+      : phase === "PLAYOFFS"
+        ? "Playoffs"
+        : offseasonWeek > 0
+          ? `Offseason · market W${offseasonWeek}/${OFFSEASON_WEEKS}`
+          : "Offseason";
 
   return (
     <header className="flex items-center gap-3 border-b border-hairline bg-fog-900 px-3 py-2 md:px-5">
